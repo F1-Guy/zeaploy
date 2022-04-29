@@ -1,7 +1,9 @@
 var builder = WebApplication.CreateBuilder(args);
+var config = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<ZeaployDbContext>(options => options.UseSqlServer(config.GetConnectionString("ZeaployConnection")));
 
 var app = builder.Build();
 
