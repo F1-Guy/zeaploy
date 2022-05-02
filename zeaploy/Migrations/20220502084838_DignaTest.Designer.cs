@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using zeaploy.Models;
 
@@ -11,9 +12,10 @@ using zeaploy.Models;
 namespace zeaploy.Migrations
 {
     [DbContext(typeof(ZeaployDbContext))]
-    partial class ZeaployDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220502084838_DignaTest")]
+    partial class DignaTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,22 +238,6 @@ namespace zeaploy.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JobType")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Position")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime>("Posted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Wage")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

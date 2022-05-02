@@ -3,11 +3,11 @@ namespace zeaploy.Services.Services
 {
     public class CommentService :ICommentService
     {
-        //private ZeaployDbContext context;
+        private ZeaployDbContext context;
 
-        //public CommentService(ZeaployDbContext service)
-        //{
-        //    context = service;
-        //}
+        public CommentService(ZeaployDbContext service)
+        {
+            context = service;
+        }
     }
 }
