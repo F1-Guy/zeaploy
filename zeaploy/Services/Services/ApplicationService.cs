@@ -4,11 +4,11 @@ namespace zeaploy.Services.Services
 {
     public class ApplicationService : IApplicationService
     {
-        //private ZeaployDbContext context;
+        private ZeaployDbContext context;
 
-        //public ApplicationService(ZeaployDbContext service)
-        //{
-        //    context = service;
-        //}
+        public ApplicationService(ZeaployDbContext service)
+        {
+            context = service;
+        }
     }
 }
