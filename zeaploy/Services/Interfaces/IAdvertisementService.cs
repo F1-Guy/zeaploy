@@ -2,7 +2,7 @@
 {
     public interface IAdvertisementService
     {
-        public IEnumerable<Advertisement> GetAllAdvertisements();
+        public Task<IEnumerable<Advertisement>> GetAdvertisementsAsync();
         public Task CreateAdvertisementAsync(Advertisement adv);
     }
 }

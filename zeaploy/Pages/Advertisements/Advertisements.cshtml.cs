@@ -14,9 +14,9 @@ namespace zeaploy.Pages.Advertisements
         {
             adService = service;
         }
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Advertisements = adService.GetAllAdvertisements();
+            Advertisements = await adService.GetAdvertisementsAsync();
         }
     }
 }
