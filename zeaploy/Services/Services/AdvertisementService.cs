@@ -11,10 +11,17 @@ namespace zeaploy.Services.Services
             context = service;
         }
 
+        public async Task <IEnumerable<Advertisement>> GetAdvertisementsAsync()
+        {
+            return await context.Advertisements.ToListAsync();
+        }
+
         public async Task CreateAdvertisementAsync(Advertisement adv)
         {
             context.Advertisements.Add(adv);
             await context.SaveChangesAsync();
         }
+
+        
     }
 }
