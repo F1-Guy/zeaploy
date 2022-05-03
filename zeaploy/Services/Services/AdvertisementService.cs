@@ -11,6 +11,11 @@ namespace zeaploy.Services.Services
             context = service;
         }
 
+        public IEnumerable<Advertisement> GetAllAdvertisements()
+        {
+            return context.Advertisements;
+        }
+
         public async Task CreateAdvertisementAsync(Advertisement adv)
         {
             context.Advertisements.Add(adv);
