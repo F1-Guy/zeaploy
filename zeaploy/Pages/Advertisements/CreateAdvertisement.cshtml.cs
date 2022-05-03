@@ -17,8 +17,9 @@ namespace zeaploy.Pages.Advertisements
         }
         public async Task<IActionResult> OnPostAsync(Advertisement adv)
         {
-                await service.CreateAdvertisementAsync(adv);
-                return RedirectToPage("Advertisements");
+            adv.Posted = DateTime.Now;
+            await service.CreateAdvertisementAsync(adv);
+            return RedirectToPage("Advertisements");
         }
     }
 }
