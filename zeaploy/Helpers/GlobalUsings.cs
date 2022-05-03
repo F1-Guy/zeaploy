@@ -4,3 +4,8 @@ global using Castle.MicroKernel.SubSystems.Conversion;
 global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore;
 global using zeaploy.Models;
+global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.AspNetCore.Mvc.RazorPages;
+global using Microsoft.AspNetCore.Identity;
+global using zeaploy.ViewModels;
+global using zeaploy.Services.Interfaces;
