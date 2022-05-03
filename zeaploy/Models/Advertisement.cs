@@ -14,6 +14,9 @@
         [Required]
         [StringLength(50)]
         public string JobType { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Location { get; set; }
         public DateTime Posted { get; set; }   
         [Required]
         public string Description { get; set; }

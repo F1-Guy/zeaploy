@@ -242,6 +242,11 @@ namespace zeaploy.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Position")
                         .IsRequired()
                         .HasMaxLength(50)
