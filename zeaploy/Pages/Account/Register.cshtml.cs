@@ -4,11 +4,13 @@ namespace zeaploy.Account
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+        private readonly IAppUserService appUserService;
 
-        public RegisterModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public RegisterModel(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IAppUserService appUserService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.appUserService = appUserService;
         }
 
         [BindProperty]
@@ -25,8 +27,10 @@ namespace zeaploy.Account
 
             if (result.Succeeded)
             {
-                await userManager.AddToRoleAsync(user, "Admin");
+                await userManager.AddToRoleAsync(user, "Student");
                 await signInManager.SignInAsync(user, isPersistent: false);
+                AppUser appUser = new AppUser() { Email = Registration.Email };
+                await appUserService.CreateAppUserAsync(appUser);
                 return RedirectToPage("/Index");
             }
             else
