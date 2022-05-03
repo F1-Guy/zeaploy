@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using zeaploy.Models;
 
@@ -11,9 +12,10 @@ using zeaploy.Models;
 namespace zeaploy.Migrations
 {
     [DbContext(typeof(ZeaployDbContext))]
-    partial class ZeaployDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220503080908_AdvertisementFix")]
+    partial class AdvertisementFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -242,6 +244,11 @@ namespace zeaploy.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<string>("Position")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -306,6 +313,7 @@ namespace zeaploy.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
