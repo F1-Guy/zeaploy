@@ -25,9 +25,9 @@
             return await context.AppUsers.FindAsync(id);
         }
 
-        public async Task<AppUser> GetLoggedUserAsync(string Email)
+        public async Task<AppUser> GetLoggedUserAsync(string email)
         {
-            return await context.AppUsers.Where(e => e.Email == Email).FirstOrDefaultAsync();
+            return await context.AppUsers.Where(e => e.Email == email).FirstOrDefaultAsync();
         }
 
         public async Task EditUserAsync(AppUser user)
