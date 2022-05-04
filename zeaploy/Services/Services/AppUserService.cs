@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace zeaploy.Services.Services
+﻿namespace zeaploy.Services.Services
 {
     public class AppUserService : IAppUserService
     {
@@ -9,15 +7,22 @@ namespace zeaploy.Services.Services
         {
             this.context = context;
         }
-        public async Task CreateAppUserAsync(AppUser user)
+
+        public async Task DeleteUserAsync(string id)
         {
-            await context.AppUsers.AddAsync(user);
+            AppUser? user = await context.AppUsers.FindAsync(id);
+            context.AppUsers.Remove(user);
             await context.SaveChangesAsync();
         }
 
-        public async Task UserRegistration(AppUser user)
+        public async Task<IEnumerable<AppUser>> GetAllUsersAsync()
         {
-            throw new NotImplementedException();
+            return await context.AppUsers.ToListAsync();
+        }
+
+        public async Task<AppUser> GetUserByIdAsync(string id)
+        {
+            return await context.AppUsers.FindAsync(id);
         }
     }
 }
