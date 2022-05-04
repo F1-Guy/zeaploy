@@ -1,0 +1,32 @@
+﻿@page
+@model zeaploy.Pages.Users.AllUsersModel
+@{
+    ViewData["Title"] = "All Users";
+}
+<h5>All Users</h5>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>Course</th>
+            <th>Job Title</th>
+            <th>Manage</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(AppUser appUser in Model.AppUsers)
+        {
+            <tr>
+                <td>@appUser.Name</td>
+                <td>@appUser.Email</td>
+                <td>@appUser.Course</td>
+                <td>@appUser.JobTitle</td>
+                <td><a class="btn btn-primary btn-danger" asp-route-id="@appUser.Id" asp-page="/Users/Delete">Delete</a>
+                    <a class="btn btn-primary btn-sucess" asp-route-id="@appUser.Id" asp-page="/Users/Edit">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -4,13 +4,11 @@ namespace zeaploy.Account
     {
         private readonly UserManager<AppUser> userManager;
         private readonly SignInManager<AppUser> signInManager;
-        private readonly IAppUserService appUserService;
 
-        public RegisterModel(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IAppUserService appUserService)
+        public RegisterModel(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            this.appUserService = appUserService;
         }
 
         [BindProperty]

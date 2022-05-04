@@ -1,0 +1,27 @@
+﻿@page
+@model zeaploy.Pages.Account.ProfileModel
+@{
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email Address</th>
+            <th>Course</th>
+            <th>Job Title</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+         <tr>
+                <td>@Model.LoggedUser.Name</td>
+                <td>@Model.LoggedUser.Email</td>
+                <td>@Model.LoggedUser.Course</td>
+                <td>@Model.LoggedUser.JobTitle</td>
+                <td> <a class="btn btn-danger" type="button" asp-page="EditProfile">Edit profile</a>  </td>
+           
+                </tr>
+    </tbody>
+</table>
