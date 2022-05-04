@@ -9,3 +9,6 @@ global using Microsoft.AspNetCore.Mvc.RazorPages;
 global using Microsoft.AspNetCore.Identity;
 global using zeaploy.ViewModels;
 global using zeaploy.Services.Interfaces;
+global using System.Collections;
+global using zeaploy.Services.Services;
+global using Microsoft.AspNetCore.Authorization;
