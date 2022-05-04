@@ -2,18 +2,23 @@
 @model zeaploy.Pages.Advertisements.AdvertisementsModel
 @{
 }
- <a asp-page="/Advertisements/CreateAdvertisement" class="btn btn-primary">Create new Advertisement</a>
+<h1>Create Advertisements</h1>
 
- <table class="table">
+@if (User.IsInRole("Admin"))
+{
+    <a asp-page="/Advertisements/CreateAdvertisement" class="btn btn-primary">Create new Advertisement</a>
+}
+
+<table class="table">
     <thead>
         <tr>
-            <th>  Company   </th>
-            <th>    Description </th>
-            <th>  Job Type   </th>
-            <th>    Position </th>
-            <th>  Posted   </th>
-            <th>    Wage </th>
-            <th>  Location   </th>
+            <th>Company</th>
+            <th>Description</th>
+            <th>Job Type</th>
+            <th>Position</th>
+            <th>Posted</th>
+            <th>Wage</th>
+            <th>Location</th>
         </tr>
     </thead>
     <tbody>
@@ -27,8 +32,7 @@
            <td> @item.Posted</td>
            <td> @item.Wage</td>
            <td>@item.Location</td>
-           <td><a asp-page="/Applications/CreateApplication" asp-route-advId="@item.Id" class="btn btn-primary">Apply</a></td>
-            
+           <td><a asp-page="/Applications/CreateApplication" asp-route-advId="@item.Id" class="btn btn-primary">Apply</a></td>   
         </tr>
         }
     </tbody>

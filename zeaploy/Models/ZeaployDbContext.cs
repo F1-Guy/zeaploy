@@ -8,7 +8,7 @@
         }
 
         public ZeaployDbContext(DbContextOptions<ZeaployDbContext> options)
-            :base(options)
+            : base(options)
         {
 
         }

@@ -20,7 +20,11 @@ namespace zeaploy.Pages.Users
 
         public async Task<IActionResult> OnPostAsync()
         {
-
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            await service.EditUserAsync(AppUser);
             return RedirectToPage("/Users/AllUsers");
         }
     }

@@ -12,7 +12,7 @@
         public string? Course { get; set; }
         [StringLength(100)]
         public string? JobTitle { get; set; }
-        public ICollection<Application> Applications { get; set; }
-        public ICollection<Message> Messages { get; set; }
+        public ICollection<Application>? Applications { get; set; }
+        public ICollection<Message>? Messages { get; set; }
     }
 }

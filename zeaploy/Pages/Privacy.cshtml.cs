@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace zeaploy.Pages
+﻿namespace zeaploy.Pages
 {
     public class PrivacyModel : PageModel
     {
