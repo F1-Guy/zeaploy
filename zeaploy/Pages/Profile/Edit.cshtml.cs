@@ -1,20 +1,17 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace zeaploy.Pages.Account
+namespace zeaploy.Pages.Profile
 {
-    public class EditProfileModel : PageModel
+    public class EditModel : PageModel
     {
         private IAppUserService appUserService;
 
-        public EditProfileModel(IAppUserService service)
+        public EditModel(IAppUserService service)
         {
             appUserService = service;
         }
 
         [BindProperty]
-         public AppUser LoggedUser { get; set; }
-        
+        public AppUser LoggedUser { get; set; }
+
         public async Task OnGetAsync(string Email)
         {
             LoggedUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
@@ -22,7 +19,7 @@ namespace zeaploy.Pages.Account
         public async Task<IActionResult> OnPostAsync()
         {
             await appUserService.EditUserAsync(LoggedUser);
-            return RedirectToPage("/Account/Profile");
+            return RedirectToPage("/Profile/Profile");
         }
 
     }
