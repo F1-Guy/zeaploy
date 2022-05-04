@@ -1,4 +1,6 @@
-﻿namespace zeaploy.Services.Services
+﻿using System.Collections;
+
+namespace zeaploy.Services.Services
 {
     public class AppUserService : IAppUserService
     {
@@ -11,6 +13,11 @@
         {
             await context.AppUsers.AddAsync(user);
             await context.SaveChangesAsync();
+        }
+
+        public async Task UserRegistration(AppUser user)
+        {
+            throw new NotImplementedException();
         }
     }
 }

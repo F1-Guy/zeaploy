@@ -1,4 +1,6 @@
-﻿@if(User.Identity.IsAuthenticated)
+﻿@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@if(User.Identity.IsAuthenticated)
 {
     <h1>Hello @User.Identity.Name</h1>
     <a asp-page="/Account/Logout">Logout</a>

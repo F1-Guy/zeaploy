@@ -1,6 +1,6 @@
 ﻿namespace zeaploy.Models
 {
-    public class AppUser
+    public class AppUser : IdentityUser
     {
         [Key]
         public int Id { get; set; }
