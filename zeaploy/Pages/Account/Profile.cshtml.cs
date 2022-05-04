@@ -11,9 +11,10 @@ namespace zeaploy.Pages.Account
             this.appUserService = service;
         }
         [BindProperty]
-        public AppUser AppUser { get; set; }
-        public void OnGet()
+        public AppUser LoggedUser { get; set; }
+        public async Task OnGetAsync(string Email)
         {
+            LoggedUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
         }
     }
 }

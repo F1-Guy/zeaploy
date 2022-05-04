@@ -13,11 +13,16 @@ namespace zeaploy.Pages.Account
         }
 
         [BindProperty]
-        public AppUser LoggedUser { get; set; }
+         public AppUser LoggedUser { get; set; }
         
         public async Task OnGetAsync(string Email)
         {
             LoggedUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
+        }
+        public async Task<IActionResult> OnPostAsync()
+        {
+            await appUserService.EditUserAsync(LoggedUser);
+            return RedirectToPage("/Account/Profile");
         }
 
     }
