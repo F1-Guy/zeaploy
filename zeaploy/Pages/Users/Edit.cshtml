@@ -1,0 +1,39 @@
+﻿@page "{id}"
+@model zeaploy.Pages.Users.EditModel
+@{
+}
+<h5>Edit User</h5>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@Model.AppUser.Id" />
+            <div class="form-group">
+                <label asp-for="@Model.AppUser.Name" class="control-label"></label>
+                <input asp-for="@Model.AppUser.Name" class="form-control" />
+                <span asp-validation-for="@Model.AppUser.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AppUser.Email" class="control-label"></label>
+                <input asp-for="@Model.AppUser.Email" class="form-control" />
+                <span asp-validation-for="@Model.AppUser.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AppUser.Course" class="control-label"></label>
+                <input asp-for="@Model.AppUser.Course" class="form-control" />
+                <span asp-validation-for="@Model.AppUser.Course" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.AppUser.JobTitle" class="control-label"></label>
+                <input asp-for="@Model.AppUser.JobTitle" class="form-control" />
+                <span asp-validation-for="@Model.AppUser.JobTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="/Users/AllUsers">Back to List</a>
+</div>
