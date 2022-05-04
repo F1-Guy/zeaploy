@@ -1,6 +1,4 @@
-﻿using zeaploy.Services.Interfaces;
-
-namespace zeaploy.Services.Services
+﻿namespace zeaploy.Services.Services
 {
     public class AdvertisementService : IAdvertisementService
     {
@@ -11,7 +9,7 @@ namespace zeaploy.Services.Services
             context = service;
         }
 
-        public async Task <IEnumerable<Advertisement>> GetAdvertisementsAsync()
+        public async Task<IEnumerable<Advertisement>> GetAdvertisementsAsync()
         {
             return await context.Advertisements.ToListAsync();
         }
@@ -21,7 +19,5 @@ namespace zeaploy.Services.Services
             context.Advertisements.Add(adv);
             await context.SaveChangesAsync();
         }
-
-        
     }
 }

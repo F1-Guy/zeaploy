@@ -1,12 +1,17 @@
 ﻿@inject SignInManager<AppUser> SignInManager
 @inject UserManager<AppUser> UserManager
-@if(User.Identity.IsAuthenticated)
-{
-    <h1>Hello @User.Identity.Name</h1>
-    <a asp-page="/Account/Logout">Logout</a>
-}
-else
-{
-    <a asp-page="/Account/Login">Login</a>
-    <a asp-page="/Account/Register">Register</a>
-}
+
+
+<div class="container">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a style="text-decoration:none;" class="nav-item text-dark">Hello @User.Identity.Name</a>
+        <a class="nav-item text-dark" asp-page="/Account/Logout">Logout</a>
+    }
+    else
+    {
+        <a class="nav-item text-dark" asp-page="/Account/Login">Login</a>
+        <a class="nav-item text-dark" asp-page="/Account/Register">Register</a>
+    }
+</div>
+
