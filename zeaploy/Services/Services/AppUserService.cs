@@ -1,4 +1,6 @@
-﻿namespace zeaploy.Services.Services
+﻿using System.Collections;
+
+namespace zeaploy.Services.Services
 {
     public class AppUserService : IAppUserService
     {
@@ -15,7 +17,7 @@
 
         public async Task UserRegistration(AppUser user)
         {
-            var query = context.AppUsers.Select(a => a.Email);
+            throw new NotImplementedException();
         }
     }
 }
