@@ -1,6 +1,6 @@
 ﻿namespace zeaploy.Models
 {
-    public class ZeaployDbContext : IdentityDbContext
+    public class ZeaployDbContext : IdentityDbContext<AppUser>
     {
         public ZeaployDbContext()
         {

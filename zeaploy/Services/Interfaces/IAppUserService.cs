@@ -3,5 +3,6 @@
     public interface IAppUserService
     {
         public Task CreateAppUserAsync(AppUser user);
+        public Task UserRegistration(AppUser user);
     }
 }

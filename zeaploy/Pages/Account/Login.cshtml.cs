@@ -5,9 +5,9 @@ namespace zeaploy.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly SignInManager<AppUser> signInManager;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager)
+        public LoginModel(SignInManager<AppUser> signInManager)
         {
             this.signInManager = signInManager;
         }

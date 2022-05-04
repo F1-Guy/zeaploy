@@ -12,5 +12,10 @@
             await context.AppUsers.AddAsync(user);
             await context.SaveChangesAsync();
         }
+
+        public async Task UserRegistration(AppUser user)
+        {
+            var query = context.AppUsers.Select(a => a.Email);
+        }
     }
 }
