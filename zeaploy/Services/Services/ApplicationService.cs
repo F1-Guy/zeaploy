@@ -1,4 +1,4 @@
-﻿namespace zeaploy.Services.Services
+namespace zeaploy.Services.Services
 {
     public class ApplicationService : IApplicationService
     {
@@ -7,6 +7,16 @@
         public ApplicationService(ZeaployDbContext service)
         {
             context = service;
+        }
+        public async Task CreateApplicationAsync (int advId, string uId)
+        {
+            Application application = new Application() { 
+                AdvertisementId= advId, 
+                AppUserId = uId,
+                DateCreated= DateTime.Now
+            };
+            await context.Applications.AddAsync(application);
+            await context.SaveChangesAsync();
         }
     }
 }

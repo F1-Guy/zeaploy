@@ -19,5 +19,10 @@
             context.Advertisements.Add(adv);
             await context.SaveChangesAsync();
         }
+
+        public async Task<Advertisement> GetAdvertisementByIdAsync(int advId)
+        {
+            return await context.Advertisements.Where(a => a.Id == advId).FirstOrDefaultAsync();
+        }
     }
 }
