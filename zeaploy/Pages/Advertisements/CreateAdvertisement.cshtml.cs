@@ -1,14 +1,13 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using zeaploy.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace zeaploy.Pages.Advertisements
 {
+    [Authorize(Roles = "Admin")]
     public class CreateAdvertisementModel : PageModel
     {
         IAdvertisementService service;
 
-        public CreateAdvertisementModel (IAdvertisementService aService)
+        public CreateAdvertisementModel(IAdvertisementService aService)
         {
             service = aService;
         }

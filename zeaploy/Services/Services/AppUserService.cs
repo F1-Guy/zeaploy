@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace zeaploy.Services.Services
+﻿namespace zeaploy.Services.Services
 {
     public class AppUserService : IAppUserService
     {
