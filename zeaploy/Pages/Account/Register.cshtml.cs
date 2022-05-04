@@ -20,7 +20,7 @@ namespace zeaploy.Account
             {
                 return Page();
             }
-            var user = new AppUser() {Email = Registration.Email, UserName = Registration.Email };
+            var user = new AppUser() { Email = Registration.Email, UserName = Registration.Email };
             IdentityResult result = await userManager.CreateAsync(user, Registration.Password);
 
             if (result.Succeeded)
@@ -31,7 +31,7 @@ namespace zeaploy.Account
             }
             else
             {
-                foreach(var error in result.Errors)
+                foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }

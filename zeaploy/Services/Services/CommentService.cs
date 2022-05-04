@@ -1,7 +1,6 @@
-﻿using zeaploy.Services.Interfaces;
-namespace zeaploy.Services.Services
+﻿namespace zeaploy.Services.Services
 {
-    public class CommentService :ICommentService
+    public class CommentService : ICommentService
     {
         private ZeaployDbContext context;
 

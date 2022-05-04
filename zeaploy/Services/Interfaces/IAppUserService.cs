@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace zeaploy.Services.Interfaces
+﻿namespace zeaploy.Services.Interfaces
 {
     public interface IAppUserService
     {
