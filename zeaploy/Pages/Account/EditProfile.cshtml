@@ -1,0 +1,28 @@
+﻿@page
+@model zeaploy.Pages.Account.EditProfileModel
+@{
+}
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.LoggedUser.Name" class="control-label">Name</label>
+        <input asp-for="@Model.LoggedUser.Name" class="form-control" readonly />
+        <span asp-validation-for="@Model.LoggedUser.Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.LoggedUser.Course" class="control-label">Course</label>
+        <input asp-for="@Model.LoggedUser.Course" class="form-control" />
+        <span asp-validation-for="@Model.LoggedUser.Course" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.LoggedUser.JobTitle" class="control-label">Job title</label>
+        <input asp-for="@Model.LoggedUser.JobTitle" class="form-control" />
+        <span asp-validation-for="@Model.LoggedUser.JobTitle" class="text-danger"></span>
+    <div>
+
+        <div>
+            <button type="submit" value="Edit" class="btn btn-success">Save Changes</button>
+            <button type="reset" class="btn btn-warning">Reset form</button>
+            <a asp-page="Profile" class="btn btn-danger">Cancel</a>
+        </div>
+    </div>
+</form>

@@ -19,5 +19,22 @@ namespace zeaploy.Services.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<AppUser> GetLoggedUserAsync(string Email)
+        {
+            return await context.AppUsers.Where(e => e.Email == Email).FirstOrDefaultAsync();
+        }
+
+        public async Task EditUserAsync(AppUser user)
+        {
+            AppUser appUser = await context.AppUsers.Where(u => user.Email == u.Email).FirstOrDefaultAsync();
+            appUser.Name = user.Name;
+            appUser.Email = user.Email;
+            appUser.Course = user.Course;
+            appUser.JobTitle = user.JobTitle;
+            context.SaveChanges();
+        }
+
+        
     }
 }

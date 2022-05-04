@@ -6,5 +6,7 @@ namespace zeaploy.Services.Interfaces
     {
         public Task CreateAppUserAsync(AppUser user);
         public Task UserRegistration(AppUser user);
+        public Task<AppUser> GetLoggedUserAsync(string Email);
+        public Task EditUserAsync(AppUser user);
     }
 }
