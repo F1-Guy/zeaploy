@@ -27,6 +27,7 @@
            <td> @item.Posted</td>
            <td> @item.Wage</td>
            <td>@item.Location</td>
+           <td><a asp-page="/Applications/CreateApplication" asp-route-advId="@item.Id" class="btn btn-primary">Apply</a></td>
             
         </tr>
         }

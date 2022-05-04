@@ -10,5 +10,15 @@ namespace zeaploy.Services.Services
         {
             context = service;
         }
+        public async Task CreateApplicationAsync (int advId, string uId)
+        {
+            Application application = new Application() { 
+                AdvertisementId= advId, 
+                AppUserId = uId,
+                DateCreated= DateTime.Now
+            };
+            await context.Applications.AddAsync(application);
+            await context.SaveChangesAsync();
+        }
     }
 }
