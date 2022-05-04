@@ -213,7 +213,6 @@ namespace zeaploy.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AppUserId1")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("DateCreated")
@@ -424,9 +423,7 @@ namespace zeaploy.Migrations
 
                     b.HasOne("zeaploy.Models.AppUser", "AppUser")
                         .WithMany("Applications")
-                        .HasForeignKey("AppUserId1")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AppUserId1");
 
                     b.Navigation("Advertisement");
 
