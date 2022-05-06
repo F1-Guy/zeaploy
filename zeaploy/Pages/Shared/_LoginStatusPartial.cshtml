@@ -4,13 +4,13 @@
 <div class="container">
     @if (User.Identity.IsAuthenticated)
     {
-        <a style="text-decoration:none;" class="nav-item text-dark">Hello @User.Identity.Name</a>
-        <a class="nav-item text-dark" asp-page="/Account/Logout">Logout</a>
+        <a style="text-decoration:none;" class="nav-item text-light">Hello @User.Identity.Name</a>
+        <a class="nav-item text-light" asp-page="/Account/Logout">Logout</a>
     }
     else
     {
-        <a class="nav-item text-dark" asp-page="/Account/Login">Login</a>
-        <a class="nav-item text-dark" asp-page="/Account/Register">Register</a>
+        <a class="nav-item text-light" asp-page="/Account/Login">Login</a>
+        <a class="nav-item text-light" asp-page="/Account/Register">Register</a>
     }
 </div>
    

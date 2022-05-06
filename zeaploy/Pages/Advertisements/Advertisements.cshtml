@@ -12,6 +12,10 @@
         padding:12px;
         margin-bottom: 20px;
     }
+
+    .ad-box-margin{
+        top:20px;
+    }
 </style>
 @if (User.IsInRole("Admin"))
 {
@@ -50,16 +54,16 @@
 
     <div class="col">
       <div class="col">
-       Posted @item.Posted
+       <p>Posted @item.Posted.ToLongDateString()</p>
         </div>
         <div class="col">
-            @item.JobType
+            <p> @item.JobType</p>
         </div>
         <div class="col">
-            Wage: @item.Wage
+            <p>Wage: @item.Wage</p>
         </div>
         <div class="col">
-            <p style="text-align:right"> <button> Apply </button> </p>
+            <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advId="@item.Id" asp-page="/Applications/CreateApplication">Apply</a> </p>
         </div>
     </div>
   
