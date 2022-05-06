@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace zeaploy.Pages.Applications
 {
+    [Authorize]
     public class CreateApplicationModel : PageModel
     {
         private IAppUserService userService;
