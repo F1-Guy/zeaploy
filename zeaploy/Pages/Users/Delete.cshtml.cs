@@ -18,7 +18,7 @@ namespace zeaploy.Pages.Users
         public async Task<IActionResult> OnPostAsync(string id)
         {
             await service.DeleteUserAsync(id);
-            return RedirectToPage("/Users/AllUsers");
+            return RedirectToPage("/Users/Users");
         }
     }
 }

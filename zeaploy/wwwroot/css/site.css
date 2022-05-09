@@ -16,3 +16,20 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.logo {
+    width:120px;
+}
+
+.ad-container {
+    border: 1px solid black;
+    border-radius: 20px;
+    background-image: url(https://www.toptal.com/designers/subtlepatterns/uploads/spikes.png);
+    width: 75%;
+    padding: 12px;
+    margin-bottom: 20px;
+}
+
+.ad-box-margin {
+    top: 20px;
+}
