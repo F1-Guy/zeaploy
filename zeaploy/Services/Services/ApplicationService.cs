@@ -18,5 +18,10 @@ namespace zeaploy.Services.Services
             await context.Applications.AddAsync(application);
             await context.SaveChangesAsync();
         }
+        public async Task<IEnumerable<Application>> GetAllApplicationsAsync()
+        {
+            var application = await context.Applications.Include(a => a.Advertisement).Include(u=>u.AppUser).ToListAsync();
+            return application;
+        }
     }
 }

@@ -21,5 +21,6 @@
         [Required]
         public string Description { get; set; }
         public ICollection<Comment> Comments { get; set; }
+        public ICollection<Application>? Applications { get; set; }
     }
 }
