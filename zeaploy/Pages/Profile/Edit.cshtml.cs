@@ -10,15 +10,16 @@ namespace zeaploy.Pages.Profile
         }
 
         [BindProperty]
-        public AppUser LoggedUser { get; set; }
+        public AppUser LoggedInUser { get; set; }
 
         public async Task OnGetAsync(string Email)
         {
-            LoggedUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
+            LoggedInUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
         }
         public async Task<IActionResult> OnPostAsync()
         {
-            await appUserService.EditUserAsync(LoggedUser);
+            // Saving doesn't work null exception thrown
+            await appUserService.EditUserAsync(LoggedInUser);
             return RedirectToPage("/Profile/Profile");
         }
 

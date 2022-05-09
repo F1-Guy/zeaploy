@@ -1,20 +1,21 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace zeaploy.Pages.Account
 {
+    [Authorize]
     public class ProfileModel : PageModel
     {
-        private IAppUserService appUserService;
+        private IAppUserService service;
+
         public ProfileModel(IAppUserService service)
         {
-            this.appUserService = service;
+            this.service = service;
         }
+
         [BindProperty]
-        public AppUser LoggedUser { get; set; }
-        public async Task OnGetAsync(string Email)
+        public AppUser LoggedInUser { get; set; }
+
+        public async Task OnGetAsync()
         {
-            LoggedUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
+            LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
         }
     }
 }
