@@ -2,74 +2,48 @@
 @model zeaploy.Pages.Advertisements.AdvertisementsModel
 @{
 }
-<style>
 
-    .ad-container{
-        border:1px solid black;
-        border-radius:20px;
-        background-image:url(https://www.toptal.com/designers/subtlepatterns/uploads/spikes.png);
-        width: 75%;
-        padding:12px;
-        margin-bottom: 20px;
-    }
-
-    .ad-box-margin{
-        top:20px;
-    }
-</style>
 @if (User.IsInRole("Admin"))
 {
-    <a asp-page="/Advertisements/CreateAdvertisement" class="btn btn-primary">Create new Advertisement</a>
+    <a asp-page="/Advertisements/Create" class="btn btn-primary">Create new Advertisement</a>
 }
 
 @foreach (var item in Model.Advertisements)
 {
-<div class="container ad-container rub">
-    
-  <div class="row">
-
-    <div class="col-4">
-     <h2> @item.Company</h2>
-    </div>
-    <div class="col">
-      <h2 style="text-align:left">@item.Position</h2>
-    </div>
-
-  </div>
-
-  
-
-      <div class="row">
-
-    <div class="col-7">
-      
-        <div class="col">
-      <h5>@item.Location</h5>
-        </div>
-        <div class="col">
-            @item.Description
+    <div class="container ad-container rub">
+        <div class="row">
+            <div class="col-4">
+                <h2> @item.Company</h2>
+            </div>
+            <div class="col">
+                <h2 style="text-align:left">@item.Position</h2>
+            </div>
         </div>
 
-    </div>
+        <div class="row">
+            <div class="col-7">
+                <div class="col">
+                    <h5>@item.Location</h5>
+                </div>
+                <div class="col">
+                    @item.Description
+                </div>
+            </div>
 
-    <div class="col">
-      <div class="col">
-       <p>Posted @item.Posted.ToLongDateString()</p>
-        </div>
-        <div class="col">
-            <p> @item.JobType</p>
-        </div>
-        <div class="col">
-            <p>Wage: @item.Wage</p>
-        </div>
-        <div class="col">
-            <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advId="@item.Id" asp-page="/Applications/CreateApplication">Apply</a> </p>
+            <div class="col">
+                <div class="col">
+                    <p>Posted @item.Posted.ToShortDateString()</p>
+                </div>
+                <div class="col">
+                    <p> @item.JobType</p>
+                </div>
+                <div class="col">
+                    <p>Wage: @item.Wage</p>
+                </div>
+                <div class="col">
+                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a></p>
+                </div>
+            </div>
         </div>
     </div>
-  
-
-  </div>
-  
-</div>
 }
-
