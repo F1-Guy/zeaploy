@@ -1,10 +1,10 @@
 namespace zeaploy.Pages.Users
 {
     [Authorize(Roles = "Admin")]
-    public class AllUsersModel : PageModel
+    public class UsersModel : PageModel
     {
         private readonly IAppUserService service;
-        public AllUsersModel(IAppUserService service)
+        public UsersModel(IAppUserService service)
         {
             this.service = service;
         }

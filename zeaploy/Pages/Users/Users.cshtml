@@ -1,5 +1,5 @@
 ﻿@page
-@model zeaploy.Pages.Users.AllUsersModel
+@model zeaploy.Pages.Users.UsersModel
 @{
     ViewData["Title"] = "All Users";
 }
@@ -16,14 +16,15 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(AppUser appUser in Model.AppUsers)
+        @foreach (AppUser appUser in Model.AppUsers)
         {
             <tr>
                 <td>@appUser.Name</td>
                 <td>@appUser.Email</td>
                 <td>@appUser.Course</td>
                 <td>@appUser.JobTitle</td>
-                <td><a class="btn btn-primary btn-danger" asp-route-id="@appUser.Id" asp-page="/Users/Delete">Delete</a>
+                <td>
+                    <a class="btn btn-primary btn-danger" asp-route-id="@appUser.Id" asp-page="/Users/Delete">Delete</a>
                     <a class="btn btn-primary btn-sucess" asp-route-id="@appUser.Id" asp-page="/Users/Edit">Edit</a>
                 </td>
             </tr>
