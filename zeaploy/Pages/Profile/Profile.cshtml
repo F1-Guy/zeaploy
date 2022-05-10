@@ -33,13 +33,16 @@
                                 }
                                 <hr/>
                                 <a class="btn btn-outline-primary" asp-page="/Profile/Applications">My Applications</a>
-                                <a class="btn btn-outline-primary" asp-page="/Profile/Messages">Messages</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-8">
+                <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Information
+                </li>
                 <div class="card mb-3">
                     <div class="card-body">
 
@@ -95,6 +98,41 @@
                         </div>
                     </div>
                 </div>
+                </ul>
+                <hr>
+
+                <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                Messages
+                <span class="badge bg-primary rounded-pill">@Model.Messages.Count()</span>
+                </li>
+                @foreach(var message in Model.Messages)
+{
+                <div class="card mb-3">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="text-muted mb-0">Subject: </h6>
+                            </div>
+                            <div class="col-sm-9">
+                                @message.Subject
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="text-muted mb-0">Content: </h6>
+                            </div>
+                            <div class="col-sm-9">
+                                @message.Content
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+}
             </div>
         </div>
     </div>

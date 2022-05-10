@@ -43,7 +43,7 @@ namespace zeaploy.Pages.Applications
                 Subject = $"You have applied for a position at {Advertisement.Company}",
                 Content = $"On {DateTime.Now} you have applied for a {Advertisement.Position} position at {Advertisement.Company}." +
                 $"Your application has been sent to the employer and will now be handled by them. In case of any questions please contact the company directly." +
-                $"Thank you for using Zeaploy."
+                $"Thank you for using ZeaPloy."
             });
             notyfService.Success("You have succesfully applied for this advertisement. You can see it in your profile.");
             return RedirectToPage("/Advertisements/Advertisements");
