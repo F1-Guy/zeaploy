@@ -18,10 +18,14 @@ namespace zeaploy.Services.Services
             await context.Applications.AddAsync(application);
             await context.SaveChangesAsync();
         }
+        public async Task<ICollection<Application>> GetApplicationsByAdvId(int advertisementId)
+        {
+            return await context.Applications.Where(a=> a.AdvertisementId == advertisementId).Include(a => a.Advertisement).Include(u => u.AppUser).ToListAsync();
+        }
         public async Task<IEnumerable<Application>> GetAllApplicationsAsync()
         {
-            var application = await context.Applications.Include(a => a.Advertisement).Include(u=>u.AppUser).ToListAsync();
-            return application;
+            return await context.Applications.Include(a => a.Advertisement).Include(u=>u.AppUser).ToListAsync();
+
         }
     }
 }
