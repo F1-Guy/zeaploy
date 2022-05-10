@@ -29,7 +29,7 @@ namespace zeaploy.Pages.Advertisements
 
         public async Task<IActionResult> OnPostAsync(int advertisementId)
         {
-            if (!ModelState.IsValid)
+            if (String.IsNullOrEmpty(Comment.Content))
             {
                 Advertisement = await service.GetAdvertisementByIdAsync(advertisementId);
                 Comments = await cService.GetAdvComments(advertisementId);
