@@ -19,7 +19,15 @@ namespace zeaploy.Pages.Profile
 
         public async Task<IActionResult> OnPostAsync()
         {
-            await service.EditUserAsync(LoggedInUser);
+            if (ModelState.IsValid)
+            {
+                await service.EditUserAsync(LoggedInUser);
+            }
+            else
+            {
+                return Page();
+            }
+
             return RedirectToPage("/Profile/Profile");
         }
     }

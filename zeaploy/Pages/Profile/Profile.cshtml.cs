@@ -17,5 +17,10 @@ namespace zeaploy.Pages.Account
         {
             LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
         }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            return Page();
+        }
     }
 }
