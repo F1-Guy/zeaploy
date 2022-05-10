@@ -5,7 +5,10 @@
 
 @if (User.IsInRole("Admin"))
 {
-    <a asp-page="/Advertisements/Create" class="btn btn-primary">Create new Advertisement</a>
+    <div class="d-flex justify-content-center">
+        <a asp-page="/Advertisements/Create" class="btn btn-primary">Create new Advertisement</a>
+    </div>
+    <hr />
 }
 
 @foreach (var item in Model.Advertisements)
@@ -26,7 +29,6 @@
                     <h5>@item.Location</h5>
                 </div>
                 <div class="col">
-                    
                 </div>
             </div>
 
@@ -40,25 +42,31 @@
                 <div class="col">
                     <p>Wage: @item.Wage</p>
                 </div>
-                <div class="col">
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
-                        <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
-                    }
+            </div>
 
-                    @if (User.IsInRole("Student"))
-                    {
-                        <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a></p>
-                    }
+            <div class="row">
+                <div class="col-md-3">
+                    <a class="btn btn-primary " asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
+                </div>
+
+                @if (!User.IsInRole("Admin"))
+                {
+                    <div class="col-md-3">
+                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
                     </div>
-          
-                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a></p>
-                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a></p>
-                </div>
-                <div class="col">
-                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">See Applications</a></p>
-                </div>
+                }
+                else
+                {
+                    <div class="col-md-2">
+                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">See Applications</a>
+                    </div>
+                }
             </div>
         </div>
     </div>
