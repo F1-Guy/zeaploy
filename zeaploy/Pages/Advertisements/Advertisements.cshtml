@@ -7,66 +7,65 @@
 {
     <div class="d-flex justify-content-center">
         <a asp-page="/Advertisements/Create" class="btn btn-primary">Create new Advertisement</a>
+        <hr/>
     </div>
-    <hr />
 }
 
 @foreach (var item in Model.Advertisements)
 {
-    <div class="container ad-container rub">
+    <div class="container">
         <div class="row">
-            <div class="col-4">
-                <h2> @item.Company</h2>
-            </div>
-            <div class="col">
-                <h2 style="text-align:left">@item.Position</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-7">
-                <div class="col">
-                    <h5>@item.Location</h5>
-                </div>
-                <div class="col">
-                </div>
-            </div>
-
-            <div class="col">
-                <div class="col">
-                    <p>Posted @item.Posted.ToShortDateString()</p>
-                </div>
-                <div class="col">
-                    <p> @item.JobType</p>
-                </div>
-                <div class="col">
-                    <p>Wage: @item.Wage</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <a class="btn btn-primary " asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
-                </div>
-
-                @if (!User.IsInRole("Admin"))
-                {
-                    <div class="col-md-3">
-                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
+            <div class="col-sm-6 offset-sm-3">
+                <div class="job-card">
+                    <div class="job-card__content">
+                        <div class="job-card__content-top">
+                            <div class="job-card_img">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ikea_logo.svg/1200px-Ikea_logo.svg.png" alt="Company Logo">
+                            </div>
+                            <div class="job-card_info">
+                                <a href="#!" class="job-card_company">
+                                    <h4 class="mb-1 d-inline-block">@item.Company</h4>
+                                </a>
+                                <p class="text-muted mb-0">@item.Location</p>
+                            </div>
+                        </div>
+                        <div class="job-card_content-mid">
+                            <h4>@item.Position</h4>
+                            <p class="mb-0">@item.Wage DKK/h</p>
+                            <div class="job-card_job-type d-flex justify-content-between">
+                                <span class="job-label">@item.JobType</span>
+                                <span class="job-label text-muted">Posted: @item.Posted.ToShortDateString()</span> 
+                            </div>
+                        </div>
                     </div>
-                }
-                else
-                {
-                    <div class="col-md-2">
-                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
+                    <div class="job-card__footer">
+                        
+
+                        <div class="col-md-auto">
+                            <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
+                        </div>
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <div class="col-md-auto">
+                                <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
+                            </div>
+                            <div class="col-md-auto">
+                                <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">See Applications</a>
+                            </div>
+                            <div class="col-md-auto">
+                                <a class="btn btn-outline-danger" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-auto">
+                                <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
+                            </div>
+                        }
+
                     </div>
-                    <div class="col-md-2">
-                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
-                    </div>
-                    <div class="col-md-2">
-                        <a class="btn btn-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">See Applications</a>
-                    </div>
-                }
+                </div>
             </div>
         </div>
     </div>
