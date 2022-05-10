@@ -55,14 +55,35 @@
                         <div class="card-body">
                             <div class="row">
 
-                                @*Need to make this look a bit nicer and add all the fields*@
+                                <!-- Email readonly -->
+                                <div class="col-sm-3">
+                                    <label asp-for="@Model.LoggedInUser.Email" class="text-muted mb-0">Name</label>
+                                </div>
+                                <div class="form-group col-sm-9">
+                                    <input type="text" class="form-control" asp-for="@Model.LoggedInUser.Email" readonly />
+                                </div>
+
+                                <!-- Full name -->
                                 <div class="col-sm-3">
                                     <label asp-for="@Model.LoggedInUser.Name" class="text-muted mb-0">Name</label>
                                 </div>
                                 <div class="form-group col-sm-9">
-                                    <input type="text" class="form-control" asp-for="@Model.LoggedInUser.Name"   />
+                                    <input type="text" class="form-control" asp-for="@Model.LoggedInUser.Name" />
                                     <span asp-validation-for="@Model.LoggedInUser.Name" class="text-danger"></span>
                                 </div>
+
+                                <!-- Full name -->
+                                <div class="col-sm-3">
+                                    <label asp-for="@Model.LoggedInUser.Name" class="text-muted mb-0">Name</label>
+                                </div>
+                                <div class="form-group col-sm-9">
+                                    <input type="text" class="form-control" asp-for="@Model.LoggedInUser.Name" />
+                                    <span asp-validation-for="@Model.LoggedInUser.Name" class="text-danger"></span>
+                                </div>
+
+
+
+
                             </div>
 
                             <div class="row">

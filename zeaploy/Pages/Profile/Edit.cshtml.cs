@@ -2,26 +2,25 @@ namespace zeaploy.Pages.Profile
 {
     public class EditModel : PageModel
     {
-        private IAppUserService appUserService;
+        private IAppUserService service;
 
         public EditModel(IAppUserService service)
         {
-            appUserService = service;
+            this.service = service;
         }
 
         [BindProperty]
         public AppUser LoggedInUser { get; set; }
 
-        public async Task OnGetAsync(string Email)
+        public async Task OnGetAsync()
         {
-            LoggedInUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
-        }
-        public async Task<IActionResult> OnPostAsync()
-        {
-            // Saving doesn't work null exception thrown
-            await appUserService.EditUserAsync(LoggedInUser);
-            return RedirectToPage("/Profile/Profile");
+            LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
         }
 
+        public async Task<IActionResult> OnPostAsync()
+        {
+            await service.EditUserAsync(LoggedInUser);
+            return RedirectToPage("/Profile/Profile");
+        }
     }
 }
