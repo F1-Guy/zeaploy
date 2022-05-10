@@ -6,12 +6,14 @@ namespace zeaploy.Pages.Applications
         private IAppUserService userService;
         private IApplicationService appService;
         private IAdvertisementService advService;
+        private INotyfService notyfService;
 
-        public CreateModel(IAppUserService userService, IApplicationService appService, IAdvertisementService advService)
+        public CreateModel(IAppUserService userService, IApplicationService appService, IAdvertisementService advService, INotyfService notyfService)
         {
             this.userService = userService;
             this.appService = appService;
             this.advService = advService;
+            this.notyfService = notyfService;
         }
 
         public AppUser AppUser { get; set; }
@@ -32,6 +34,7 @@ namespace zeaploy.Pages.Applications
             AppUser = await userService.GetLoggedUserAsync(User.Identity.Name);
             string userId = AppUser.Id;
             await appService.CreateApplicationAsync(advertisementId, userId);
+            notyfService.Success("You have succesfully applied for this advertisement. You can see it in your profile.");
             return RedirectToPage("/Advertisements/Advertisements");
         }
     }
