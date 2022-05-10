@@ -1,10 +1,17 @@
-﻿@page
+﻿@page "{advertisementId?}"
 @model zeaploy.Pages.Applications.ApplicationsModel
 @{
 }
-<h1>Applications</h1>
+@if (@Model.OpenAdvertisement == null)
+{
+    <h1>All Applications</h1>
+}
+else
+{
+    <h1>Applications for Company: @Model.OpenAdvertisement.Company</h1>
+}
 
-<table class="table table-dark">
+<table class="table table-hover">
     <thead>
         <tr>
             <th scope="col">Application Id</th>
@@ -16,17 +23,16 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model.Applications)
+        @foreach (var item in Model.Applications)
         {
             <tr scope="row">
-            <td>@item.Id</td>
-            <td>@item.AppUser.Name</td>
-            <td>@item.AppUser.Email</td>
-            <td>@item.Advertisement.Company</td>
-            <td>@item.Advertisement.Position</td>
-            <td>@item.DateCreated</td>
-            
-        </tr>
-        }    
+                <td>@item.Id</td>
+                <td>@item.AppUser.Name</td>
+                <td>@item.AppUser.Email</td>
+                <td>@item.Advertisement.Company</td>
+                <td>@item.Advertisement.Position</td>
+                <td>@item.DateCreated.ToShortDateString()</td>
+            </tr>
+        }
     </tbody>
 </table>
