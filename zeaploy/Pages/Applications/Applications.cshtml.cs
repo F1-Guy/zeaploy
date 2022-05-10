@@ -1,8 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace zeaploy.Pages.Applications
 {
+    [Authorize]
     public class ApplicationsModel : PageModel
     {
         private IApplicationService appService;
@@ -31,7 +29,6 @@ namespace zeaploy.Pages.Applications
                 Applications = await appService.GetApplicationsByAdvId(AdvertisementId.Value);
                 OpenAdvertisement = await advService.GetAdvertisementByIdAsync(AdvertisementId.Value);
             }
-            
         }
     }
 }

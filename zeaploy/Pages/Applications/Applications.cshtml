@@ -10,6 +10,7 @@ else
 {
     <h1>Applications for Company: @Model.OpenAdvertisement.Company</h1>
 }
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -22,18 +23,16 @@ else
         </tr>
     </thead>
     <tbody>
-        @foreach(var item in Model.Applications)
+        @foreach (var item in Model.Applications)
         {
             <tr scope="row">
-            <td>@item.Id</td>
-            <td>@item.AppUser.Name</td>
-            <td>@item.AppUser.Email</td>
-            <td>@item.Advertisement.Company</td>
-            <td>@item.Advertisement.Position</td>
-            <td>@item.DateCreated.ToShortDateString()</td>
-            
-        </tr>
+                <td>@item.Id</td>
+                <td>@item.AppUser.Name</td>
+                <td>@item.AppUser.Email</td>
+                <td>@item.Advertisement.Company</td>
+                <td>@item.Advertisement.Position</td>
+                <td>@item.DateCreated.ToShortDateString()</td>
+            </tr>
         }
-        
     </tbody>
 </table>
