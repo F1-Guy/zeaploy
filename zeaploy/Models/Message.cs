@@ -10,7 +10,7 @@
         [Required]
         public string Content { get; set; }
         [Required]
-        public int AppUserId { get; set; }
+        public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
     }
 }

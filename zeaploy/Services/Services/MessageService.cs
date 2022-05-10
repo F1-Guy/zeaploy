@@ -8,5 +8,11 @@
         {
             context = service;
         }
+
+        public async Task SendMessageAsync(Message message)
+        {
+            context.Add(message);
+            await context.SaveChangesAsync();
+        }
     }
 }

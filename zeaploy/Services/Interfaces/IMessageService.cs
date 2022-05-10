@@ -2,5 +2,6 @@
 {
     public interface IMessageService
     {
+        Task SendMessageAsync(Message message);
     }
 }
