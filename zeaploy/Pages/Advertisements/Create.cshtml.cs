@@ -1,15 +1,15 @@
-using Microsoft.AspNetCore.Authorization;
-
 namespace zeaploy.Pages.Advertisements
 {
     [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
-        IAdvertisementService service;
+        private readonly IAdvertisementService service;
+        private readonly INotyfService notyfService;
 
-        public CreateModel(IAdvertisementService aService)
+        public CreateModel(IAdvertisementService service, INotyfService notyfService)
         {
-            service = aService;
+            this.service = service;
+            this.notyfService = notyfService;
         }
         public void OnGet()
         {
@@ -18,6 +18,7 @@ namespace zeaploy.Pages.Advertisements
         {
             adv.Posted = DateTime.Now;
             await service.CreateAdvertisementAsync(adv);
+            notyfService.Success("You have succesfully added an advertisement.");
             return RedirectToPage("Advertisements");
         }
     }

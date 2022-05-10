@@ -26,7 +26,7 @@
                     <h5>@item.Location</h5>
                 </div>
                 <div class="col">
-                    @item.Description
+                    
                 </div>
             </div>
 
@@ -52,6 +52,13 @@
                         <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a></p>
                     }
                     </div>
+          
+                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a></p>
+                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a></p>
+                </div>
+                <div class="col">
+                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">See Applications</a></p>
+                </div>
             </div>
         </div>
     </div>
