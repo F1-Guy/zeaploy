@@ -41,8 +41,17 @@
                     <p>Wage: @item.Wage</p>
                 </div>
                 <div class="col">
-                    <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a></p>
-                </div>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
+                        <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
+                    }
+
+                    @if (User.IsInRole("Student"))
+                    {
+                        <p style="text-align:right"> <a class="btn btn-primary" style="margin-right:20px" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a></p>
+                    }
+                    </div>
             </div>
         </div>
     </div>
