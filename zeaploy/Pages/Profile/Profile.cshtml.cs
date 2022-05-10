@@ -3,7 +3,7 @@ namespace zeaploy.Pages.Account
     [Authorize]
     public class ProfileModel : PageModel
     {
-        private IAppUserService service;
+        private readonly IAppUserService service;
 
         public ProfileModel(IAppUserService service)
         {

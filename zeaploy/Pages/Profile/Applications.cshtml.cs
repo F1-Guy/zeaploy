@@ -5,8 +5,20 @@ namespace zeaploy.Pages.Profile
 {
     public class ApplicationsModel : PageModel
     {
-        public void OnGet()
+        private readonly IApplicationService appService;
+
+        public ApplicationsModel(IApplicationService appService)
         {
+            this.appService = appService;
+        }
+
+        public IEnumerable<Application> Applications { get; set; }
+
+        public async Task OnGetAsync()
+        {
+            string userEmail = User.Identity.Name;
+
+            Applications = await appService.GetApplicationsByUserAsync(userEmail); 
         }
     }
 }
