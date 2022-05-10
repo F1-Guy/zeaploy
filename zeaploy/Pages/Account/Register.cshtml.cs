@@ -23,7 +23,7 @@ namespace zeaploy.Account
                 notyfService.Error("The information you have entered is not correct. Review the data and try again.");
                 return Page();
             }
-            var user = new AppUser() { Email = Registration.Email, UserName = Registration.Email };
+            var user = new AppUser() { Email = Registration.Email, UserName = Registration.Email, Name = Registration.Name };
             IdentityResult result = await userManager.CreateAsync(user, Registration.Password);
 
             if (result.Succeeded)

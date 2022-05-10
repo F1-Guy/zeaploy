@@ -2,25 +2,37 @@ namespace zeaploy.Pages.Profile
 {
     public class EditModel : PageModel
     {
-        private IAppUserService appUserService;
+        private readonly IAppUserService service;
+        private readonly INotyfService notyfService;
 
-        public EditModel(IAppUserService service)
+        public EditModel(IAppUserService service, INotyfService notyfService)
         {
-            appUserService = service;
+            this.service = service;
+            this.notyfService = notyfService;
         }
 
         [BindProperty]
-        public AppUser LoggedUser { get; set; }
+        public AppUser LoggedInUser { get; set; }
 
-        public async Task OnGetAsync(string Email)
+        public async Task OnGetAsync()
         {
-            LoggedUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
+            LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
         }
+
         public async Task<IActionResult> OnPostAsync()
         {
-            await appUserService.EditUserAsync(LoggedUser);
+            if (ModelState.IsValid)
+            {
+                notyfService.Success("Your profile has been succesfully updated.");
+                await service.EditUserAsync(LoggedInUser);
+            }
+            else
+            {
+                notyfService.Error("The data you entered is invalid. Please review the data and try again.");
+                return Page();
+            }
+
             return RedirectToPage("/Profile/Profile");
         }
-
     }
 }

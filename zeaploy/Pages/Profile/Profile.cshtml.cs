@@ -1,20 +1,31 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace zeaploy.Pages.Account
 {
+    [Authorize]
     public class ProfileModel : PageModel
     {
-        private IAppUserService appUserService;
-        public ProfileModel(IAppUserService service)
+        private readonly IAppUserService service;
+        private readonly IMessageService mService;
+
+        public ProfileModel(IAppUserService service, IMessageService mService)
         {
-            this.appUserService = service;
+            this.service = service;
+            this.mService = mService;
         }
+
         [BindProperty]
-        public AppUser LoggedUser { get; set; }
-        public async Task OnGetAsync(string Email)
+        public AppUser LoggedInUser { get; set; }
+
+        public IEnumerable<Message> Messages { get; set; }
+
+        public async Task OnGetAsync()
         {
-            LoggedUser = await appUserService.GetLoggedUserAsync(User.Identity.Name);
+            LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
+            Messages = await mService.GetMessagesAsync(LoggedInUser.Id);
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            return Page();
         }
     }
 }
