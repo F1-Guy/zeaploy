@@ -17,6 +17,13 @@
                 <input asp-for="@Model.Registration.Email" class="form-control" />
                 <span asp-validation-for="@Model.Registration.Email" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="@Model.Registration.Name" class="control-label"></label>
+                <input asp-for="@Model.Registration.Name" class="form-control" />
+                <span asp-validation-for="@Model.Registration.Name" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="@Model.Registration.Password" class="control-label"></label>
                 <input asp-for="@Model.Registration.Password" class="form-control" />
