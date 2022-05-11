@@ -5,11 +5,19 @@ namespace zeaploy.Pages.Applications
 {
     public class DeleteModel : PageModel
     {
-        private readonly IApplicationService service;
+        private readonly IAppUserService userService;
+        private readonly IApplicationService appService;
+        private readonly IAdvertisementService advService;
+        private readonly INotyfService notyfService;
+        private readonly IMessageService messageService;
 
-        public DeleteModel(IApplicationService service)
+        public DeleteModel(IAppUserService userService, IApplicationService appService, IAdvertisementService advService, INotyfService notyfService, IMessageService messageService)
         {
-            this.service = service;
+            this.userService = userService;
+            this.messageService = messageService;
+            this.appService = appService;
+            this.advService= advService;
+            this.notyfService = notyfService;
         }
 
         [BindProperty(SupportsGet = true)]
@@ -17,12 +25,31 @@ namespace zeaploy.Pages.Applications
 
         public async Task OnGetAsync(int applicationId)
         {
-            Application = await service.GetApplicationByIdAsync(applicationId);
+            Application = await appService.GetApplicationByIdAsync(applicationId);
         }
 
         public async Task<IActionResult> OnPostAsync(int applicationId)
         {
-            await service.DeleteApplicationAsync(applicationId);
+            Application = await appService.GetApplicationByIdAsync(applicationId);
+            Advertisement advertisement = await advService.GetAdvertisementByIdAsync(Application.AdvertisementId);
+            AppUser user = await userService.GetLoggedUserAsync(User.Identity.Name);
+
+            await appService.DeleteApplicationAsync(applicationId);
+
+            IEnumerable<AppUser> admins = await userService.GetAllAdminsAsync();
+
+            foreach (var admin in admins)
+            {
+                await messageService.SendMessageAsync(new Message()
+                {
+                    AppUserId = admin.Id,
+                    Subject = $"{user.Name} removed application",
+                    Content = $"User: {user.Name} deleted application for a {advertisement.Position} " +
+                    $" position in company: {advertisement.Company}"
+                }) ;
+            }
+
+            notyfService.Success($"Your application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
             return RedirectToPage("/Profile/Applications");
         }
     }
