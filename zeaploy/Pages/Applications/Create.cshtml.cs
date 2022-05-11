@@ -35,18 +35,27 @@ namespace zeaploy.Pages.Applications
         {
             Advertisement = await advService.GetAdvertisementByIdAsync(advertisementId);
             AppUser = await userService.GetLoggedUserAsync(User.Identity.Name);
-            string userId = AppUser.Id;
-            await appService.CreateApplicationAsync(advertisementId, userId);
-            await messageService.SendMessageAsync(new Message()
+            if (await appService.IsUserAppliedAsync(AppUser.Id, advertisementId))
             {
-                AppUserId = userId,
-                Subject = $"You have applied for a position at {Advertisement.Company}",
-                Content = $"On {DateTime.Now} you have applied for a {Advertisement.Position} position at {Advertisement.Company}. " +
-                $"Your application has been sent to the employer and will now be handled by them. In case of any questions please contact the company directly. " +
-                $"Thank you for using ZeaPloy."
-            });
-            notyfService.Success("You have successfully applied for this advertisement. You can see it in your profile.");
-            return RedirectToPage("/Advertisements/Advertisements");
+                notyfService.Error("You have already applied for this position");
+                return Page();
+            }
+            else
+            {
+                string userId = AppUser.Id;
+                await appService.CreateApplicationAsync(advertisementId, userId);
+                await messageService.SendMessageAsync(new Message()
+                {
+                    AppUserId = userId,
+                    Subject = $"You have applied for a position at {Advertisement.Company}",
+                    Content = $"On {DateTime.Now} you have applied for a {Advertisement.Position} position at {Advertisement.Company}. " +
+                    $"Your application has been sent to the employer and will now be handled by them. In case of any questions please contact the company directly. " +
+                    $"Thank you for using ZeaPloy."
+                });
+                notyfService.Success("You have successfully applied for this advertisement. You can see it in your profile.");
+                return RedirectToPage("/Advertisements/Advertisements");
+            }
+            
         }
     }
 }
