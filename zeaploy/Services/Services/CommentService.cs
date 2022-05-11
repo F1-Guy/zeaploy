@@ -2,7 +2,7 @@
 {
     public class CommentService : ICommentService
     {
-        private ZeaployDbContext context;
+        private readonly ZeaployDbContext context;
 
         public CommentService(ZeaployDbContext service)
         {

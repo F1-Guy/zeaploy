@@ -6,7 +6,8 @@ namespace zeaploy.Pages.Advertisements
     [Authorize(Roles = "Admin")]
     public class DeleteModel : PageModel
     {
-        private IAdvertisementService adService;
+        private readonly IAdvertisementService adService;
+
         public DeleteModel(IAdvertisementService service)
         {
             adService = service;

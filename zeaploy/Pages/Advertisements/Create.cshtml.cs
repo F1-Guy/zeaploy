@@ -11,14 +11,19 @@ namespace zeaploy.Pages.Advertisements
             this.service = service;
             this.notyfService = notyfService;
         }
+
+        [BindProperty]
+        public Advertisement Advertisement { get; set; }
+
         public void OnGet()
         {
         }
-        public async Task<IActionResult> OnPostAsync(Advertisement adv)
+
+        public async Task<IActionResult> OnPostAsync()
         {
-            adv.Posted = DateTime.Now;
-            await service.CreateAdvertisementAsync(adv);
-            notyfService.Success("You have succesfully added an advertisement.");
+            Advertisement.Posted = DateTime.Now;
+            await service.CreateAdvertisementAsync(Advertisement);
+            notyfService.Success("You have successfully added an advertisement.");
             return RedirectToPage("Advertisements");
         }
     }

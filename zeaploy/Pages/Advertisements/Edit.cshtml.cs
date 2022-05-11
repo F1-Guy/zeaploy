@@ -6,7 +6,7 @@ namespace zeaploy.Pages.Advertisements
     [Authorize(Roles = "Admin")]
     public class EditModel : PageModel
     {
-        private IAdvertisementService adService;
+        private readonly IAdvertisementService adService;
         public EditModel (IAdvertisementService service)
         {
             this.adService = service;

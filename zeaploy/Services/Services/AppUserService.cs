@@ -11,7 +11,7 @@
 
         public async Task DeleteUserAsync(string id)
         {
-            AppUser? user = await context.AppUsers.FindAsync(id);
+            AppUser user = await context.AppUsers.FindAsync(id);
             context.AppUsers.Remove(user);
             await context.SaveChangesAsync();
         }

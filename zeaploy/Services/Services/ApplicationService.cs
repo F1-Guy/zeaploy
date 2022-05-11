@@ -2,7 +2,7 @@ namespace zeaploy.Services.Services
 {
     public class ApplicationService : IApplicationService
     {
-        private ZeaployDbContext context;
+        readonly private ZeaployDbContext context;
 
         public ApplicationService(ZeaployDbContext service)
         {
@@ -11,12 +11,13 @@ namespace zeaploy.Services.Services
 
         public async Task CreateApplicationAsync(int advId, string uId)
         {
-            Application application = new Application() {
+            Application application = new()
+            {
                 AdvertisementId = advId,
                 AppUserId = uId,
                 DateCreated = DateTime.Now
             };
-            var result = await context.Applications.AddAsync(application);
+            await context.Applications.AddAsync(application);
             await context.SaveChangesAsync();
         }
 
@@ -37,14 +38,14 @@ namespace zeaploy.Services.Services
 
         public async Task<ICollection<Application>> GetApplicationsByUserAsync(string userEmail)
         {
-             return await context.Applications.Where(u=>u.AppUser.Email == userEmail).Include(a => a.Advertisement).Include(u => u.AppUser).ToListAsync();
+            return await context.Applications.Where(u => u.AppUser.Email == userEmail).Include(a => a.Advertisement).Include(u => u.AppUser).ToListAsync();
         }
 
         public async Task DeleteApplicationAsync(int id)
         {
-                Application application = await context.Applications.FindAsync(id);
-                context.Applications.Remove(application);
-                await context.SaveChangesAsync();
+            Application application = await context.Applications.FindAsync(id);
+            context.Applications.Remove(application);
+            await context.SaveChangesAsync();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace zeaploy.Pages.Account
             Messages = await mService.GetMessagesAsync(LoggedInUser.Id);
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public IActionResult OnPost()
         {
             return Page();
         }

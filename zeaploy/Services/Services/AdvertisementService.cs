@@ -2,7 +2,7 @@
 {
     public class AdvertisementService : IAdvertisementService
     {
-        private ZeaployDbContext context;
+        readonly private ZeaployDbContext context;
 
         public AdvertisementService(ZeaployDbContext service)
         {
