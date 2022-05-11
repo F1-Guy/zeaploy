@@ -10,7 +10,7 @@
         [StringLength(100)]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
-
+#nullable enable
         [StringLength(100)]
         public string? Course { get; set; }
 
@@ -22,5 +22,6 @@
 
         public ICollection<Application>? Applications { get; set; }
         public ICollection<Message>? Messages { get; set; }
+#nullable disable
     }
 }

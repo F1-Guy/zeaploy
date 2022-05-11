@@ -97,6 +97,7 @@
                         </div>
                     </div>
                 </div>
+
                 </ul>
                 <hr>
 
@@ -105,7 +106,7 @@
                 Messages
                 <span class="badge bg-primary rounded-pill">@Model.Messages.Count()</span>
                 </li>
-                @foreach(var message in Model.Messages)
+                @foreach(var message in Model.Messages.Reverse())
 {
                 <div class="card mb-3">
                     <div class="card-body">
@@ -132,6 +133,7 @@
                     </div>
                 </div>
 }
+</ul>
             </div>
         </div>
     </div>

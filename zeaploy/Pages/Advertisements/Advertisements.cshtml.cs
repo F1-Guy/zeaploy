@@ -2,9 +2,9 @@ namespace zeaploy.Pages.Advertisements
 {
     public class AdvertisementsModel : PageModel
     {
-        private IAdvertisementService adService;
-        private IApplicationService apService;
-        private IAppUserService uService;
+        private readonly IAdvertisementService adService;
+        private readonly IApplicationService apService;
+        private readonly IAppUserService uService;
 
         public IEnumerable<Advertisement> Advertisements { get; set; }
 

@@ -3,8 +3,8 @@ namespace zeaploy.Pages.Applications
     [Authorize]
     public class ApplicationsModel : PageModel
     {
-        private IApplicationService appService;
-        private IAdvertisementService advService;
+        private readonly IApplicationService appService;
+        private readonly IAdvertisementService advService;
 
         public ApplicationsModel(IApplicationService appService, IAdvertisementService advService)
         {
