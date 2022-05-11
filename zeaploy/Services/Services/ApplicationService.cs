@@ -16,7 +16,7 @@ namespace zeaploy.Services.Services
                 AppUserId = uId,
                 DateCreated = DateTime.Now
             };
-            await context.Applications.AddAsync(application);
+            var result = await context.Applications.AddAsync(application);
             await context.SaveChangesAsync();
         }
 

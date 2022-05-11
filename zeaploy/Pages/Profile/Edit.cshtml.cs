@@ -2,11 +2,13 @@ namespace zeaploy.Pages.Profile
 {
     public class EditModel : PageModel
     {
-        private IAppUserService service;
+        private readonly IAppUserService service;
+        private readonly INotyfService notyfService;
 
-        public EditModel(IAppUserService service)
+        public EditModel(IAppUserService service, INotyfService notyfService)
         {
             this.service = service;
+            this.notyfService = notyfService;
         }
 
         [BindProperty]
@@ -19,7 +21,17 @@ namespace zeaploy.Pages.Profile
 
         public async Task<IActionResult> OnPostAsync()
         {
-            await service.EditUserAsync(LoggedInUser);
+            if (ModelState.IsValid)
+            {
+                notyfService.Success("Your profile has been succesfully updated.");
+                await service.EditUserAsync(LoggedInUser);
+            }
+            else
+            {
+                notyfService.Error("The data you entered is invalid. Please review the data and try again.");
+                return Page();
+            }
+
             return RedirectToPage("/Profile/Profile");
         }
     }

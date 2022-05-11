@@ -24,5 +24,25 @@
         {
             return await context.Advertisements.Where(a => a.Id == advId).FirstOrDefaultAsync();
         }
+
+        public async Task EditAdvertisementAsync(Advertisement adv)
+        {
+            Advertisement ad = await context.Advertisements.Where(a => a.Id == adv.Id).FirstOrDefaultAsync();
+            ad.Company = adv.Company;
+            ad.Description = adv.Description;
+            ad.JobType = adv.JobType;
+            ad.Position = adv.Position;
+            ad.Posted = adv.Posted;
+            ad.Wage = adv.Wage;
+            ad.Location = adv.Location;
+            context.SaveChanges();
+        }
+
+        public async Task DeleteAdvertisementAsync(int advertisementId)
+        {
+            Advertisement ad = await context.Advertisements.FindAsync(advertisementId);
+            context.Advertisements.Remove(ad);
+            await context.SaveChangesAsync();
+        }
     }
 }

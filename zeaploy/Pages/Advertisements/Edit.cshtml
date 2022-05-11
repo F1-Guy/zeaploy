@@ -1,0 +1,55 @@
+﻿@page "{advertisementId}"
+@model zeaploy.Pages.Advertisements.EditModel
+@{
+}
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="@Model.Advertisement.Id" class="control-label">ID</label>
+        <input asp-for="@Model.Advertisement.Id" class="form-control" readonly/>
+        <span asp-validation-for="@Model.Advertisement.Id" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Advertisement.Company" class="control-label">Company</label>
+        <input asp-for="@Model.Advertisement.Company" class="form-control" />
+        <span asp-validation-for="@Model.Advertisement.Company" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Advertisement.Description" class="control-label">Description</label>
+        <input asp-for="@Model.Advertisement.Description" class="form-control" />
+        <span asp-validation-for="@Model.Advertisement.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Advertisement.JobType" class="control-label">Job Type</label>
+        <input asp-for="@Model.Advertisement.JobType" class="form-control" />
+        <span asp-validation-for="@Model.Advertisement.JobType" class="text-danger"></span>
+        <div>
+    <div class="form-group">
+        <label asp-for="@Model.Advertisement.Position" class="control-label">Position</label>
+        <input asp-for="@Model.Advertisement.Position" class="form-control" />
+        <span asp-validation-for="@Model.Advertisement.Position" class="text-danger"></span>
+        <div>
+    <div class="form-group">
+        <label asp-for="@Model.Advertisement.Posted" class="control-label">Posted</label>
+        <input asp-for="@Model.Advertisement.Posted" class="form-control" />
+        <span asp-validation-for="@Model.Advertisement.Posted" class="text-danger"></span>
+        <div>
+    <div class="form-group">
+        <label asp-for="@Model.Advertisement.Wage" class="control-label">Wage</label>
+        <input asp-for="@Model.Advertisement.Wage" class="form-control" />
+        <span asp-validation-for="@Model.Advertisement.Wage" class="text-danger"></span>
+        <div>
+<div class="form-group">
+        <label asp-for="@Model.Advertisement.Location" class="control-label">Location</label>
+        <input asp-for="@Model.Advertisement.Location" class="form-control" />
+        <span asp-validation-for="@Model.Advertisement.Location" class="text-danger"></span>
+        <div>
+
+            <div>
+                <button type="submit" value="Edit" class="btn btn-success">Save Changes</button>
+                <button type="reset" class="btn btn-warning">Reset form</button>
+                <a asp-page="Advertisements" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,72 @@
+﻿@page "{advertisementId}"
+@model zeaploy.Pages.Advertisements.DetailsModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+            <div class="job-card">
+                <div class="job-card__content">
+                    <div class="job-card__content-top">
+                        <div class="job-card_img">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ikea_logo.svg/1200px-Ikea_logo.svg.png" alt="Company Logo">
+                        </div>
+                        <div class="job-card_info">
+                            <a href="#!" class="job-card_company">
+                                <h4 class="mb-1 d-inline-block">@Model.Advertisement.Company</h4>
+                            </a>
+                            <p class="text-muted mb-0">@Model.Advertisement.Location</p>
+                        </div>
+                    </div>
+                    <div class="job-card_content-mid">
+                        <h4>@Model.Advertisement.Position</h4>
+                        <p class="mb-0">@Model.Advertisement.Wage DKK/h</p>
+                        <div class="job-card_job-type d-flex justify-content-between">
+                            <span class="job-label">@Model.Advertisement.JobType</span>
+                            <span class="job-label text-muted">Posted: @Model.Advertisement.Posted.ToShortDateString()</span>
+                        </div>
+                        <hr />
+                        <div class="job-card_content-mid">
+                            <h4 class="mb-1">Job Description</h4>
+                            @Model.Advertisement.Description
+                        </div>
+                        <hr />
+                        <div class="job-card_content-mid">
+                            <h4 class="mb-1">Comments</h4>
+                            <div class="d-flex justify-content-center row">
+                                <div class="d-flex flex-column comment-section">
+                                    @foreach (var item in Model.Comments)
+                                    {
+                                        <div class="bg-white p-2">
+                                            <div class="d-flex flex-row user-info">
+                                                <img class="rounded-circle" src="https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png" width="40">
+                                                <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Anonymous user</span><span class="date text-black-50">Shared on @item.DateAdded.ToShortDateString()</span></div>
+                                            </div>
+                                            <div class="mt-2">
+                                                <p class="comment-text">@item.Content</p>
+                                            </div>
+                                        </div>
+                                        <div class="bg-white">
+                                            <div class="d-flex flex-row fs-12">
+                                                <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+                                                <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                                            </div>
+                                        </div>
+                                    }
+                                    <form id="commentForm" method="post">
+                                        <div class="form-group bg-light p-2">
+                                            <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png" width="40"><input asp-for="@Model.Comment.Content" class="form-control" /></div>
+                                            <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

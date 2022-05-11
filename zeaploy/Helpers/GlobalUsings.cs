@@ -11,3 +11,5 @@ global using zeaploy.ViewModels;
 global using System.Collections;
 global using zeaploy.Services.Services;
 global using Microsoft.AspNetCore.Authorization;
+global using AspNetCoreHero.ToastNotification;
+global using AspNetCoreHero.ToastNotification.Abstractions;
