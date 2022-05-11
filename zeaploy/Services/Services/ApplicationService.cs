@@ -21,6 +21,19 @@ namespace zeaploy.Services.Services
             await context.SaveChangesAsync();
         }
 
+        public async Task<bool> IsUserAppliedAsync(string uId, int advId)
+        {
+            Application app = await context.Applications.Where(u => u.AppUserId == uId).Where(a => a.AdvertisementId == advId).FirstOrDefaultAsync();
+            if (app == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
         public async Task<Application> GetApplicationByIdAsync(int applicationId)
         {
             return await context.Applications.Where(a => a.Id == applicationId).Include(a => a.Advertisement).Include(u => u.AppUser).FirstOrDefaultAsync();

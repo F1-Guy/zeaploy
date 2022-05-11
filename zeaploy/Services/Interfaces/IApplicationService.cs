@@ -8,5 +8,6 @@
         public Task<ICollection<Application>> GetApplicationsByAdvId(int advertisementId);
         public Task<ICollection<Application>> GetApplicationsByUserAsync(string userEmail);
         public Task DeleteApplicationAsync(int applicationId);
+        public Task<bool> IsUserAppliedAsync(string uId, int advId);
     }
 }

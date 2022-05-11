@@ -1,4 +1,5 @@
 ﻿@page
+@inject IApplicationService apService
 @model zeaploy.Pages.Advertisements.AdvertisementsModel
 @{
 }
@@ -66,7 +67,14 @@
                             else
                             {
                             <div class="col-md-auto">
-                                <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
+                                @if(!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
+                                {
+                                    <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
+                                }
+                                else
+                                {
+                                   <a class="btn btn-outline-secondary" style="pointer-events: none" >Pending...</a>
+                                 }
                             </div>
                             }
 
