@@ -20,6 +20,8 @@
         [StringLength(100)]
         public string? Location { get; set; }
 
+        public string? ImagePath { get; set; }
+
         public ICollection<Application>? Applications { get; set; }
         public ICollection<Message>? Messages { get; set; }
     }
