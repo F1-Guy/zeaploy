@@ -11,13 +11,27 @@ namespace zeaploy.Services.Services
 
         public async Task CreateApplicationAsync(int advId, string uId)
         {
-            Application application = new Application() {
-                AdvertisementId = advId,
-                AppUserId = uId,
-                DateCreated = DateTime.Now
-            };
-            var result = await context.Applications.AddAsync(application);
+            Application application = new Application()
+                {
+                    AdvertisementId = advId,
+                    AppUserId = uId,
+                    DateCreated = DateTime.Now
+                };
+            await context.Applications.AddAsync(application);
             await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> IsUserAppliedAsync(string uId, int advId)
+        {
+            Application app = await context.Applications.Where(u => u.AppUserId == uId).Where(a => a.AdvertisementId == advId).FirstOrDefaultAsync();
+            if (app == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public async Task<Application> GetApplicationByIdAsync(int applicationId)
