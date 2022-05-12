@@ -36,7 +36,9 @@ namespace zeaploy.Pages.Applications
 
             await appService.DeleteApplicationAsync(applicationId);
 
-            IEnumerable<AppUser> admins = await userService.GetAllAdminsAsync();
+            if (User.IsInRole("Student"))
+            {
+                IEnumerable<AppUser> admins = await userService.GetAllAdminsAsync();
 
             foreach (var admin in admins)
             {
@@ -50,7 +52,16 @@ namespace zeaploy.Pages.Applications
             }
 
             notyfService.Success($"Your application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
-            return RedirectToPage("/Profile/Applications");
+
+            
+                return RedirectToPage("/Profile/Applications");
+            }
+            else
+            {
+                notyfService.Success($"{user.Name} application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
+                return RedirectToPage("/Applications/Applications");
+            }
+            
         }
     }
 }

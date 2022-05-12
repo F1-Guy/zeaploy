@@ -32,6 +32,7 @@ else
                 <td>@item.Advertisement.Company</td>
                 <td>@item.Advertisement.Position</td>
                 <td>@item.DateCreated.ToShortDateString()</td>
+                <td><a class="bnt bnt-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove Application</a></td>
             </tr>
         }
     </tbody>
