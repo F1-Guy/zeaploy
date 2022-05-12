@@ -26,9 +26,6 @@ namespace zeaploy.Pages.Advertisements
         public async Task OnGetAsync()
         {
             LoggedUser = await uService.GetLoggedUserAsync(User.Identity.Name);
-            Advertisements = await adService.GetAdvertisementsAsync();
-
-            Predicate<Advertisement> matchSearch = (Advertisement a) => (a.Company.ToLower().Contains(Criteria.ToLower()) || a.Position.ToLower().Contains(Criteria.ToLower()));
 
             if (String.IsNullOrEmpty(Criteria))
             {
@@ -36,7 +33,7 @@ namespace zeaploy.Pages.Advertisements
             }
             else
             {
-                Advertisements = adService.Filter(matchSearch);
+                Advertisements = adService.Filter((Advertisement a) => (a.Company.ToLower().Contains(Criteria.ToLower()) || a.Position.ToLower().Contains(Criteria.ToLower())));
             }
         } 
     }

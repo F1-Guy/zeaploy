@@ -60,5 +60,10 @@ namespace zeaploy.Services.Services
             context.Applications.Remove(application);
             await context.SaveChangesAsync();
         }
+
+        public IEnumerable<Application> Filter(Predicate<Application> predicate)
+        {
+            return context.Applications.ToList().Where(a => predicate(a));
+        }
     }
 }

@@ -53,5 +53,10 @@
 
             return await result.ToListAsync();
         }
+
+        public IEnumerable<AppUser> Filter(Predicate<AppUser> predicate)
+        {
+            return context.AppUsers.ToList().Where(a => predicate(a));
+        }
     }
 }

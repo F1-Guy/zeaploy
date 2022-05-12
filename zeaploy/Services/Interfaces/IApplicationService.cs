@@ -9,5 +9,6 @@
         public Task<ICollection<Application>> GetApplicationsByUserAsync(string userEmail);
         public Task DeleteApplicationAsync(int applicationId);
         public Task<bool> IsUserAppliedAsync(string uId, int advId);
+        public IEnumerable<Application> Filter(Predicate<Application> predicate);
     }
 }

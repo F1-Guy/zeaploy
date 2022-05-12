@@ -11,6 +11,13 @@ else
     <h1>Applications for Company: @Model.OpenAdvertisement.Company</h1>
 }
 
+<div class="row col-3 d-flex justify-content-between">
+    <form class="form-inline">
+        <input class="form-control" asp-for="Criteria" type="search" placeholder="Search" label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+</div>
+
 <table class="table table-hover">
     <thead>
         <tr>

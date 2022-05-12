@@ -47,9 +47,7 @@
 
         public IEnumerable<Advertisement> Filter(Predicate<Advertisement> predicate)
         {
-            IEnumerable<Advertisement> advertisements;
-
-            return advertisements = context.Advertisements.ToList().Where(a => predicate(a));
+            return context.Advertisements.ToList().Where(a => predicate(a));
         }
     }
 }

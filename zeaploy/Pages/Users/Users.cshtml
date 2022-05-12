@@ -4,7 +4,10 @@
     ViewData["Title"] = "All Users";
 }
 <h5>All Users</h5>
-
+<form class="form-inline">
+    <input class="form-control" asp-for="Criteria" type="search" placeholder="Search" label="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
 <table class="table table-hover">
     <thead>
         <tr>

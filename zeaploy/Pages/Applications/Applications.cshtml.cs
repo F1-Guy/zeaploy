@@ -16,7 +16,11 @@ namespace zeaploy.Pages.Applications
 
         public int? AdvertisementId { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string Criteria { get; set; }
+
         public Advertisement OpenAdvertisement { get; set; }
+
 
         public async Task OnGetAsync(int? AdvertisementId)
         {
@@ -28,6 +32,15 @@ namespace zeaploy.Pages.Applications
             {
                 Applications = await appService.GetApplicationsByAdvId(AdvertisementId.Value);
                 OpenAdvertisement = await advService.GetAdvertisementByIdAsync(AdvertisementId.Value);
+            }
+
+            if (String.IsNullOrEmpty(Criteria))
+            {
+                Applications = await appService.GetAllApplicationsAsync();
+            }
+            else
+            {
+                Applications = appService.Filter((Application a) => (a.Advertisement.Company.ToLower().Contains(Criteria.ToLower()) || a.AppUser.Name.ToLower().Contains(Criteria.ToLower())));
             }
         }
     }
