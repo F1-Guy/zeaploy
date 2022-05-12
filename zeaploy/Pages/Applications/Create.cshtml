@@ -15,7 +15,7 @@
                 <div class="card-body bg-light">
 
                     <div class="container">
-                        <form method="post" id="contact-form" role="form">
+                        <form method="post" id="contact-form" role="form" enctype="multipart/form-data">
                             <div class="controls">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -44,7 +44,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="formFile" class="form-label mt-4">CV</label>
-                                        <input type="file" class="form-control" id="formFile">
+                                        <input type="file" class="form-control" id="formFile" asp-for="@Model.CV">
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="formFile" class="form-label mt-4">Cover Letter</label>
-                                        <input type="file" class="form-control" id="formFile">
+                                        <input type="file" class="form-control" id="formFile" asp-for="@Model.CoverLetter">
                                     </div>
                                 </div>
                             </div>

@@ -4,13 +4,13 @@ namespace zeaploy.Pages.Profile
     {
         private readonly IAppUserService service;
         private readonly INotyfService notyfService;
-        private readonly Microsoft.AspNetCore.Hosting.IWebHostEnvironment env;
+        private readonly IFileService fileService;
 
-        public EditModel(IAppUserService service, INotyfService notyfService, Microsoft.AspNetCore.Hosting.IWebHostEnvironment env)
+        public EditModel(IAppUserService service, INotyfService notyfService, IFileService fileService)
         {
             this.service = service;
             this.notyfService = notyfService;
-            this.env = env;
+            this.fileService = fileService;
         }
 
         [BindProperty]
@@ -31,12 +31,7 @@ namespace zeaploy.Pages.Profile
                 if (ImageUpload != null)
                 {
                     LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
-                    string relativePath = @"wwwroot\assets\";
-                    var file = Path.Combine(relativePath, ImageUpload.FileName);
-                    using (var fileStream = new FileStream(file, FileMode.Create))
-                    {
-                        await ImageUpload.CopyToAsync(fileStream);
-                    }
+                    await fileService.UploadProfilePictureAsync(ImageUpload, LoggedInUser.Name);
                     LoggedInUser.ImagePath = ImageUpload.FileName;
                 }
                 else
