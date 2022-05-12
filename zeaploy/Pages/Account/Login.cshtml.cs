@@ -16,14 +16,21 @@ namespace zeaploy.Pages.Account
         {
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string returnUrl)
         {
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(LoginViewModel.Email, LoginViewModel.Password, LoginViewModel.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    return RedirectToPage("/Index");
+                    if (!String.IsNullOrEmpty(returnUrl))
+                    {
+                        return RedirectToPage(returnUrl);
+                    }
+                    else
+                    {
+                        return RedirectToPage("/Index");
+                    }
                 }
                 else
                 {
