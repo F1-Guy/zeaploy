@@ -44,5 +44,12 @@
             context.Advertisements.Remove(ad);
             await context.SaveChangesAsync();
         }
+
+        public IEnumerable<Advertisement> Filter(Predicate<Advertisement> predicate)
+        {
+            IEnumerable<Advertisement> advertisements;
+
+            return advertisements = context.Advertisements.ToList().Where(a => predicate(a));
+        }
     }
 }

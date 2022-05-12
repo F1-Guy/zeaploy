@@ -6,6 +6,12 @@ namespace zeaploy.Pages.Advertisements
         private readonly IApplicationService apService;
         private readonly IAppUserService uService;
 
+
+        [BindProperty(SupportsGet = true)]
+        public string Criteria  { get; set; }
+
+        
+
         public IEnumerable<Advertisement> Advertisements { get; set; }
 
         public AppUser LoggedUser { get; set; }
@@ -16,12 +22,22 @@ namespace zeaploy.Pages.Advertisements
             this.apService = apService;
             this.uService = uService;
         }
+
         public async Task OnGetAsync()
         {
+            LoggedUser = await uService.GetLoggedUserAsync(User.Identity.Name);
             Advertisements = await adService.GetAdvertisementsAsync();
-            LoggedUser =  await uService.GetLoggedUserAsync(User.Identity.Name);
-        }
 
-        
+            Predicate<Advertisement> matchSearch = (Advertisement a) => (a.Company.ToLower().Contains(Criteria.ToLower()) || a.Position.ToLower().Contains(Criteria.ToLower()));
+
+            if (String.IsNullOrEmpty(Criteria))
+            {
+                Advertisements = await adService.GetAdvertisementsAsync();
+            }
+            else
+            {
+                Advertisements = adService.Filter(matchSearch);
+            }
+        } 
     }
 }
