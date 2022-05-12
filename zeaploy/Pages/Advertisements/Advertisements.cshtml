@@ -37,7 +37,7 @@
                             <div class="job-card__content">
                                 <div class="job-card__content-top">
                                     <div class="job-card_img">
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ikea_logo.svg/1200px-Ikea_logo.svg.png" alt="Company Logo">
+                                        <img src="~/company-logos/@item.Company/@item.ImagePath" alt="Company Logo">
                                     </div>
                                     <div class="job-card_info">
                                         <a href="#!" class="job-card_company">
@@ -76,16 +76,19 @@
                                 }
                                 else
                                 {
-                                    <div class="col-md-auto">
-                                        @if (!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
-                                        {
-                                            <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
-                                        }
-                                        else
-                                        {
-                                            <a class="btn btn-outline-secondary" style="pointer-events: none">Pending...</a>
-                                        }
-                                    </div>
+                                    @if (User.IsInRole("Student"))
+                                    {
+                                        <div class="col-md-auto">
+                                            @if (!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
+                                            {
+                                                <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-outline-secondary" style="pointer-events: none">Pending...</a>
+                                            }
+                                        </div>
+                                    }
                                 }
                             </div>
                         </div>

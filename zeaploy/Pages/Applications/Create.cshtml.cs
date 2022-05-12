@@ -8,14 +8,16 @@ namespace zeaploy.Pages.Applications
         private readonly IAdvertisementService advService;
         private readonly INotyfService notyfService;
         private readonly IMessageService messageService;
+        private readonly IFileService fileService;
 
-        public CreateModel(IAppUserService userService, IApplicationService appService, IAdvertisementService advService, INotyfService notyfService, IMessageService messageService)
+        public CreateModel(IAppUserService userService, IApplicationService appService, IAdvertisementService advService, INotyfService notyfService, IMessageService messageService, IFileService fileService)
         {
             this.userService = userService;
             this.appService = appService;
             this.advService = advService;
             this.notyfService = notyfService;
             this.messageService = messageService;
+            this.fileService = fileService;
         }
 
         public AppUser AppUser { get; set; }
@@ -24,6 +26,12 @@ namespace zeaploy.Pages.Applications
         public Application Application { get; set; }
 
         public Advertisement Advertisement { get; set; }
+
+        [BindProperty]
+        public IFormFile? CV { get; set; }
+
+        [BindProperty]
+        public IFormFile? CoverLetter { get; set; }
 
         public async Task OnGetAsync(int advertisementId)
         {
@@ -43,17 +51,28 @@ namespace zeaploy.Pages.Applications
             else
             {
                 string userId = AppUser.Id;
-                await appService.CreateApplicationAsync(advertisementId, userId);
-                await messageService.SendMessageAsync(new Message()
+                if(CV != null && CoverLetter != null)
                 {
-                    AppUserId = userId,
-                    Subject = $"You have applied for a position at {Advertisement.Company}",
-                    Content = $"On {DateTime.Now} you have applied for a {Advertisement.Position} position at {Advertisement.Company}. " +
+                    await fileService.UploadApplicationFileAsync(CV, AppUser.Name);
+                    await fileService.UploadApplicationFileAsync(CoverLetter, AppUser.Name);
+                    await appService.CreateApplicationAsync(advertisementId, userId);
+                    await messageService.SendMessageAsync(new Message()
+                    {
+                        AppUserId = userId,
+                        Subject = $"You have applied for a position at {Advertisement.Company}",
+                        Content = $"On {DateTime.Now} you have applied for a {Advertisement.Position} position at {Advertisement.Company}. " +
                     $"Your application has been sent to the employer and will now be handled by them. In case of any questions please contact the company directly. " +
                     $"Thank you for using ZeaPloy."
-                });
-                notyfService.Success("You have successfully applied for this advertisement. You can see it in your profile.");
-                return RedirectToPage("/Advertisements/Advertisements");
+                    });
+                    notyfService.Success("You have successfully applied for this advertisement. You can see it in your profile.");
+                    return RedirectToPage("/Advertisements/Advertisements");
+                }
+                else
+                {
+                    notyfService.Error("All files must be uploaded. Please try again.");
+                    return Page();
+                }
+                
             }
             
         }
