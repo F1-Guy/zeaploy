@@ -10,13 +10,19 @@
     <li class="list-group-item">
         <div class="card mt-2">
             <div class="card-body bg-light">
-                <form method="post" id="contact-form" role="form">
+                <form method="post" id="contact-form" role="form" enctype="multipart/form-data">
                     <div class="controls">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="text-muted mb-0" asp-for="@Model.Advertisement.Company"></label>
                                     <input class="form-control" asp-for="@Model.Advertisement.Company" type="text" placeholder="Enter company name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="text-muted mb-0 form-label mt-4" for="formFile">Company Logo</label>
+                                    <input type="file" class="form-control" id="formFile" asp-for="@Model.Logo">
                                 </div>
                             </div>
                             <div class="col-md-6">
