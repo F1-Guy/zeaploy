@@ -14,15 +14,33 @@
 
 <ul class="list-group col-sm-8 offset-sm-2">
     <li class="list-group-item d-flex justify-content-between">
-        <h5><b>Job Advertisements</b></h5>
+        <h6><b>Job Advertisements</b></h6>
         <span class="badge bg-primary rounded-pill">@Model.Advertisements.Count()</span>
     </li>
     <li class="list-group-item">
-        <form class="row d-flex justify-content-start">
-            <div class="col-sm-auto">
-                <input class="form-control" asp-for="Criteria" type="search" placeholder="Search by name or job position...">
+        <form class="row d-flex justify-content-center">
+            <div class="col">
+                <input class="form-control" asp-for="Criteria" type="search" placeholder="Company name or job position...">
             </div>
-            <div class="col-sm">
+            <div class="col">
+                <select class="form-control" asp-for="@Model.TypeCriteria">
+                    <option value="">Select job type</option>
+                    @foreach (var jobType in JobTypes.types)
+                    {
+                        <option>@jobType</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <select class="form-control" asp-for="@Model.LocationCriteria">
+                    <option value="">Select location</option>
+                    @foreach (var location in Locations.locations)
+                    {
+                        <option>@location</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
                 <button class="btn btn-success" type="submit">Search</button>
             </div>
         </form>

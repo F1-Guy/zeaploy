@@ -8,7 +8,7 @@
         public const string Internship = "Internship";
 
         // Job types that are displayed
-        public static readonly IEnumerable<string> types = new string[] {
+        public static readonly ICollection<string> types = new string[] {
             FullTime,
             PartTime,
             Internship,

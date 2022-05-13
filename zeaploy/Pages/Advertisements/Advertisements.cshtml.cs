@@ -10,6 +10,11 @@ namespace zeaploy.Pages.Advertisements
         [BindProperty(SupportsGet = true)]
         public string Criteria  { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string TypeCriteria { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string LocationCriteria { get; set; }
 
         public IEnumerable<Advertisement> Advertisements { get; set; }
 
@@ -26,7 +31,8 @@ namespace zeaploy.Pages.Advertisements
         {
             LoggedUser = await uService.GetLoggedUserAsync(User.Identity.Name);
 
-            if (String.IsNullOrEmpty(Criteria))
+            // Add the rest of the conditions conditions
+            if (String.IsNullOrEmpty(Criteria) && String.IsNullOrEmpty(TypeCriteria) && String.IsNullOrEmpty(LocationCriteria))
             {
                 Advertisements = await adService.GetAdvertisementsAsync();
             }

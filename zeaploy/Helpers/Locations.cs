@@ -14,7 +14,7 @@
         public const string Slagelse = "Slagelse";
         public const string Hillerod = "Hillerød";
         public const string Holbaek = "Holbæk";
-        public const string Remote = "From home / Remote";
+        public const string Remote = "Remote";
 
         // Locations that are displayed
         public static readonly ICollection<string> locations = new string[] {
