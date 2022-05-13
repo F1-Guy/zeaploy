@@ -44,9 +44,10 @@
                                     <label class="text-muted mb-0" asp-for="@Model.Advertisement.JobType"></label>
                                     <select class="form-control" asp-for="@Model.Advertisement.JobType">
                                         <option value="" selected disabled>Select job type</option>
-                                        <option>Part-time</option>
-                                        <option>Full-time</option>
-                                        <option>Internship</option>
+                                        @foreach (var jobType in JobTypes.types)
+                                        {
+                                            <option>@jobType</option>
+                                        }
                                     </select>
                                 </div>
                             </div>
@@ -56,12 +57,10 @@
                                 <label class="text-muted mb-0" asp-for="@Model.Advertisement.Location"></label>
                                 <select class="form-control" asp-for="@Model.Advertisement.Location">
                                     <option value="" selected disabled>Select Location</option>
-                                    <option>Roskilde</option>
-                                    <option>Copenhagen</option>
-                                    <option>Køge</option>
-                                    <option>Næstved</option>
-                                    <option>Valby</option>
-                                    <option>Remote / From home</option>
+                                    @foreach (var location in Locations.locations)
+                                    {
+                                        <option>@location</option>
+                                    }
                                 </select>
                             </div>
                         </div>

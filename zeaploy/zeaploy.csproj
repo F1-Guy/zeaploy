@@ -30,8 +30,4 @@
     <Folder Include="wwwroot\user-data\profile-pictures\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-
 </Project>

@@ -27,11 +27,13 @@ namespace zeaploy.Pages.Applications
 
         public Advertisement Advertisement { get; set; }
 
+#nullable enable
         [BindProperty]
         public IFormFile? CV { get; set; }
 
         [BindProperty]
         public IFormFile? CoverLetter { get; set; }
+#nullable disable
 
         public async Task OnGetAsync(int advertisementId)
         {

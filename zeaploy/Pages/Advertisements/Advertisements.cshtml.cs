@@ -10,7 +10,6 @@ namespace zeaploy.Pages.Advertisements
         [BindProperty(SupportsGet = true)]
         public string Criteria  { get; set; }
 
-        
 
         public IEnumerable<Advertisement> Advertisements { get; set; }
 

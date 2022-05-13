@@ -9,6 +9,7 @@ global using System.ComponentModel.DataAnnotations.Schema;
 global using zeaploy.Models;
 global using zeaploy.Services.Interfaces;
 global using zeaploy.ViewModels;
+global using zeaploy.Helpers;
 global using zeaploy.Services.Services;
 global using AspNetCoreHero.ToastNotification;
 global using AspNetCoreHero.ToastNotification.Abstractions;
