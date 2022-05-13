@@ -1,6 +1,6 @@
 ﻿namespace zeaploy.Helpers
 {
-    public static class Locations 
+    public static class Locations
     {
         // All locations
         public const string Copenhagen = "Copenhagen";
