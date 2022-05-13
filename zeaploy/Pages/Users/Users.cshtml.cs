@@ -8,7 +8,7 @@ namespace zeaploy.Pages.Users
         {
             this.service = service;
         }
-        
+
         [BindProperty(SupportsGet = true)]
         public string Criteria { get; set; }
 
@@ -25,7 +25,9 @@ namespace zeaploy.Pages.Users
             }
             else
             {
-                AppUsers = service.Filter((AppUser u) => (u.Name.ToLower().Contains(Criteria.ToLower()) || u.Email.ToLower().Contains(Criteria.ToLower()) || u.Course.ToLower().Contains(Criteria.ToLower())));
+                AppUsers = service.Filter(u => (u.Name.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
+                                             || u.Email.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
+                                             || u.Course.Contains(Criteria, StringComparison.OrdinalIgnoreCase)));
             }
         }
     }

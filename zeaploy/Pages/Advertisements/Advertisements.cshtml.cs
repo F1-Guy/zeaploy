@@ -33,7 +33,8 @@ namespace zeaploy.Pages.Advertisements
             }
             else
             {
-                Advertisements = adService.Filter((Advertisement a) => (a.Company.ToLower().Contains(Criteria.ToLower()) || a.Position.ToLower().Contains(Criteria.ToLower())));
+                Advertisements = adService.Filter(a => (a.Company.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
+                                                     || a.Position.Contains(Criteria, StringComparison.OrdinalIgnoreCase)));
             }
         } 
     }

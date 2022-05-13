@@ -21,10 +21,9 @@ namespace zeaploy.Pages.Applications
 
         public Advertisement OpenAdvertisement { get; set; }
 
-
         public async Task OnGetAsync(int? AdvertisementId)
         {
-            if (AdvertisementId == null) 
+            if (AdvertisementId == null)
             {
                 Applications = await appService.GetAllApplicationsAsync();
             }
@@ -40,7 +39,8 @@ namespace zeaploy.Pages.Applications
             }
             else
             {
-                Applications = appService.Filter((Application a) => (a.Advertisement.Company.ToLower().Contains(Criteria.ToLower()) || a.AppUser.Name.ToLower().Contains(Criteria.ToLower())));
+                Applications = appService.Filter(a => (a.Advertisement.Company.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
+                                                    || a.AppUser.Name.Contains(Criteria, StringComparison.OrdinalIgnoreCase)));
             }
         }
     }
