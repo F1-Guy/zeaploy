@@ -13,19 +13,19 @@
 }
 
 <ul class="list-group col-sm-8 offset-sm-2">
-    <li class="list-group-item">
-        <div class="row col-3 d-flex justify-content-between">
-            <h5><b>Job Advertisements</b></h5>
-            <span class="badge bg-primary rounded-pill col-sm-3">@Model.Advertisements.Count()</span>
-        </div>
+    <li class="list-group-item d-flex justify-content-between">
+        <h5><b>Job Advertisements</b></h5>
+        <span class="badge bg-primary rounded-pill">@Model.Advertisements.Count()</span>
     </li>
     <li class="list-group-item">
-        <div class="row col-3 d-flex justify-content-between">
-            <form class="form-inline">
-                <input class="form-control" asp-for="Criteria" type="search" placeholder="Search" label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+        <form class="row d-flex justify-content-start">
+            <div class="col-sm-auto">
+                <input class="form-control" asp-for="Criteria" type="search" placeholder="Search by name or job position...">
+            </div>
+            <div class="col-sm">
+                <button class="btn btn-success" type="submit">Search</button>
+            </div>
+        </form>
     </li>
     <li class="list-group-item">
         @foreach (var item in Model.Advertisements)

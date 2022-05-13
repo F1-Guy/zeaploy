@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\**" />
+    <Compile Remove="wwwroot\user-data\cv-letters\**" />
     <Content Remove="Migrations\**" />
+    <Content Remove="wwwroot\user-data\cv-letters\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="wwwroot\user-data\cv-letters\**" />
     <None Remove="Migrations\**" />
+    <None Remove="wwwroot\user-data\cv-letters\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,8 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\user-data\cv-letters\" />
-    <Folder Include="wwwroot\user-data\profile-pictures\" />
+    <Folder Include="wwwroot\user-data\" />
   </ItemGroup>
 
 </Project>

@@ -4,19 +4,21 @@
 }
 @if (@Model.OpenAdvertisement == null)
 {
-    <h1>All Applications</h1>
+    <h5>All Applications</h5>
 }
 else
 {
-    <h1>Applications for Company: @Model.OpenAdvertisement.Company</h1>
+    <h5>Applications for Company: @Model.OpenAdvertisement.Company</h5>
 }
 
-<div class="row col-3 d-flex justify-content-between">
-    <form class="form-inline">
-        <input class="form-control" asp-for="Criteria" type="search" placeholder="Search" label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-</div>
+<form class="row d-flex justify-content-start">
+    <div class="col-sm-auto">
+        <input class="form-control" asp-for="Criteria" type="search" placeholder="Search by company name or user name/e-mail">
+    </div>
+    <div class="col-sm">
+        <button class="btn btn-success" type="submit">Search</button>
+    </div>
+</form>
 
 <table class="table table-hover">
     <thead>

@@ -40,7 +40,8 @@ namespace zeaploy.Pages.Applications
             else
             {
                 Applications = appService.Filter(a => (a.Advertisement.Company.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
-                                                    || a.AppUser.Name.Contains(Criteria, StringComparison.OrdinalIgnoreCase)));
+                                                    || a.AppUser.Name.Contains(Criteria, StringComparison.OrdinalIgnoreCase)
+                                                    || a.AppUser.Email.Contains(Criteria, StringComparison.OrdinalIgnoreCase)));
             }
         }
     }
