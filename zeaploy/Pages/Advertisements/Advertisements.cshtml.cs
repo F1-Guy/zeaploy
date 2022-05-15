@@ -17,7 +17,7 @@ namespace zeaploy.Pages.Advertisements
 
         public IEnumerable<Advertisement> Advertisements { get; set; }
 
-        public IEnumerable<Advertisement> Filtered { get; set; } = Enumerable.Empty<Advertisement>();
+        public IEnumerable<Advertisement> Filtered { get; set; } = new List<Advertisement>();
 
         public AppUser LoggedUser { get; set; }
 
@@ -31,30 +31,30 @@ namespace zeaploy.Pages.Advertisements
         public async Task OnGetAsync()
         {
             LoggedUser = await uService.GetLoggedUserAsync(User.Identity.Name);
-  
+
             if (!String.IsNullOrEmpty(Criteria))
             {
-                Filtered.Concat(adService.Filter(a => (a.Company.Contains(Criteria, StringComparison.OrdinalIgnoreCase)
-                                                     || a.Position.Contains(Criteria, StringComparison.OrdinalIgnoreCase))));
+                Filtered = Filtered.Concat(adService.Filter(a => (a.Company.Contains(Criteria, StringComparison.OrdinalIgnoreCase)
+                                                               || a.Position.Contains(Criteria, StringComparison.OrdinalIgnoreCase))));
             }
-         
+
             if (!String.IsNullOrEmpty(TypeCriteria))
             {
-                Filtered.Concat(adService.Filter(a => (a.JobType.Contains(TypeCriteria))));
+                Filtered = Filtered.Concat(adService.Filter(a => (a.JobType.Contains(TypeCriteria))));
             }
 
             if (!String.IsNullOrEmpty(LocationCriteria))
             {
-                Filtered.Concat(adService.Filter(a => (a.Location.Contains(LocationCriteria))));
+                Filtered = Filtered.Concat(adService.Filter(a => (a.Location.Contains(LocationCriteria))));
             }
 
-            if ((Filtered != null) && (!Filtered.Any()))
+            if (Filtered.Any())
             {
-                Advertisements = await adService.GetAdvertisementsAsync();
+                Advertisements = Filtered;
             }
             else
             {
-                Advertisements = Filtered.Distinct();
+                Advertisements = await adService.GetAdvertisementsAsync();
             }
         } 
     }
