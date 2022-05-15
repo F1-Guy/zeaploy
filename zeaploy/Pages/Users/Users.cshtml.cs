@@ -10,7 +10,7 @@ namespace zeaploy.Pages.Users
         }
 
         [BindProperty(SupportsGet = true)]
-        public string Criteria { get; set; }
+        public string SearchCriteria { get; set; }
 
         [BindProperty]
         public IEnumerable<AppUser> AppUsers { get; set; }
@@ -19,15 +19,13 @@ namespace zeaploy.Pages.Users
         {
             AppUsers = await service.GetAllUsersAsync();
 
-            if (String.IsNullOrEmpty(Criteria))
+            if (String.IsNullOrEmpty(SearchCriteria))
             {
                 AppUsers = await service.GetAllUsersAsync();
             }
             else
             {
-                AppUsers = service.Filter(u => (u.Name.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
-                                             || u.Email.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
-                                             || u.Course.Contains(Criteria, StringComparison.OrdinalIgnoreCase)));
+                AppUsers = service.Filter(SearchCriteria);
             }
         }
     }

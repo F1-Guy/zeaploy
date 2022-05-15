@@ -53,10 +53,19 @@
 
             return await result.ToListAsync();
         }
-
-        public IEnumerable<AppUser> Filter(Predicate<AppUser> predicate)
+#nullable enable
+        public IEnumerable<AppUser> Filter(string? searchString)
         {
-            return context.AppUsers.ToList().Where(a => predicate(a));
+            IEnumerable<AppUser> users = context.Users.ToList();
+
+            // Not needed in this implementation, but can be used for adding more criteria
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(u => u.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                      || u.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return users;
         }
     }
 }

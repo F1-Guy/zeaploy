@@ -8,6 +8,7 @@
         public Task DeleteUserAsync(string id);
         public Task<AppUser> GetUserByIdAsync(string id);
         public Task<IEnumerable<AppUser>> GetAllAdminsAsync();
-        public IEnumerable<AppUser> Filter(Predicate<AppUser> predicate);
+#nullable enable
+        public IEnumerable<AppUser> Filter(string? searchString);
     }
 }

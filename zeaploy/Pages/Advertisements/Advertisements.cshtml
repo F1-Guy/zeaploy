@@ -18,8 +18,8 @@
         <span class="badge bg-primary rounded-pill">@Model.Advertisements.Count()</span>
     </li>
     <li class="list-group-item">
-        <form class="row d-flex justify-content-center">
-            <div class="col">
+        <form class="row d-flex justify-content-between">
+            <div class="col-4">
                 <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Company name or job position...">
             </div>
             <div class="col">
@@ -46,73 +46,78 @@
         </form>
     </li>
     <li class="list-group-item">
-        @foreach (var item in Model.Advertisements)
+        @if (Model.Advertisements.Count() != 0)
         {
-            <div class="container">
-                <div class="row">
-                    <div>
-                        <div class="job-card">
-                            <div class="job-card__content">
-                                <div class="job-card__content-top">
-                                    <div class="job-card_img">
-                                        <img src="~/company-logos/@item.Company/@item.ImagePath" alt="Company Logo">
+            @foreach (var item in Model.Advertisements)
+            {
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <div class="job-card">
+                                <div class="job-card__content">
+                                    <div class="job-card__content-top">
+                                        <div class="job-card_img">
+                                            <img src="~/company-logos/@item.Company/@item.ImagePath" alt="Company Logo">
+                                        </div>
+                                        <div class="job-card_info">
+                                            <a href="#!" class="job-card_company">
+                                                <h4 class="mb-1 d-inline-block">@item.Company</h4>
+                                            </a>
+                                            <p class="text-muted mb-0">@item.Location</p>
+                                        </div>
                                     </div>
-                                    <div class="job-card_info">
-                                        <a href="#!" class="job-card_company">
-                                            <h4 class="mb-1 d-inline-block">@item.Company</h4>
-                                        </a>
-                                        <p class="text-muted mb-0">@item.Location</p>
+                                    <div class="job-card_content-mid">
+                                        <h4>@item.Position</h4>
+                                        <p class="mb-0">@item.Wage dkk/h</p>
+                                        <div class="job-card_job-type d-flex justify-content-between">
+                                            <span class="job-label">@item.JobType</span>
+                                            <span class="job-label text-muted">Posted: @item.Posted.ToShortDateString()</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="job-card_content-mid">
-                                    <h4>@item.Position</h4>
-                                    <p class="mb-0">@item.Wage dkk/h</p>
-                                    <div class="job-card_job-type d-flex justify-content-between">
-                                        <span class="job-label">@item.JobType</span>
-                                        <span class="job-label text-muted">Posted: @item.Posted.ToShortDateString()</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="job-card__footer">
-
-
-                                <div class="col-md-auto">
-                                    <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
-                                </div>
-
-                                @if (User.IsInRole("Admin"))
-                                {
+                                <div class="job-card__footer">
                                     <div class="col-md-auto">
-                                        <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
+                                        <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
                                     </div>
-                                    <div class="col-md-auto">
-                                        <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">Applications</a>
-                                    </div>
-                                    <div class="col-md-auto">
-                                        <a class="btn btn-outline-danger" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
-                                    </div>
-                                }
-                                else
-                                {
-                                    @if (User.IsInRole("Student"))
+
+                                    @if (User.IsInRole("Admin"))
                                     {
                                         <div class="col-md-auto">
-                                            @if (!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
-                                            {
-                                                <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
-                                            }
-                                            else
-                                            {
-                                                <a class="btn btn-outline-secondary" style="pointer-events: none">Pending...</a>
-                                            }
+                                            <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
+                                        </div>
+                                        <div class="col-md-auto">
+                                            <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">Applications</a>
+                                        </div>
+                                        <div class="col-md-auto">
+                                            <a class="btn btn-outline-danger" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
                                         </div>
                                     }
-                                }
+                                    else
+                                    {
+                                        @if (User.IsInRole("Student"))
+                                        {
+                                            <div class="col-md-auto">
+                                                @if (!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
+                                                {
+                                                    <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
+                                                }
+                                                else
+                                                {
+                                                    <a class="btn btn-outline-secondary" style="pointer-events: none">Pending...</a>
+                                                }
+                                            </div>
+                                        }
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+        }
+        else
+        {
+            <h6>There are no advertisments found matching your criteria</h6>
         }
     </li>
 </ul>

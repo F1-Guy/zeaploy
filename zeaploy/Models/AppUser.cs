@@ -28,6 +28,5 @@
 
         public ICollection<Application>? Applications { get; set; }
         public ICollection<Message>? Messages { get; set; }
-#nullable disable
     }
 }

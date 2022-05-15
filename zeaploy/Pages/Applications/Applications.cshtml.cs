@@ -17,7 +17,7 @@ namespace zeaploy.Pages.Applications
         public int? AdvertisementId { get; set; }
 
         [BindProperty(SupportsGet = true)]
-        public string Criteria { get; set; }
+        public string SearchCriteria { get; set; }
 
         public Advertisement OpenAdvertisement { get; set; }
 
@@ -25,23 +25,20 @@ namespace zeaploy.Pages.Applications
         {
             if (AdvertisementId == null)
             {
-                Applications = await appService.GetAllApplicationsAsync();
+                if (!String.IsNullOrEmpty(SearchCriteria))
+                {
+                    Applications = appService.Filter(SearchCriteria);
+                }
+                else
+                {
+                    Applications = await appService.GetAllApplicationsAsync();
+                }
+                
             }
             else
             {
                 Applications = await appService.GetApplicationsByAdvId(AdvertisementId.Value);
                 OpenAdvertisement = await advService.GetAdvertisementByIdAsync(AdvertisementId.Value);
-            }
-
-            if (String.IsNullOrEmpty(Criteria))
-            {
-                Applications = await appService.GetAllApplicationsAsync();
-            }
-            else
-            {
-                Applications = appService.Filter(a => (a.Advertisement.Company.Contains(Criteria, StringComparison.OrdinalIgnoreCase) 
-                                                    || a.AppUser.Name.Contains(Criteria, StringComparison.OrdinalIgnoreCase)
-                                                    || a.AppUser.Email.Contains(Criteria, StringComparison.OrdinalIgnoreCase)));
             }
         }
     }

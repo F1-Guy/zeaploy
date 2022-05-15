@@ -37,6 +37,5 @@
 
         public ICollection<Comment>? Comments { get; set; }
         public ICollection<Application>? Applications { get; set; }
-#nullable disable
     }
 }

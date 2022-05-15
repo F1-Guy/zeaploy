@@ -8,8 +8,7 @@
         public Task EditAdvertisementAsync(Advertisement adv);
         public Task DeleteAdvertisementAsync(int advertisementId);
 #nullable enable
-        public IEnumerable<Advertisement> Filter(string? companyName, string? jobType, string? location);
-#nullable disable
+        public IEnumerable<Advertisement> Filter(string? searchString, string? jobType, string? location);
     }
 }
 
