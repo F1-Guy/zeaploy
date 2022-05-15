@@ -7,7 +7,7 @@ namespace zeaploy.Pages.Advertisements
         private readonly IAppUserService uService;
 
         [BindProperty(SupportsGet = true)]
-        public string Criteria  { get; set; }
+        public string SearchCriteria  { get; set; }
 
         [BindProperty(SupportsGet = true)]
         public string TypeCriteria { get; set; }
@@ -32,25 +32,9 @@ namespace zeaploy.Pages.Advertisements
         {
             LoggedUser = await uService.GetLoggedUserAsync(User.Identity.Name);
 
-            if (!String.IsNullOrEmpty(Criteria))
+            if (!String.IsNullOrEmpty(SearchCriteria) || !String.IsNullOrEmpty(TypeCriteria) || !String.IsNullOrEmpty(LocationCriteria))
             {
-                Filtered = Filtered.Concat(adService.Filter(a => (a.Company.Contains(Criteria, StringComparison.OrdinalIgnoreCase)
-                                                               || a.Position.Contains(Criteria, StringComparison.OrdinalIgnoreCase))));
-            }
-
-            if (!String.IsNullOrEmpty(TypeCriteria))
-            {
-                Filtered = Filtered.Concat(adService.Filter(a => (a.JobType.Contains(TypeCriteria))));
-            }
-
-            if (!String.IsNullOrEmpty(LocationCriteria))
-            {
-                Filtered = Filtered.Concat(adService.Filter(a => (a.Location.Contains(LocationCriteria))));
-            }
-
-            if (Filtered.Any())
-            {
-                Advertisements = Filtered;
+                Advertisements = adService.Filter(SearchCriteria, TypeCriteria, LocationCriteria);
             }
             else
             {

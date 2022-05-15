@@ -44,10 +44,26 @@
             context.Advertisements.Remove(ad);
             await context.SaveChangesAsync();
         }
-
-        public IEnumerable<Advertisement> Filter(Predicate<Advertisement> predicate)
+#nullable enable
+        public IEnumerable<Advertisement> Filter(string? companyName, string? jobType, string? location)
         {
-            return context.Advertisements.ToList().Where(a => predicate(a));
+            IEnumerable<Advertisement> ads = context.Advertisements;
+
+            if (companyName != null)
+            {
+                ads = ads.ToList().Where(a => a.Company.Contains(companyName, StringComparison.OrdinalIgnoreCase));
+            }
+            if (jobType != null)
+            {
+                ads = ads.ToList().Where(a => a.JobType == jobType);
+            }
+            if (location != null)
+            {
+                ads = ads.ToList().Where(a => a.Location == location);
+            }
+
+            return ads.ToList();
         }
+#nullable disable
     }
 }

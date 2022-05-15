@@ -7,6 +7,9 @@
         public Task<Advertisement> GetAdvertisementByIdAsync(int advId);
         public Task EditAdvertisementAsync(Advertisement adv);
         public Task DeleteAdvertisementAsync(int advertisementId);
-        public IEnumerable<Advertisement> Filter(Predicate<Advertisement> predicate);
+#nullable enable
+        public IEnumerable<Advertisement> Filter(string? companyName, string? jobType, string? location);
+#nullable disable
     }
 }
+
