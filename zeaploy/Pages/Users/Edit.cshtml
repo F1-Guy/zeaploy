@@ -3,37 +3,65 @@
 @{
 }
 
-<h5>Edit User</h5>
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="@Model.AppUser.Id" />
-            <div class="form-group">
-                <label asp-for="@Model.AppUser.Name" class="control-label"></label>
-                <input asp-for="@Model.AppUser.Name" class="form-control" />
-                <span asp-validation-for="@Model.AppUser.Name" class="text-danger"></span>
+<ul class="list-group col-sm-8 offset-sm-2">
+    <li class="list-group-item">
+        <h5><b>Edit user information</b></h5>
+    </li>
+    <li class="list-group-item">
+        <div class="card mt-2">
+            <div class="card-body bg-light">
+                <form method="post" id="contact-form" role="form">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="controls">
+                        <div class="row">
+                            <div class="col-md-">
+                                <div class="form-group">
+                                    <label asp-for="@Model.AppUser.Email" class="control-label"></label>
+                                    <input asp-for="@Model.AppUser.Email" class="form-control" readonly />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.AppUser.Name" class="control-label"></label>
+                                    <input asp-for="@Model.AppUser.Name" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.AppUser.Location" class="control-label"></label>
+                                    <input asp-for="@Model.AppUser.Location" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.AppUser.Course" class="control-label"></label>
+                                    <input asp-for="@Model.AppUser.Course" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="@Model.AppUser.JobTitle" class="control-label"></label>
+                                    <input asp-for="@Model.AppUser.JobTitle" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-outline-success" type="submit" value="Edit">Save Changes</button>
+                                <button class="btn btn-outline-warning" type="reset">Reset form</button>
+                                <a class="btn btn-outline-danger" asp-page="/Users/Users">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="@Model.AppUser.Email" class="control-label"></label>
-                <input asp-for="@Model.AppUser.Email" class="form-control" />
-                <span asp-validation-for="@Model.AppUser.Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.AppUser.Course" class="control-label"></label>
-                <input asp-for="@Model.AppUser.Course" class="form-control" />
-                <span asp-validation-for="@Model.AppUser.Course" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="@Model.AppUser.JobTitle" class="control-label"></label>
-                <input asp-for="@Model.AppUser.JobTitle" class="form-control" />
-                <span asp-validation-for="@Model.AppUser.JobTitle" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <button type="submit" value="Edit" class="btn btn-success">Save Changes</button>
-                <button type="reset" class="btn btn-warning">Reset form</button>
-                <a asp-page="/Users/Users" class="btn btn-danger">Cancel</a>
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+    </li>
+</ul>
