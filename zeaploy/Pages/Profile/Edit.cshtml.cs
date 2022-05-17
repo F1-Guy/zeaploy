@@ -1,5 +1,6 @@
 namespace zeaploy.Pages.Profile
 {
+    [Authorize]
     public class EditModel : PageModel
     {
         private readonly IAppUserService service;
@@ -16,6 +17,8 @@ namespace zeaploy.Pages.Profile
         [BindProperty]
         public AppUser LoggedInUser { get; set; }
 
+        public AppUser AppUser { get; set; }
+
 #nullable enable
         [BindProperty]
         public IFormFile? ImageUpload { get; set; }
@@ -26,21 +29,21 @@ namespace zeaploy.Pages.Profile
             LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(AppUser LoggedInUser)
         {
             
             if (ModelState.IsValid)
             {
                 if (ImageUpload != null)
                 {
-                    LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
-                    await fileService.UploadProfilePictureAsync(ImageUpload, LoggedInUser.Name);
-                    LoggedInUser.ImagePath = ImageUpload.FileName;
+                    AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
+                    await fileService.UploadProfilePictureAsync(ImageUpload, AppUser.Name);
+                    AppUser.ImagePath = ImageUpload.FileName;
                 }
                 else
                 {
-                    LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
-                    LoggedInUser.ImagePath = null;
+                    AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
+                    AppUser.ImagePath = null;
                 }
                 notyfService.Success("Your profile has been succesfully updated.");
                 await service.EditUserAsync(LoggedInUser);

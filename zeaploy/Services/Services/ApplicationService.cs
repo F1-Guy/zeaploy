@@ -68,7 +68,7 @@ namespace zeaploy.Services.Services
             // Not needed in this implementation, but can be used for adding more criteria
             if (!String.IsNullOrEmpty(searchString))
             {
-                apps = apps.Where(a => a.Advertisement.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase) 
+                apps = apps.Where(a => a.Advertisement.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase)
                                     || a.AppUser.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
                                     || a.AppUser.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase));
             }
