@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\company-logos\" />
     <Folder Include="wwwroot\user-data\" />
   </ItemGroup>
 
