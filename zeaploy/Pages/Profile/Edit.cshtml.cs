@@ -16,8 +16,11 @@ namespace zeaploy.Pages.Profile
         [BindProperty]
         public AppUser LoggedInUser { get; set; }
 
+#nullable enable
         [BindProperty]
         public IFormFile? ImageUpload { get; set; }
+#nullable disable
+
         public async Task OnGetAsync()
         {
             LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);

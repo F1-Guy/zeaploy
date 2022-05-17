@@ -44,5 +44,28 @@
             context.Advertisements.Remove(ad);
             await context.SaveChangesAsync();
         }
+
+#nullable enable
+        public IEnumerable<Advertisement> Filter(string? searchString, string? jobType, string? location)
+        {
+            IEnumerable<Advertisement> ads = context.Advertisements.ToList();
+
+            // Creates a combination of criteria and applies them to all advertisements if they are not null
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                ads = ads.Where(a => a.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase) 
+                                  || a.Position.Contains(searchString, StringComparison.OrdinalIgnoreCase));
+            }
+            if (jobType != null)
+            {
+                ads = ads.Where(a => a.JobType == jobType);
+            }
+            if (location != null)
+            {
+                ads = ads.Where(a => a.Location == location);
+            }
+
+            return ads;
+        }
     }
 }

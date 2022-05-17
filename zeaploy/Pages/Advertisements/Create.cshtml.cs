@@ -17,8 +17,10 @@ namespace zeaploy.Pages.Advertisements
         [BindProperty]
         public Advertisement Advertisement { get; set; }
 
+#nullable enable
         [BindProperty]
         public IFormFile? Logo { get; set; }
+# nullable disable
 
         public void OnGet()
         {

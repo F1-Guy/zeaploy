@@ -60,5 +60,20 @@ namespace zeaploy.Services.Services
             context.Applications.Remove(application);
             await context.SaveChangesAsync();
         }
+#nullable enable
+        public IEnumerable<Application> Filter(string? searchString)
+        {
+            IEnumerable<Application> apps = context.Applications.ToList();
+
+            // Not needed in this implementation, but can be used for adding more criteria
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                apps = apps.Where(a => a.Advertisement.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase) 
+                                    || a.AppUser.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                    || a.AppUser.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return apps;
+        }
     }
 }

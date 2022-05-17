@@ -16,13 +16,24 @@ namespace zeaploy.Pages.Applications
 
         public int? AdvertisementId { get; set; }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchCriteria { get; set; }
+
         public Advertisement OpenAdvertisement { get; set; }
 
         public async Task OnGetAsync(int? AdvertisementId)
         {
-            if (AdvertisementId == null) 
+            if (AdvertisementId == null)
             {
-                Applications = await appService.GetAllApplicationsAsync();
+                if (!String.IsNullOrEmpty(SearchCriteria))
+                {
+                    Applications = appService.Filter(SearchCriteria);
+                }
+                else
+                {
+                    Applications = await appService.GetAllApplicationsAsync();
+                }
+                
             }
             else
             {

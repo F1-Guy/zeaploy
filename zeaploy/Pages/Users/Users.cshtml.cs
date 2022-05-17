@@ -9,12 +9,24 @@ namespace zeaploy.Pages.Users
             this.service = service;
         }
 
+        [BindProperty(SupportsGet = true)]
+        public string SearchCriteria { get; set; }
+
         [BindProperty]
         public IEnumerable<AppUser> AppUsers { get; set; }
 
         public async Task OnGetAsync()
         {
             AppUsers = await service.GetAllUsersAsync();
+
+            if (String.IsNullOrEmpty(SearchCriteria))
+            {
+                AppUsers = await service.GetAllUsersAsync();
+            }
+            else
+            {
+                AppUsers = service.Filter(SearchCriteria);
+            }
         }
     }
 }

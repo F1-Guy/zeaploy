@@ -53,5 +53,19 @@
 
             return await result.ToListAsync();
         }
+#nullable enable
+        public IEnumerable<AppUser> Filter(string? searchString)
+        {
+            IEnumerable<AppUser> users = context.Users.ToList();
+
+            // Not needed in this implementation, but can be used for adding more criteria
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(u => u.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                      || u.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return users;
+        }
     }
 }

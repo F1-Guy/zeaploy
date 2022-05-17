@@ -7,5 +7,8 @@
         public Task<Advertisement> GetAdvertisementByIdAsync(int advId);
         public Task EditAdvertisementAsync(Advertisement adv);
         public Task DeleteAdvertisementAsync(int advertisementId);
+#nullable enable
+        public IEnumerable<Advertisement> Filter(string? searchString, string? jobType, string? location);
     }
 }
+

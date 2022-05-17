@@ -9,5 +9,7 @@
         public Task<ICollection<Application>> GetApplicationsByUserAsync(string userEmail);
         public Task DeleteApplicationAsync(int applicationId);
         public Task<bool> IsUserAppliedAsync(string uId, int advId);
+#nullable enable
+        public IEnumerable<Application> Filter(string? searchString);
     }
 }

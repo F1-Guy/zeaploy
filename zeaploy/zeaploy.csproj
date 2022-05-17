@@ -7,6 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <Compile Remove="wwwroot\user-data\cv-letters\**" />
+    <Content Remove="Migrations\**" />
+    <Content Remove="wwwroot\user-data\cv-letters\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="wwwroot\user-data\cv-letters\**" />
+    <None Remove="Migrations\**" />
+    <None Remove="wwwroot\user-data\cv-letters\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AspNetCoreHero.ToastNotification" Version="1.1.0" />
     <PackageReference Include="Castle.Windsor" Version="5.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.4" />
@@ -19,13 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\user-data\cv-letters\" />
-    <Folder Include="wwwroot\user-data\profile-pictures\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
+    <Folder Include="wwwroot\user-data\" />
   </ItemGroup>
 
 </Project>
