@@ -24,6 +24,7 @@ namespace zeaploy.Pages.Users
             {
                 return Page();
             }
+
             await service.EditUserAsync(AppUser);
             return RedirectToPage("/Users/Users");
         }

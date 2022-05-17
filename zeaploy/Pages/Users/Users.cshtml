@@ -1,42 +1,52 @@
 ﻿@page
 @model zeaploy.Pages.Users.UsersModel
 @{
-    ViewData["Title"] = "All Users";
 }
-<h5>All Users</h5>
 
-<form class="row d-flex justify-content-start">
-    <div class="col-6">
-        <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Search by name or e-mail">
-    </div>
-    <div class="col">
-        <button class="btn btn-success" type="submit">Search</button>
-    </div>
-</form>
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Email Address</th>
-            <th>Course</th>
-            <th>Job Title</th>
-            <th>Manage</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (AppUser appUser in Model.AppUsers)
-        {
-            <tr>
-                <td>@appUser.Name</td>
-                <td>@appUser.Email</td>
-                <td>@appUser.Course</td>
-                <td>@appUser.JobTitle</td>
-                <td>
-                    <a class="btn btn-primary btn-danger" asp-route-id="@appUser.Id" asp-page="/Users/Delete">Delete</a>
-                    <a class="btn btn-primary btn-sucess" asp-route-id="@appUser.Id" asp-page="/Users/Edit">Edit</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<ul class="list-group col-sm-12">
+    <li class="list-group-item">
+        <h5><b>All Users</b></h5>
+    </li>
+    <li class="list-group-item">
+        <div asp-validation-summary="All"></div>
+    </li>
+    <li class="list-group-item">
+        <form class="row d-flex justify-content-start">
+            <div class="col-6">
+                <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Search by name or e-mail">
+            </div>
+            <div class="col">
+                <button class="btn btn-success" type="submit">Search</button>
+            </div>
+        </form>
+    </li>
+    <li class="list-group-item">
+        <div class="card mt-2">
+            <div class="card-body bg-light">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email Address</th>
+                            <th>Location</th>
+                            <th>Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (AppUser appUser in Model.AppUsers)
+                        {
+                            <tr class="align-middle">
+                                <td>@appUser.Name</td>
+                                <td>@appUser.Email</td>
+                                <td>@appUser.Location</td>
+                                <td>@appUser.Course</td>
+                                <td><a class="btn btn-primary btn-outline-primary" asp-route-id="@appUser.Id" asp-page="/Users/Edit">Edit</a></td>
+                                <td><a class="btn btn-primary btn-outline-danger" asp-route-id="@appUser.Id" asp-page="/Users/Delete">Delete</a></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </li>
+</ul>
