@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace zeaploy.Pages.Profile
 {
+    [Authorize(Roles = "Student")]
     public class ApplicationsModel : PageModel
     {
         private readonly IApplicationService appService;
@@ -16,9 +17,7 @@ namespace zeaploy.Pages.Profile
 
         public async Task OnGetAsync()
         {
-            string userEmail = User.Identity.Name;
-
-            Applications = await appService.GetApplicationsByUserAsync(userEmail); 
+            Applications = await appService.GetApplicationsByUserAsync(User.Identity.Name); 
         }
     }
 }

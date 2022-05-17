@@ -3,30 +3,43 @@
 @{
 }
 
-<h1>My Applications</h1>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Application Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Company</th>
-            <th scope="col">Position</th>
-            <th scope="col">Application Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Applications)
-        {
-            <tr scope="row">
-                <td>@item.Id</td>
-                <td>@item.AppUser.Name</td>
-                <td>@item.AppUser.Email</td>
-                <td>@item.Advertisement.Company</td>
-                <td>@item.Advertisement.Position</td>
-                <td>@item.DateCreated.ToShortDateString()</td>
-                <td><a class="bnt bnt-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove Application</a></td>
-            </tr>
-        }
-    </tbody>
-</table>
+<ul class="list-group col-sm-12">
+    <li class="list-group-item">
+        <h5><b>My Applications</b></h5>
+    </li>
+    <li class="list-group-item">
+        <div class="card mt-2">
+            <div class="card-body bg-light">
+                <div class="row">
+                    <div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Application Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Applications)
+                                {
+                                    <tr class="align-middle">
+                                        <td>@item.Id</td>
+                                        <td>@item.AppUser.Name</td>
+                                        <td>@item.AppUser.Email</td>
+                                        <td>@item.Advertisement.Company</td>
+                                        <td>@item.Advertisement.Position</td>
+                                        <td>@item.DateCreated.ToShortDateString()</td>
+                                        <td><a class="btn btn-outline-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</ul>
