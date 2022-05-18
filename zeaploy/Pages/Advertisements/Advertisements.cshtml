@@ -17,34 +17,40 @@
         <h6><b>Job Advertisements</b></h6>
         <span class="badge bg-primary rounded-pill">@Model.Advertisements.Count()</span>
     </li>
+    <form>
     <li class="list-group-item">
-        <form class="row d-flex justify-content-between">
-            <div class="col-4">
+        <div class="container row">
+            <div class="col">
                 <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Company name or job position...">
             </div>
-            <div class="col">
+        </div>
+    </li>
+    <li class="list-group-item">
+        <div class="container row d-flex justify-content-between">
+            <div class="col-4">
                 <select class="form-control" asp-for="@Model.TypeCriteria">
                     <option value="">Select job type</option>
-                    @foreach (var jobType in JobTypes.types)
-                    {
+                        @foreach (var jobType in JobTypes.types)
+                        {
                         <option>@jobType</option>
-                    }
+                        }
                 </select>
             </div>
-            <div class="col">
+            <div class="col-4">
                 <select class="form-control" asp-for="@Model.LocationCriteria">
                     <option value="">Select location</option>
-                    @foreach (var location in Locations.locations)
-                    {
+                        @foreach (var location in Locations.locations)
+                        {
                         <option>@location</option>
-                    }
+                        }
                 </select>
             </div>
-            <div class="col">
+            <div class="col-3">
                 <button class="btn btn-success" type="submit">Search</button>
             </div>
-        </form>
+        </div>
     </li>
+    </form>
     <li class="list-group-item">
         @if (Model.Advertisements.Count() != 0)
         {
