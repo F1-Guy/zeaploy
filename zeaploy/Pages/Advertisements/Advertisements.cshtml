@@ -24,11 +24,10 @@
                 <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Company name or job position...">
             </div>
         </div>
-
     </li>
     <li class="list-group-item">
         <div class="container row d-flex justify-content-between">
-            <div class="col-sm-5">
+            <div class="col-4">
                 <select class="form-control" asp-for="@Model.TypeCriteria">
                     <option value="">Select job type</option>
                         @foreach (var jobType in JobTypes.types)
@@ -37,10 +36,7 @@
                         }
                 </select>
             </div>
-            <div class="col-sm-auto">
-                <button class="btn btn-success" type="submit">Search</button>
-            </div>
-            <div class="col-sm-5">
+            <div class="col-4">
                 <select class="form-control" asp-for="@Model.LocationCriteria">
                     <option value="">Select location</option>
                         @foreach (var location in Locations.locations)
@@ -48,6 +44,9 @@
                         <option>@location</option>
                         }
                 </select>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-success" type="submit">Search</button>
             </div>
         </div>
     </li>
