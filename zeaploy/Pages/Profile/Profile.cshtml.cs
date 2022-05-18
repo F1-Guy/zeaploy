@@ -22,10 +22,5 @@ namespace zeaploy.Pages.Account
             LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
             Messages = await mService.GetMessagesAsync(LoggedInUser.Id);
         }
-
-        public IActionResult OnPost()
-        {
-            return Page();
-        }
     }
 }
