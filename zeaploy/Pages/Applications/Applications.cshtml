@@ -2,47 +2,62 @@
 @model zeaploy.Pages.Applications.ApplicationsModel
 @{
 }
-@if (@Model.OpenAdvertisement == null)
-{
-    <h5>All Applications</h5>
-}
-else
-{
-    <h5>Applications for Company: @Model.OpenAdvertisement.Company</h5>
-}
 
-<form class="row d-flex justify-content-start">
-    <div class="col-6">
-        <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Search by company name or user name/e-mail">
-    </div>
-    <div class="col">
-        <button class="btn btn-success" type="submit">Search</button>
-    </div>
-</form>
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Application Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Company</th>
-            <th scope="col">Position</th>
-            <th scope="col">Application Date</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.Applications)
+<ul class="list-group col-sm-12">
+    <li class="list-group-item">
+        @if (@Model.OpenAdvertisement == null)
         {
-            <tr scope="row">
-                <td>@item.Id</td>
-                <td>@item.AppUser.Name</td>
-                <td>@item.AppUser.Email</td>
-                <td>@item.Advertisement.Company</td>
-                <td>@item.Advertisement.Position</td>
-                <td>@item.DateCreated.ToShortDateString()</td>
-                <td><a class="bnt bnt-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove Application</a></td>
-            </tr>
+            <h5><b>All Applications</b></h5>
         }
-    </tbody>
-</table>
+        else
+        {
+            <h5><b>Applications for Company: @Model.OpenAdvertisement.Company</b></h5>
+        }
+    </li>
+
+    <li class="list-group-item">
+        <form class="row d-flex justify-content-start">
+            <div class="col-6">
+                <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Search by company name or user name/e-mail">
+            </div>
+            <div class="col">
+                <button class="btn btn-success" type="submit">Search</button>
+            </div>
+        </form>
+    </li>
+    <li class="list-group-item">
+        <div class="card mt-2">
+            <div class="card-body bg-light">
+                <div class="row">
+                    <div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Position</th>
+                                    <th scope="col">Application Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Applications)
+                                {
+                                    <tr scope="row">
+                                        <td>@item.Id</td>
+                                        <td>@item.AppUser.Name</td>
+                                        <td>@item.AppUser.Email</td>
+                                        <td>@item.Advertisement.Company</td>
+                                        <td>@item.Advertisement.Position</td>
+                                        <td>@item.DateCreated.ToShortDateString()</td>
+                                        <td><a class="btn btn-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove Application</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+</ul>
