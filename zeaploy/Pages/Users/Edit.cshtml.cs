@@ -4,10 +4,12 @@ namespace zeaploy.Pages.Users
     public class EditModel : PageModel
     {
         private readonly IAppUserService service;
+        private readonly INotyfService notyfService;
 
-        public EditModel(IAppUserService service)
+        public EditModel(IAppUserService service, INotyfService notyfService)
         {
             this.service = service;
+            this.notyfService = notyfService;
         }
 
         [BindProperty]
@@ -22,6 +24,7 @@ namespace zeaploy.Pages.Users
         {
             if (!ModelState.IsValid)
             {
+                notyfService.Error("The details you entered are not correct. Please review the data and try again.");
                 return Page();
             }
 

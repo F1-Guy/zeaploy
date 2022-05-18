@@ -7,9 +7,11 @@ namespace zeaploy.Pages.Advertisements
     public class EditModel : PageModel
     {
         private readonly IAdvertisementService adService;
-        public EditModel (IAdvertisementService service)
+        private readonly INotyfService notyfService;
+        public EditModel (IAdvertisementService service, INotyfService notyfService)
         {
             this.adService = service;
+            this.notyfService = notyfService;
         }
         [BindProperty]
         public Advertisement Advertisement { get; set; }
@@ -19,6 +21,11 @@ namespace zeaploy.Pages.Advertisements
         }
         public async Task<IActionResult> OnPostAsync()
         {
+            if (!ModelState.IsValid)
+            {
+                notyfService.Error("The details you entered are not correct. Please review the data and try again.");
+                return Page();
+            }
             await adService.EditAdvertisementAsync(Advertisement);
             return RedirectToPage("/Advertisements/Advertisements");
         }
