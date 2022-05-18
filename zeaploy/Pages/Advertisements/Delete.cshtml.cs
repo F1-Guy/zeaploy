@@ -7,10 +7,12 @@ namespace zeaploy.Pages.Advertisements
     public class DeleteModel : PageModel
     {
         private readonly IAdvertisementService adService;
+        private readonly IFileService fileService;
 
-        public DeleteModel(IAdvertisementService service)
+        public DeleteModel(IAdvertisementService adService, IFileService fileService)
         {
-            adService = service;
+            this.adService = adService;
+            this.fileService = fileService;
         }
         [BindProperty]
         public Advertisement Advertisement {get;set;}
@@ -21,6 +23,8 @@ namespace zeaploy.Pages.Advertisements
         }
         public async Task<IActionResult> OnPostAsync(int advertisementId)
         {
+            Advertisement = await adService.GetAdvertisementByIdAsync(advertisementId);
+            fileService.DeleteCompanyLogo(Advertisement.Company, Advertisement.ImagePath);
             await adService.DeleteAdvertisementAsync(advertisementId);
             return RedirectToPage("/Advertisements/Advertisements");
         }
