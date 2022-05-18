@@ -8,6 +8,18 @@
             File.Delete(relativePath);
         }
 
+        public void DeleteCompanyLogo(string name, string imageName)
+        {
+            string relativePath = $@"wwwroot\company-logos\{name}\{imageName}";
+            File.Delete(relativePath);
+        }
+
+        public void DeleteApplicationFile(string name, string imageName)
+        {
+            string relativePath = $@"wwwroot\user-data\cv-letters\{name}\{imageName}";
+            File.Delete(relativePath);
+        }
+
         public async Task UploadApplicationFileAsync(IFormFile applicationFile, string name)
         {
             string relativePath = $@"wwwroot\user-data\cv-letters\{name}\";

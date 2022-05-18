@@ -10,14 +10,16 @@ namespace zeaploy.Pages.Applications
         private readonly IAdvertisementService advService;
         private readonly INotyfService notyfService;
         private readonly IMessageService messageService;
+        private readonly IFileService fileService;
 
-        public DeleteModel(IAppUserService userService, IApplicationService appService, IAdvertisementService advService, INotyfService notyfService, IMessageService messageService)
+        public DeleteModel(IAppUserService userService, IApplicationService appService, IAdvertisementService advService, INotyfService notyfService, IMessageService messageService, IFileService fileService)
         {
             this.userService = userService;
             this.messageService = messageService;
             this.appService = appService;
             this.advService= advService;
             this.notyfService = notyfService;
+            this.fileService = fileService;
         }
 
         [BindProperty(SupportsGet = true)]
