@@ -2,27 +2,27 @@
 {
     public class FileService : IFileService
     {
-        public void DeleteProfilePicture(string name, string imageName)
+        public void DeleteProfilePicture(string name)
         {
-            string relativePath = $@"wwwroot\user-data\profile-pictures\{name}\{imageName}";
-            File.Delete(relativePath);
+            string relativePath = $@"wwwroot\user-data\profile-pictures\{name}\";
+            Directory.Delete(relativePath, true);
         }
 
-        public void DeleteCompanyLogo(string name, string imageName)
+        public void DeleteCompanyLogo(string name)
         {
-            string relativePath = $@"wwwroot\company-logos\{name}\{imageName}";
-            File.Delete(relativePath);
+            string relativePath = $@"wwwroot\company-logos\{name}\";
+            Directory.Delete(relativePath, true);
         }
 
-        public void DeleteApplicationFile(string name, string imageName)
+        public void DeleteApplicationFiles(string name, string companyName)
         {
-            string relativePath = $@"wwwroot\user-data\cv-letters\{name}\{imageName}";
-            File.Delete(relativePath);
+            string relativePath = $@"wwwroot\user-data\cv-letters\{name}\{companyName}";
+            Directory.Delete(relativePath, true);
         }
 
-        public async Task UploadApplicationFileAsync(IFormFile applicationFile, string name)
+        public async Task UploadApplicationFileAsync(IFormFile applicationFile, string name, string companyName)
         {
-            string relativePath = $@"wwwroot\user-data\cv-letters\{name}\";
+            string relativePath = $@"wwwroot\user-data\cv-letters\{name}\{companyName}";
             Directory.CreateDirectory(relativePath);
             var file = Path.Combine(relativePath, applicationFile.FileName);
             using (var fileStream = new FileStream(file, FileMode.Create))

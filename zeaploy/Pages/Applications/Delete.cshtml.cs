@@ -36,6 +36,8 @@ namespace zeaploy.Pages.Applications
             Advertisement advertisement = await advService.GetAdvertisementByIdAsync(Application.AdvertisementId);
             AppUser user = await userService.GetLoggedUserAsync(User.Identity.Name);
 
+            fileService.DeleteApplicationFiles(user.Name, advertisement.Company);
+
             await appService.DeleteApplicationAsync(applicationId);
 
             if (User.IsInRole("Student"))

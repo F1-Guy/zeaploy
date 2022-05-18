@@ -55,8 +55,8 @@ namespace zeaploy.Pages.Applications
                 string userId = AppUser.Id;
                 if(CV != null && CoverLetter != null)
                 {
-                    await fileService.UploadApplicationFileAsync(CV, AppUser.Name);
-                    await fileService.UploadApplicationFileAsync(CoverLetter, AppUser.Name);
+                    await fileService.UploadApplicationFileAsync(CV, AppUser.Name, Advertisement.Company);
+                    await fileService.UploadApplicationFileAsync(CoverLetter, AppUser.Name, Advertisement.Company);
                     await appService.CreateApplicationAsync(advertisementId, userId);
                     await messageService.SendMessageAsync(new Message()
                     {

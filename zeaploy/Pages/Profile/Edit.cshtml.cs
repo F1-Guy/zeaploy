@@ -60,7 +60,7 @@ namespace zeaploy.Pages.Profile
         public async Task<IActionResult> OnPostRemoveAsync()
         {
             AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
-            fileService.DeleteProfilePicture(AppUser.Name, AppUser.ImagePath);
+            fileService.DeleteProfilePicture(AppUser.Name);
             AppUser.ImagePath = null;
             await service.EditUserAsync(AppUser);
             return RedirectToPage("/Profile/Profile");
