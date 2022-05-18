@@ -56,5 +56,14 @@ namespace zeaploy.Pages.Profile
 
             return RedirectToPage("/Profile/Profile");
         }
+
+        public async Task<IActionResult> OnPostRemoveAsync()
+        {
+            AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
+            fileService.DeleteProfilePicture(AppUser.Name, AppUser.ImagePath);
+            AppUser.ImagePath = null;
+            await service.EditUserAsync(AppUser);
+            return RedirectToPage("/Profile/Profile");
+        }
     }
 }

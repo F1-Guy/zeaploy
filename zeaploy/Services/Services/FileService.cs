@@ -2,6 +2,12 @@
 {
     public class FileService : IFileService
     {
+        public void DeleteProfilePicture(string name, string imageName)
+        {
+            string relativePath = $@"wwwroot\user-data\profile-pictures\{name}\{imageName}";
+            File.Delete(relativePath);
+        }
+
         public async Task UploadApplicationFileAsync(IFormFile applicationFile, string name)
         {
             string relativePath = $@"wwwroot\user-data\cv-letters\{name}\";
