@@ -44,14 +44,14 @@
                             <tbody>
                                 @foreach (var item in Model.Applications)
                                 {
-                                    <tr scope="row">
+                                    <tr class="align-middle">
                                         <td>@item.Id</td>
                                         <td>@item.AppUser.Name</td>
                                         <td>@item.AppUser.Email</td>
                                         <td>@item.Advertisement.Company</td>
                                         <td>@item.Advertisement.Position</td>
                                         <td>@item.DateCreated.ToShortDateString()</td>
-                                        <td><a class="btn btn-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove Application</a></td>
+                                        <td><a class="btn btn-outline-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove</a></td>
                                     </tr>
                                 }
                             </tbody>
