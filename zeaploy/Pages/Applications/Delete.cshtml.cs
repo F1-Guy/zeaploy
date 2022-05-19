@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace zeaploy.Pages.Applications
 {
     public class DeleteModel : PageModel
@@ -17,7 +14,7 @@ namespace zeaploy.Pages.Applications
             this.userService = userService;
             this.messageService = messageService;
             this.appService = appService;
-            this.advService= advService;
+            this.advService = advService;
             this.notyfService = notyfService;
             this.fileService = fileService;
         }
@@ -44,20 +41,20 @@ namespace zeaploy.Pages.Applications
             {
                 IEnumerable<AppUser> admins = await userService.GetAllAdminsAsync();
 
-            foreach (var admin in admins)
-            {
-                await messageService.SendMessageAsync(new Message()
+                foreach (var admin in admins)
                 {
-                    AppUserId = admin.Id,
-                    Subject = $"{user.Name} removed application",
-                    Content = $"User: {user.Name} deleted application for a {advertisement.Position} " +
-                    $" position in company: {advertisement.Company}"
-                }) ;
-            }
+                    await messageService.SendMessageAsync(new Message()
+                    {
+                        AppUserId = admin.Id,
+                        Subject = $"{user.Name} removed application",
+                        Content = $"User: {user.Name} deleted application for a {advertisement.Position} " +
+                        $" position in company: {advertisement.Company}"
+                    });
+                }
 
-            notyfService.Success($"Your application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
+                notyfService.Success($"Your application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
 
-            
+
                 return RedirectToPage("/Profile/Applications");
             }
             else
@@ -65,7 +62,7 @@ namespace zeaploy.Pages.Applications
                 notyfService.Success($"{user.Name} application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
                 return RedirectToPage("/Applications/Applications");
             }
-            
+
         }
     }
 }

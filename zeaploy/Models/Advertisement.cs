@@ -13,7 +13,7 @@
         [Required]
         [StringLength(50)]
         public string Position { get; set; }
-        
+
         [Display(Name = "Hourly Wage")]
         public int Wage { get; set; }
 

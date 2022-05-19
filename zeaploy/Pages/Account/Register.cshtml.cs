@@ -35,7 +35,7 @@ namespace zeaploy.Account
             }
             else
             {
-                
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);

@@ -53,7 +53,7 @@ namespace zeaploy.Pages.Applications
             else
             {
                 string userId = AppUser.Id;
-                if(CV != null && CoverLetter != null)
+                if (CV != null && CoverLetter != null)
                 {
                     try
                     {
@@ -65,7 +65,7 @@ namespace zeaploy.Pages.Applications
                         notyfService.Error("You tried to upload an unsupported file type. Please try again.");
                         return Page();
                     }
-                    
+
                     await appService.CreateApplicationAsync(advertisementId, userId);
                     await messageService.SendMessageAsync(new Message()
                     {
@@ -83,9 +83,9 @@ namespace zeaploy.Pages.Applications
                     notyfService.Error("All files must be uploaded. Please try again.");
                     return Page();
                 }
-                
+
             }
-            
+
         }
     }
 }

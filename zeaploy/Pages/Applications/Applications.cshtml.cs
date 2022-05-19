@@ -33,7 +33,7 @@ namespace zeaploy.Pages.Applications
                 {
                     Applications = await appService.GetAllApplicationsAsync();
                 }
-                
+
             }
             else
             {

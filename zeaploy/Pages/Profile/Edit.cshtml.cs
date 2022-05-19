@@ -31,7 +31,7 @@ namespace zeaploy.Pages.Profile
 
         public async Task<IActionResult> OnPostAsync(AppUser LoggedInUser)
         {
-            
+
             if (ModelState.IsValid)
             {
                 if (ImageUpload != null)

@@ -2,7 +2,7 @@
 {
     public class AdvertisementService : IAdvertisementService
     {
-        readonly private ZeaployDbContext context;
+        private readonly ZeaployDbContext context;
 
         public AdvertisementService(ZeaployDbContext service)
         {
@@ -53,7 +53,7 @@
             // Creates a combination of criteria and applies them to all advertisements if they are not null
             if (!String.IsNullOrEmpty(searchString))
             {
-                ads = ads.Where(a => a.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase) 
+                ads = ads.Where(a => a.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase)
                                   || a.Position.Contains(searchString, StringComparison.OrdinalIgnoreCase));
             }
             if (jobType != null)

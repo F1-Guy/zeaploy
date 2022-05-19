@@ -2,7 +2,7 @@ namespace zeaploy.Services.Services
 {
     public class ApplicationService : IApplicationService
     {
-        readonly private ZeaployDbContext context;
+        private readonly ZeaployDbContext context;
 
         public ApplicationService(ZeaployDbContext service)
         {

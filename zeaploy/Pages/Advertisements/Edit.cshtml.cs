@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace zeaploy.Pages.Advertisements
 {
     [Authorize(Roles = "Admin")]
@@ -8,9 +5,9 @@ namespace zeaploy.Pages.Advertisements
     {
         private readonly IAdvertisementService adService;
         private readonly INotyfService notyfService;
-        public EditModel (IAdvertisementService service, INotyfService notyfService)
+        public EditModel(IAdvertisementService service, INotyfService notyfService)
         {
-            this.adService = service;
+            adService = service;
             this.notyfService = notyfService;
         }
         [BindProperty]

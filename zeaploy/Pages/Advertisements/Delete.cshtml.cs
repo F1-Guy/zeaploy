@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace zeaploy.Pages.Advertisements
 {
     [Authorize(Roles = "Admin")]
@@ -15,7 +12,7 @@ namespace zeaploy.Pages.Advertisements
             this.fileService = fileService;
         }
         [BindProperty]
-        public Advertisement Advertisement {get;set;}
+        public Advertisement Advertisement { get; set; }
 
         public async Task OnGetAsync(int advertisementId)
         {

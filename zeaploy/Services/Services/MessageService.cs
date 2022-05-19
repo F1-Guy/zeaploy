@@ -2,7 +2,7 @@
 {
     public class MessageService : IMessageService
     {
-        readonly private ZeaployDbContext context;
+        private readonly ZeaployDbContext context;
 
         public MessageService(ZeaployDbContext service)
         {

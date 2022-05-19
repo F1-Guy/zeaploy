@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-
 namespace zeaploy.Pages.Profile
 {
     [Authorize(Roles = "Student")]
@@ -17,7 +14,7 @@ namespace zeaploy.Pages.Profile
 
         public async Task OnGetAsync()
         {
-            Applications = await appService.GetApplicationsByUserAsync(User.Identity.Name); 
+            Applications = await appService.GetApplicationsByUserAsync(User.Identity.Name);
         }
     }
 }
