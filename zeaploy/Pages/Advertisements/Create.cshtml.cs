@@ -33,7 +33,15 @@ namespace zeaploy.Pages.Advertisements
                 Advertisement.Posted = DateTime.Now;
                 if (Logo != null)
                 {
-                    await fileService.UploadCompanyLogoAsync(Logo, Advertisement.Company);
+                    try
+                    {
+                        await fileService.UploadCompanyLogoAsync(Logo, Advertisement.Company);
+                    }
+                    catch (InvalidDataException)
+                    {
+                        notyfService.Error("You tried to upload an unsupported file type. Please try again.");
+                        return Page();
+                    }
                     Advertisement.ImagePath = Logo.FileName;
                     await service.CreateAdvertisementAsync(Advertisement);
                     notyfService.Success("You have successfully added an advertisement.");

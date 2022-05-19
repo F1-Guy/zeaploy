@@ -5,26 +5,51 @@ namespace zeaploy.Pages.Advertisements
     {
         private readonly IAdvertisementService adService;
         private readonly INotyfService notyfService;
-        public EditModel(IAdvertisementService service, INotyfService notyfService)
+        private readonly IFileService fileService;
+
+        public EditModel(IAdvertisementService adService, INotyfService notyfService, IFileService fileService)
         {
-            adService = service;
+            this.adService = adService;
             this.notyfService = notyfService;
+            this.fileService = fileService;
         }
         [BindProperty]
         public Advertisement Advertisement { get; set; }
+
+#nullable enable
+        [BindProperty]
+        public IFormFile? Logo { get; set; }
+#nullable disable
+
         public async Task OnGetAsync(int advertisementId)
         {
             Advertisement = await adService.GetAdvertisementByIdAsync(advertisementId);
         }
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int advertisementId)
         {
+            Advertisement = await adService.GetAdvertisementByIdAsync(advertisementId);
             if (!ModelState.IsValid)
             {
                 notyfService.Error("The details you entered are not correct. Please review the data and try again.");
                 return Page();
             }
-            await adService.EditAdvertisementAsync(Advertisement);
-            return RedirectToPage("/Advertisements/Advertisements");
+            if (Logo != null)
+            {
+                try
+                {
+                    await fileService.UploadCompanyLogoAsync(Logo, Advertisement.Company);
+                }
+                catch (InvalidDataException)
+                {
+                    notyfService.Error("You tried to upload an unsupported file type. Please try again.");
+                    return Page();
+                }
+                Advertisement.ImagePath = Logo.FileName;
+                await adService.EditAdvertisementAsync(Advertisement);
+                return RedirectToPage("/Advertisements/Advertisements");
+            }
+            notyfService.Error("Please upload a company logo.");
+            return Page();
         }
     }
 }
