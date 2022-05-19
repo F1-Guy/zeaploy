@@ -37,7 +37,15 @@ namespace zeaploy.Pages.Profile
                 if (ImageUpload != null)
                 {
                     AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
-                    await fileService.UploadProfilePictureAsync(ImageUpload, AppUser.Name);
+                    try
+                    {
+                        await fileService.UploadProfilePictureAsync(ImageUpload, AppUser.Name);
+                    }
+                    catch (InvalidDataException)
+                    {
+                        notyfService.Error("You tried to upload an unsupported file type. Please try again.");
+                        return Page();
+                    }
                     AppUser.ImagePath = ImageUpload.FileName;
                 }
                 else
@@ -60,7 +68,7 @@ namespace zeaploy.Pages.Profile
         public async Task<IActionResult> OnPostRemoveAsync()
         {
             AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
-            fileService.DeleteProfilePicture(AppUser.Name, AppUser.ImagePath);
+            fileService.DeleteProfilePicture(AppUser.Name);
             AppUser.ImagePath = null;
             await service.EditUserAsync(AppUser);
             return RedirectToPage("/Profile/Profile");

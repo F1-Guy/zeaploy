@@ -55,8 +55,17 @@ namespace zeaploy.Pages.Applications
                 string userId = AppUser.Id;
                 if(CV != null && CoverLetter != null)
                 {
-                    await fileService.UploadApplicationFileAsync(CV, AppUser.Name);
-                    await fileService.UploadApplicationFileAsync(CoverLetter, AppUser.Name);
+                    try
+                    {
+                        await fileService.UploadApplicationFileAsync(CV, AppUser.Name, Advertisement.Company);
+                        await fileService.UploadApplicationFileAsync(CoverLetter, AppUser.Name, Advertisement.Company);
+                    }
+                    catch (InvalidDataException)
+                    {
+                        notyfService.Error("You tried to upload an unsupported file type. Please try again.");
+                        return Page();
+                    }
+                    
                     await appService.CreateApplicationAsync(advertisementId, userId);
                     await messageService.SendMessageAsync(new Message()
                     {

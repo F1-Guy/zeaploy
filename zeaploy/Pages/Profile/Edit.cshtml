@@ -44,9 +44,12 @@
                                 }
                             </div>
                             <div>
-                                <form asp-page-handler="remove" method="post">
-                                <button class="btn btn-outline-danger">Remove profile picture</button>
-                                </form> 
+                                @if (Model.LoggedInUser.ImagePath != null)
+                                {
+                                    <form asp-page-handler="remove" method="post">
+                                    <button class="btn btn-outline-danger">Remove profile picture</button>
+                                    </form> 
+                                }
                            </div>
                         </div>
                     </div>
