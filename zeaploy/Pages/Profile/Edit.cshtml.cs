@@ -37,7 +37,15 @@ namespace zeaploy.Pages.Profile
                 if (ImageUpload != null)
                 {
                     AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
-                    await fileService.UploadProfilePictureAsync(ImageUpload, AppUser.Name);
+                    try
+                    {
+                        await fileService.UploadProfilePictureAsync(ImageUpload, AppUser.Name);
+                    }
+                    catch (InvalidDataException)
+                    {
+                        notyfService.Error("You tried to upload an unsupported file type. Please try again.");
+                        return Page();
+                    }
                     AppUser.ImagePath = ImageUpload.FileName;
                 }
                 else
