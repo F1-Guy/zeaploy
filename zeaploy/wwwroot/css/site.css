@@ -92,7 +92,6 @@ body {
     box-shadow: none !important;
 }
 
-/*New stuff*/
 .main-content {
     padding-top: 100px;
     padding-bottom: 100px;
@@ -187,8 +186,6 @@ body {
     border: none;
     outline: none;
     background: none;
-    /*padding: 10px 15px 10px 10px;*/
-    /* border: 1px solid red; */
 }
 
 .wrapper .form-field {
@@ -197,25 +194,6 @@ body {
     border-radius: 10px;
     box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
 }
-
-    .wrapper .form-field .fas {
-        /*color: #555;*/
-    }
-
-/*.wrapper .btn {
-    box-shadow: none;
-    width: 100%;
-    height: 40px;
-    background-color: #03A9F4;
-    color: #fff;
-    border-radius: 25px;
-    box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
-    letter-spacing: 1.3px;
-}*/
-
-    /*.wrapper .btn:hover {
-        background-color: #039BE5;
-    }*/
 
 .wrapper a {
     text-decoration: none;
