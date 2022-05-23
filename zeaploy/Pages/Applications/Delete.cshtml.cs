@@ -41,7 +41,7 @@ namespace zeaploy.Pages.Applications
             {
                 IEnumerable<AppUser> admins = await userService.GetAllAdminsAsync();
 
-                foreach (var admin in admins)
+                foreach (AppUser admin in admins)
                 {
                     await messageService.SendMessageAsync(new Message()
                     {

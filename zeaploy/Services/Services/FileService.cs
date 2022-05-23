@@ -34,17 +34,15 @@
             string[] allowedExtensions = new[] { ".pdf", ".doc", ".txt", ".docx" };
             string relativePath = $@"wwwroot\user-data\cv-letters\{name}\{companyName}";
             Directory.CreateDirectory(relativePath);
-            var file = Path.Combine(relativePath, applicationFile.FileName);
+            string file = Path.Combine(relativePath, applicationFile.FileName);
             if (!allowedExtensions.Contains(Path.GetExtension(file)))
             {
                 throw new InvalidDataException("You tried to upload an invalid file type");
             }
             else
             {
-                using (var fileStream = new FileStream(file, FileMode.Create))
-                {
-                    await applicationFile.CopyToAsync(fileStream);
-                }
+                using FileStream fileStream = new(file, FileMode.Create);
+                await applicationFile.CopyToAsync(fileStream);
             }
         }
 
@@ -52,7 +50,7 @@
         {
             string[] allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
             string relativePath = $@"wwwroot\company-logos\{name}\";
-            var file = Path.Combine(relativePath, companyLogo.FileName);
+            string file = Path.Combine(relativePath, companyLogo.FileName);
             if (!allowedExtensions.Contains(Path.GetExtension(file)))
             {
                 throw new InvalidDataException("You tried to upload an invalid file type");
@@ -60,10 +58,8 @@
             else
             {
                 Directory.CreateDirectory(relativePath);
-                using (var fileStream = new FileStream(file, FileMode.Create))
-                {
-                    await companyLogo.CopyToAsync(fileStream);
-                }
+                using FileStream fileStream = new(file, FileMode.Create);
+                await companyLogo.CopyToAsync(fileStream);
             }
         }
 
@@ -71,7 +67,7 @@
         {
             string[] allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
             string relativePath = $@"wwwroot\user-data\profile-pictures\{name}\";
-            var file = Path.Combine(relativePath, ProfilePicture.FileName);
+            string file = Path.Combine(relativePath, ProfilePicture.FileName);
             if (!allowedExtensions.Contains(Path.GetExtension(file)))
             {
                 throw new InvalidDataException("You tried to upload an invalid file type");
@@ -79,10 +75,8 @@
             else
             {
                 Directory.CreateDirectory(relativePath);
-                using (var fileStream = new FileStream(file, FileMode.Create))
-                {
-                    await ProfilePicture.CopyToAsync(fileStream);
-                }
+                using FileStream fileStream = new(file, FileMode.Create);
+                await ProfilePicture.CopyToAsync(fileStream);
             }
         }
     }

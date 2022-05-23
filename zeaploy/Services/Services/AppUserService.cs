@@ -46,10 +46,10 @@
         public async Task<IEnumerable<AppUser>> GetAllAdminsAsync()
         {
             var result = from user in context.AppUsers
-                         join userRole in context.UserRoles on user.Id equals userRole.UserId
-                         join role in context.Roles on userRole.RoleId equals role.Id
-                         where (role.Name == "admin")
-                         select user;
+                                         join userRole in context.UserRoles on user.Id equals userRole.UserId
+                                         join role in context.Roles on userRole.RoleId equals role.Id
+                                         where (role.Name == "admin")
+                                         select user;
 
             return await result.ToListAsync();
         }
