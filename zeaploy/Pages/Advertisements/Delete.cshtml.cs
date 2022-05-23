@@ -21,7 +21,7 @@ namespace zeaploy.Pages.Advertisements
         public async Task OnGetAsync(int advertisementId)
         {
             Advertisement = await adService.GetAdvertisementByIdAsync(advertisementId);
-            ShortDesc = Advertisement.Description.Split(new char[] { '.', '?', '!', '\n'}, StringSplitOptions.RemoveEmptyEntries);
+            ShortDesc = Advertisement.Description.Split(new char[] { '.', '?', '!', '\n' }, StringSplitOptions.RemoveEmptyEntries);
             if (ShortDesc.Count() >= 3)
             {
                 ShortDesc = ShortDesc.Take(3);
