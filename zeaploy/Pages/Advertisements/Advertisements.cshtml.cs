@@ -1,5 +1,6 @@
 namespace zeaploy.Pages.Advertisements
 {
+    [Authorize]
     public class AdvertisementsModel : PageModel
     {
         private readonly IAdvertisementService adService;
