@@ -21,7 +21,7 @@
 
                             <div class="mt-3">
                                 <h4>@Model.LoggedInUser.Name</h4>
-                                
+
                                 @if (User.IsInRole("Student"))
                                 {
                                     @if (!String.IsNullOrEmpty(Model.LoggedInUser.Course))
@@ -47,10 +47,10 @@
                                 @if (Model.LoggedInUser.ImagePath != null)
                                 {
                                     <form asp-page-handler="remove" method="post">
-                                    <button class="btn btn-outline-danger">Remove profile picture</button>
-                                    </form> 
+                                        <button class="btn btn-outline-danger">Remove profile picture</button>
+                                    </form>
                                 }
-                           </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                                     <label for="formFile" class="text-muted mb-0">Profile Picture</label>
                                 </div>
                                 <div class="form-group col-sm-9">
-                                    <input type="file" accept=".jpg, .png, .jpeg" class="form-control" asp-for="@Model.ImageUpload"/>
+                                    <input type="file" accept=".jpg, .png, .jpeg" class="form-control" asp-for="@Model.ImageUpload" />
                                 </div>
                             </div>
                             <hr />
