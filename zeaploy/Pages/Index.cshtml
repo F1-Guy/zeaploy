@@ -1,119 +1,50 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Zeaploy";
 }
-<style>
-    .ml9 {
-        position: relative;
-        font-weight: 200;
-        font-size: 3em;
-    }
-
-        .ml9 .text-wrapper {
-            position: relative;
-            display: inline-block;
-            padding-top: 0.2em;
-            padding-right: 0.05em;
-            padding-bottom: 0.1em;
-            overflow: hidden;
-        }
-
-        .ml9 .letter {
-            transform-origin: 50% 100%;
-            display: inline-block;
-            line-height: 1em;
-        }
-</style>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 
 <div class="container">
-
     <div class="row text-center">
-
         <div class="col-2"> </div>
-
         <div class="col-8">
-
             <h1 class="ml9">
                 <span class="text-wrapper">
                     <span class="letters">Welcome to </span>  <img src="~/assets/zeaploy_logo.png" style="width: 20%; padding-bottom: 18px;" />
                 </span>
             </h1>
         </div>
-
         <div class="col-2"> </div>
-
     </div>
 
     <div class="row pb-3 text-center">
-
         <div class="col-2"></div>
-
         <div class="col-8"> <h5>Looking for a job?</h5> <h5> Interested in a better job than your current job?</h5><h5> Need to find a company for internship?</h5> </div>
-
         <div class="col-2"></div>
-
     </div>
 
     <div class="row text-center">
-
         <div class="col-lg-3"> </div>
-
-        <div class="col-lg-6"> <img src="https://www.studentpages.biz/wp-content/uploads/2016/12/Top10MostCommonCollegeStudentJobs1.jpg" class="img-fluid mb-4" style="border-radius: 50%" /> </div>
-
+        <div class="col-lg-6"> <img src="https://www.studentpages.biz/wp-content/uploads/2016/12/Top10MostCommonCollegeStudentJobs1.jpg" class="img-fluid mb-4" style="border-radius: 80%" /> </div>
         <div class="col-lg-3"> </div>
-
     </div>
 
     <div class="row  pt-3">
-
         <div class="col-2"></div>
-
         <div class="col-2"><img src="https://cdn3.iconfinder.com/data/icons/user-interface-733/32/Search-512.png" class="w-75 min-vw-35" /> </div>
-
         <div class="col-2"><img src="https://cdn-icons-png.flaticon.com/512/212/212842.png" class="w-75 min-vw-35" /></div>
-
         <div class="col-2"> <img src="https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/000/167/original/money-bag.png" class="w-75 min-vw-35" />  </div>
-
         <div class="col-2">  <img src="https://static.thenounproject.com/png/2714905-200.png" class="w-75 min-vw-35" /> </div>
-
         <div class="col-2"></div>
     </div>
 
     <div class="row pt-5">
-
         <div class="col-2"></div>
-
         <div class="col-2"> <h5> Find a job or internship</h5></div>
-
         <div class="col-2"> <h5> Research companies </h5> </div>
-
         <div class="col-2"> <h5> Compare salaries</h5></div>
-
         <div class="col-2"> <h5>Apply for a job or internship</h5> </div>
-
         <div class="col-2"></div>
     </div>
 </div>
 
-<script>
-    var textWrapper = document.querySelector('.ml9 .letters');
-    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-    anime.timeline({loop: true})
-      .add({
-        targets: '.ml9 .letter',
-        scale: [0, 1],
-        duration: 2000,
-        elasticity: 600,
-        delay: (el, i) => 45 * (i+1)
-      }).add({
-        targets: '.ml9',
-        opacity: 0,
-        duration: 1000,
-        easing: "easeOutExpo",
-        delay: 1000
-      });
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
