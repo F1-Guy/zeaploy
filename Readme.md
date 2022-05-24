@@ -143,6 +143,6 @@ Project Link: [https://github.com/F1-Guy/zeaploy](https://github.com/F1-Guy/zeap
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/F1-Guy/zeaploy.svg?style=for-the-badge
 [contributors-url]: https://github.com/F1-Guy/zeaploy/graphs/contributors
 [product-screenshot]: https://am3pap004files.storage.live.com/y4mVVbErE-UkrW5wEstsHkTUBrPv-Rvi5iSH8NLZHN8a-KzhrxtEyeEozNw1zlWv-soMG5yjdYwkDfQ4UpSKuMJRFIodpy7Ovl5zjD4xOBAmqrepLjUjw_dQ6mw90ZrGLOJMxUWO94sjq_Q3QwEm0l4azIY_w76ZICa1MHP_hLv1tseC8FqmSpLCumwzpoJUaIR8oSNlficlchPhsJyUkzSzJbKZuqI128ZRF-qS7rMNQk?encodeFailures=1&width=607&height=298
