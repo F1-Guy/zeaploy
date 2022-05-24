@@ -48,11 +48,7 @@ namespace zeaploy.Pages.Profile
                     }
                     AppUser.ImagePath = ImageUpload.FileName;
                 }
-                else
-                {
-                    AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
-                    AppUser.ImagePath = null;
-                }
+
                 notyfService.Success("Your profile has been succesfully updated.");
                 await service.EditUserAsync(LoggedInUser);
             }

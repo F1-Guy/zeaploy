@@ -31,11 +31,10 @@
 
         public async Task UploadApplicationFileAsync(IFormFile applicationFile, string name, string companyName)
         {
-            string[] allowedExtensions = new[] { ".pdf", ".doc", ".txt", ".docx" };
             string relativePath = $@"wwwroot\user-data\cv-letters\{name}\{companyName}";
             Directory.CreateDirectory(relativePath);
             string file = Path.Combine(relativePath, applicationFile.FileName);
-            if (!allowedExtensions.Contains(Path.GetExtension(file)))
+            if (!FileTypes.Documents.Contains(Path.GetExtension(file).ToLower()))
             {
                 throw new InvalidDataException("You tried to upload an invalid file type");
             }
@@ -48,10 +47,9 @@
 
         public async Task UploadCompanyLogoAsync(IFormFile companyLogo, string name)
         {
-            string[] allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
             string relativePath = $@"wwwroot\company-logos\{name}\";
             string file = Path.Combine(relativePath, companyLogo.FileName);
-            if (!allowedExtensions.Contains(Path.GetExtension(file)))
+            if (!FileTypes.Images.Contains(Path.GetExtension(file).ToLower()))
             {
                 throw new InvalidDataException("You tried to upload an invalid file type");
             }
@@ -65,11 +63,11 @@
 
         public async Task UploadProfilePictureAsync(IFormFile ProfilePicture, string name)
         {
-            string[] allowedExtensions = new[] { ".jpg", ".jpeg", ".png" };
             string relativePath = $@"wwwroot\user-data\profile-pictures\{name}\";
             string file = Path.Combine(relativePath, ProfilePicture.FileName);
-            if (!allowedExtensions.Contains(Path.GetExtension(file)))
+            if (!FileTypes.Images.Contains(Path.GetExtension(file).ToLower()))
             {
+
                 throw new InvalidDataException("You tried to upload an invalid file type");
             }
             else
