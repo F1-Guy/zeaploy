@@ -39,7 +39,7 @@ namespace zeaploy.Pages.Profile
                     AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
                     try
                     {
-                        await fileService.UploadProfilePictureAsync(ImageUpload, AppUser.Name);
+                        await fileService.UploadProfilePictureAsync(ImageUpload, AppUser.Id);
                     }
                     catch (InvalidDataException)
                     {
@@ -64,7 +64,7 @@ namespace zeaploy.Pages.Profile
         public async Task<IActionResult> OnPostRemoveAsync()
         {
             AppUser = await service.GetLoggedUserAsync(User.Identity.Name);
-            fileService.DeleteProfilePicture(AppUser.Name);
+            fileService.DeleteProfilePicture(AppUser.Id);
             AppUser.ImagePath = null;
             await service.EditUserAsync(AppUser);
             return RedirectToPage("/Profile/Profile");

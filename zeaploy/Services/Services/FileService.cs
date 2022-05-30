@@ -2,18 +2,18 @@
 {
     public class FileService : IFileService
     {
-        public void DeleteProfilePicture(string name)
+        public void DeleteProfilePicture(string id)
         {
-            string relativePath = $@"wwwroot\user-data\profile-pictures\{name}\";
+            string relativePath = $@"wwwroot\user-data\profile-pictures\{id}\";
             if (Directory.Exists(relativePath))
             {
                 Directory.Delete(relativePath, true);
             }
         }
 
-        public void DeleteCompanyLogo(string name)
+        public void DeleteCompanyLogo(int advertisementId)
         {
-            string relativePath = $@"wwwroot\company-logos\{name}\";
+            string relativePath = $@"wwwroot\company-logos\{advertisementId}\";
             if (Directory.Exists(relativePath))
             {
                 Directory.Delete(relativePath, true);
@@ -45,9 +45,9 @@
             }
         }
 
-        public async Task UploadCompanyLogoAsync(IFormFile companyLogo, string name)
+        public async Task UploadCompanyLogoAsync(IFormFile companyLogo, int advertisementId)
         {
-            string relativePath = $@"wwwroot\company-logos\{name}\";
+            string relativePath = $@"wwwroot\company-logos\{advertisementId}\";
             string file = Path.Combine(relativePath, companyLogo.FileName);
             if (!FileTypes.Images.Contains(Path.GetExtension(file).ToLower()))
             {
@@ -61,9 +61,9 @@
             }
         }
 
-        public async Task UploadProfilePictureAsync(IFormFile ProfilePicture, string name)
+        public async Task UploadProfilePictureAsync(IFormFile ProfilePicture, string id)
         {
-            string relativePath = $@"wwwroot\user-data\profile-pictures\{name}\";
+            string relativePath = $@"wwwroot\user-data\profile-pictures\{id}\";
             string file = Path.Combine(relativePath, ProfilePicture.FileName);
             if (!FileTypes.Images.Contains(Path.GetExtension(file).ToLower()))
             {
