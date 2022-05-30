@@ -30,8 +30,7 @@ namespace zeaploy.Pages.Advertisements
 
         public async Task<IActionResult> OnPostAsync(int advertisementId)
         {
-            Advertisement = await adService.GetAdvertisementByIdAsync(advertisementId);
-            fileService.DeleteCompanyLogo(Advertisement.Company);
+            fileService.DeleteCompanyLogo(advertisementId);
             await adService.DeleteAdvertisementAsync(advertisementId);
             return RedirectToPage("/Advertisements/Advertisements");
         }
