@@ -45,6 +45,7 @@ namespace zeaploy.Pages.Applications
         {
             Advertisement = await advService.GetAdvertisementByIdAsync(advertisementId);
             AppUser = await userService.GetLoggedUserAsync(User.Identity.Name);
+
             if (await appService.IsUserAppliedAsync(AppUser.Id, advertisementId))
             {
                 notyfService.Error("You have already applied for this position");
@@ -75,9 +76,23 @@ namespace zeaploy.Pages.Applications
                     $"Your application has been sent to the employer and will now be handled by them. In case of any questions please contact the company directly. " +
                     $"Thank you for using ZeaPloy."
                     });
+
+                    IEnumerable<AppUser> admins = await userService.GetAllAdminsAsync();
+
+                    foreach (AppUser admin in admins)
+                    {
+                        await messageService.SendMessageAsync(new Message()
+                        {
+                            AppUserId = admin.Id,
+                            Subject = $"{AppUser.Name} applied for a position",
+                            Content = $"User: {AppUser.Name} applied for a {Advertisement.Position} " +
+                            $" position in company: {Advertisement.Company}"
+                        });
+                    }
                     notyfService.Success("You have successfully applied for this advertisement. You can see it in your profile.");
                     return RedirectToPage("/Advertisements/Advertisements");
                 }
+
                 else
                 {
                     notyfService.Error("All files must be uploaded. Please try again.");
