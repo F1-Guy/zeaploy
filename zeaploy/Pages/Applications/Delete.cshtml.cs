@@ -59,7 +59,7 @@ namespace zeaploy.Pages.Applications
             }
             else
             {
-                notyfService.Success($"{user.Name} application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
+                notyfService.Success($"{Application.AppUser.Name} application for {advertisement.Position} position in {advertisement.Company} was successfully removed.");
                 return RedirectToPage("/Applications/Applications");
             }
 
