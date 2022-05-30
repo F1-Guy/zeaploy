@@ -9,6 +9,17 @@
             context = service;
         }
 
+        public async Task DeleteMessageAsync(Message message)
+        {
+            context.Remove(message);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task<Message> GetMessageByIdAsync(int id)
+        {
+            return await context.Messages.FindAsync(id);
+        }
+
         public async Task<IEnumerable<Message>> GetMessagesAsync(string userId)
         {
             return await context.Messages.Where(m => m.AppUserId == userId).ToListAsync();

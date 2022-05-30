@@ -22,5 +22,12 @@ namespace zeaploy.Pages.Account
             LoggedInUser = await service.GetLoggedUserAsync(User.Identity.Name);
             Messages = await mService.GetMessagesAsync(LoggedInUser.Id);
         }
+
+        public async Task<IActionResult> OnPostDeleteAsync(int id)
+        {
+            Message message = await mService.GetMessageByIdAsync(id);
+            await mService.DeleteMessageAsync(message);
+            return RedirectToPage("/Profile/Profile");
+        }
     }
 }

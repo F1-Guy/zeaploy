@@ -143,6 +143,17 @@
                                         </div>
                                     </div>
                                     <hr>
+
+                                    <div class="row">
+                                        <div class="col-sm-12 d-flex justify-content-end">
+                                            <form asp-page-handler="delete" asp-route-id="@message.Id" method="post">
+                                                <button class="btn btn-outline-danger">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
                         }
