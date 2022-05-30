@@ -5,7 +5,7 @@
         [Required(ErrorMessage = "Email is required")]
         [Display(Name = "Email Address")]
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"[a-zA-Z]+@edu\.zealand\.dk", ErrorMessage = "Invalid domain in email address. The domain must be @edu.zealand.dk")]
+        [RegularExpression("^[A-Za-z0-9]+@edu.zealand.dk$", ErrorMessage = "The email address cannot contain special characters. The domain must be @edu.zealand.dk")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Name is required")]

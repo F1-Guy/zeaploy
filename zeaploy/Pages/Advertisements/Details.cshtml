@@ -1,4 +1,5 @@
 ﻿@page "{advertisementId}"
+@inject IApplicationService apService
 @model zeaploy.Pages.Advertisements.DetailsModel
 @{
 }
@@ -32,6 +33,21 @@
                             @Model.Advertisement.Description
                         </div>
                         <hr />
+                        <div class="d-flex justify-content-between">
+                            <a class="btn btn-outline-danger" asp-page="/Advertisements/Advertisements">Back</a>
+                            @if (User.IsInRole("Student"))
+                            {
+                                @if (!await apService.IsUserAppliedAsync(User.Identity.Name, Model.Advertisement.Id))
+                                {
+                                    <a class="btn btn-outline-success" asp-route-advertisementId="@Model.Advertisement.Id" asp-page="/Applications/Create">Apply</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-outline-secondary" style="pointer-events: none">Pending...</a>
+                                }
+                            }
+                        </div>
+                        <hr />
                         <div class="job-card_content-mid">
                             <h4 class="mb-1">Comments</h4>
                             <div class="d-flex justify-content-center row">
@@ -51,7 +67,10 @@
                                     <form id="commentForm" method="post">
                                         <div class="form-group bg-light p-2">
                                             <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar7.png" width="40"><input asp-for="@Model.Comment.Content" class="form-control" /></div>
-                                            <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
+                                            <div class="justify-content-between d-flex p-2">
+                                                <button class="btn btn-outline-primary btn-sm shadow-none" type="reset">Cancel</button>
+                                                <button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
