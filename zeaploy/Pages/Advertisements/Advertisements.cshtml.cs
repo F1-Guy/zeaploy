@@ -31,7 +31,7 @@ namespace zeaploy.Pages.Advertisements
 
             if (!String.IsNullOrEmpty(SearchCriteria) || TypeCriteria != null || LocationCriteria != null)
             {
-                Advertisements = adService.Filter(SearchCriteria, TypeCriteria, LocationCriteria);
+                Advertisements = await adService.FilterAsync(SearchCriteria, TypeCriteria, LocationCriteria);
             }
             else
             {

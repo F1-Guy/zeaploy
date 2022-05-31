@@ -46,11 +46,10 @@
         }
 
 #nullable enable
-        public IEnumerable<Advertisement> Filter(string? searchString, string? jobType, string? location)
+        public async Task<IEnumerable<Advertisement>> FilterAsync(string? searchString, string? jobType, string? location)
         {
-            IEnumerable<Advertisement> ads = context.Advertisements.ToList();
+            IEnumerable<Advertisement> ads = await context.Advertisements.ToListAsync();
 
-            // Creates a combination of criteria and applies them to all advertisements if they are not null
             if (!String.IsNullOrEmpty(searchString))
             {
                 ads = ads.Where(a => a.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase)

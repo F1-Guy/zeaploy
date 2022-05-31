@@ -39,7 +39,7 @@ namespace zeaploy.Services.Services
             return await context.Applications.Where(a => a.Id == applicationId).Include(a => a.Advertisement).Include(u => u.AppUser).FirstOrDefaultAsync();
         }
 
-        public async Task<ICollection<Application>> GetApplicationsByAdvId(int advertisementId)
+        public async Task<IEnumerable<Application>> GetApplicationsByAdvId(int advertisementId)
         {
             return await context.Applications.Where(a => a.AdvertisementId == advertisementId).Include(a => a.Advertisement).Include(u => u.AppUser).ToListAsync();
         }
@@ -49,7 +49,7 @@ namespace zeaploy.Services.Services
             return await context.Applications.Include(a => a.Advertisement).Include(u => u.AppUser).ToListAsync();
         }
 
-        public async Task<ICollection<Application>> GetApplicationsByUserAsync(string userEmail)
+        public async Task<IEnumerable<Application>> GetApplicationsByUserAsync(string userEmail)
         {
             return await context.Applications.Where(u => u.AppUser.Email == userEmail).Include(a => a.Advertisement).Include(u => u.AppUser).ToListAsync();
         }
@@ -61,16 +61,28 @@ namespace zeaploy.Services.Services
             await context.SaveChangesAsync();
         }
 #nullable enable
-        public IEnumerable<Application> Filter(string? searchString)
+        public async Task<IEnumerable<Application>> FilterAsync(string? searchString)
         {
-            IEnumerable<Application> apps = context.Applications.ToList();
+            IEnumerable<Application> apps = await context.Applications.ToListAsync();
 
-            // Not needed in this implementation, but can be used for adding more criteria
             if (!String.IsNullOrEmpty(searchString))
             {
                 apps = apps.Where(a => a.Advertisement.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase)
                                     || a.AppUser.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)
                                     || a.AppUser.Email.Contains(searchString, StringComparison.OrdinalIgnoreCase));
+            }
+
+            return apps;
+        }
+
+        public async Task<IEnumerable<Application>> FilterUsersAsync(string? searchString, string userEmail)
+        {
+            IEnumerable<Application> apps = await GetApplicationsByUserAsync(userEmail);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                apps = apps.Where(a => a.Advertisement.Company.Contains(searchString, StringComparison.OrdinalIgnoreCase)
+                                    || a.Advertisement.Position.Contains(searchString, StringComparison.OrdinalIgnoreCase));
             }
 
             return apps;

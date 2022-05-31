@@ -24,11 +24,15 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body d-flex justify-content-center">
-                        @if (@user.ImagePath != null)
-                        {
-                                <img src="~/user-data/profile-pictures/@user.Id/@user.ImagePath" class="card-img-top w-25" alt="Profile picture">
+                            @if (!String.IsNullOrEmpty(@user.ImagePath))
+                            {
+                                <img src="~/user-data/profile-pictures/@user.Id/@user.ImagePath" class="card-img-top w-25 rounded-circle" alt="Profile picture">
 
-                        }
+                            }
+                            else
+                            {
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="card-img-top w-25 rounded-circle" alt="Default profile picture">
+                            }
                         </div>
                         <div class="card-body text-center">
                             <h4 class="card-title">@user.Name</h4>
@@ -38,8 +42,8 @@
                             <p class="card-text">Job Title: @(@user.JobTitle != null ? @user.JobTitle : "Unemployed")</p>
                         </div>
                         <div class="card-body d-flex justify-content-between">
-                            <a class="btn btn-outline-primary" asp-route-id="@user.Id" asp-page="/Users/Edit">Edit</a>
                             <a class="btn btn-outline-danger" asp-route-id="@user.Id" asp-page="/Users/Delete">Delete</a>
+                            <a class="btn btn-outline-primary" asp-route-id="@user.Id" asp-page="/Users/Edit">Edit</a>
                         </div>
                     </div>
                 </div>

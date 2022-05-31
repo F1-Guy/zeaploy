@@ -9,13 +9,13 @@
             context = service;
         }
 
-        public async Task CreateComment(Comment comment)
+        public async Task CreateCommentAsync(Comment comment)
         {
             context.Add(comment);
             await context.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Comment>> GetAdvComments(int advertisementId)
+        public async Task<IEnumerable<Comment>> GetCommentsAsync(int advertisementId)
         {
             return await context.Comments.Where(c => c.AdvertisementId == advertisementId).ToListAsync();
         }

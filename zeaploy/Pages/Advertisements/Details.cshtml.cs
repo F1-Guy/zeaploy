@@ -24,7 +24,7 @@ namespace zeaploy.Pages.Advertisements
         public async Task OnGetAsync(int advertisementId)
         {
             Advertisement = await service.GetAdvertisementByIdAsync(advertisementId);
-            Comments = await cService.GetAdvComments(advertisementId);
+            Comments = await cService.GetCommentsAsync(advertisementId);
         }
 
         public async Task<IActionResult> OnPostAsync(int advertisementId)
@@ -32,15 +32,15 @@ namespace zeaploy.Pages.Advertisements
             if (String.IsNullOrEmpty(Comment.Content))
             {
                 Advertisement = await service.GetAdvertisementByIdAsync(advertisementId);
-                Comments = await cService.GetAdvComments(advertisementId);
+                Comments = await cService.GetCommentsAsync(advertisementId);
                 nService.Error("Comment cannot be empty.");
                 return Page();
             }
             Advertisement = await service.GetAdvertisementByIdAsync(advertisementId);
             Comment.DateAdded = DateTime.Now;
             Comment.AdvertisementId = Advertisement.Id;
-            await cService.CreateComment(Comment);
-            Comments = await cService.GetAdvComments(advertisementId);
+            await cService.CreateCommentAsync(Comment);
+            Comments = await cService.GetCommentsAsync(advertisementId);
             return Page();
         }
     }

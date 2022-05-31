@@ -27,7 +27,7 @@ namespace zeaploy.Pages.Applications
             {
                 if (!String.IsNullOrEmpty(SearchCriteria))
                 {
-                    Applications = appService.Filter(SearchCriteria);
+                    Applications = await appService.FilterAsync(SearchCriteria);
                 }
                 else
                 {

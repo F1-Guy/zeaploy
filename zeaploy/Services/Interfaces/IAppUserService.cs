@@ -9,6 +9,6 @@
         public Task<AppUser> GetUserByIdAsync(string id);
         public Task<IEnumerable<AppUser>> GetAllAdminsAsync();
 #nullable enable
-        public IEnumerable<AppUser> Filter(string? searchString);
+        public Task<IEnumerable<AppUser>> FilterAsync(string? searchString);
     }
 }

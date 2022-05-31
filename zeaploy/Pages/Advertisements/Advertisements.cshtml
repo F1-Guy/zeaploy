@@ -19,14 +19,14 @@
     </li>
     <form>
     <li class="list-group-item">
-        <div class="container row">
+        <div class="row">
             <div class="col">
                 <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Company name or job position...">
             </div>
         </div>
     </li>
     <li class="list-group-item">
-        <div class="container row d-flex justify-content-between">
+        <div class="row d-flex justify-content-between">
             <div class="col-4">
                 <select class="form-control" asp-for="@Model.TypeCriteria">
                     <option value="">Select job type</option>
@@ -82,37 +82,34 @@
                                     </div>
                                 </div>
                                 <div class="job-card__footer">
-                                    <div class="col-md-auto">
+                                    <div class="col-xs">
                                         <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
                                     </div>
 
                                     @if (User.IsInRole("Admin"))
                                     {
-                                        <div class="col-md-auto">
+                                        <div class="col-xs">
                                             <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
                                         </div>
-                                        <div class="col-md-auto">
+                                        <div class="col-xs">
                                             <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">Applications</a>
                                         </div>
-                                        <div class="col-md-auto">
+                                        <div class="col-xs">
                                             <a class="btn btn-outline-danger" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
                                         </div>
                                     }
-                                    else
+                                    else if (User.IsInRole("Student"))
                                     {
-                                        @if (User.IsInRole("Student"))
-                                        {
-                                            <div class="col-md-auto">
-                                                @if (!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
-                                                {
-                                                    <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
-                                                }
-                                                else
-                                                {
-                                                    <a class="btn btn-outline-secondary" style="pointer-events: none">Pending...</a>
-                                                }
-                                            </div>
-                                        }
+                                        <div class="col-xs">
+                                            @if (!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
+                                            {
+                                                <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn btn-outline-secondary" style="pointer-events: none">Pending...</a>
+                                            }
+                                        </div>
                                     }
                                 </div>
                             </div>
