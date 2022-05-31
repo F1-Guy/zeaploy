@@ -6,7 +6,7 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(30)]
         public string Subject { get; set; }
 
         [Required]

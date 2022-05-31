@@ -31,8 +31,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label asp-for="@Model.Advertisement.Description" class="control-label"></label>
-                                    <input asp-for="@Model.Advertisement.Description" class="form-control" />
+                                    <label asp-for="@Model.Advertisement.Location" class="control-label"></label>
+                                    <input asp-for="@Model.Advertisement.Location" class="form-control" />
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -42,50 +42,52 @@
                                 </div>
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="@Model.Advertisement.Position" class="control-label"></label>
-                                    <input asp-for="@Model.Advertisement.Position" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="@Model.Advertisement.Posted" class="control-label"></label>
-                                    <input asp-for="@Model.Advertisement.Posted" class="form-control" />
-                                </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.Advertisement.Position" class="control-label"></label>
+                                <input asp-for="@Model.Advertisement.Position" class="form-control" />
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="@Model.Advertisement.Wage" class="control-label"></label>
-                                    <input asp-for="@Model.Advertisement.Wage" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label asp-for="@Model.Advertisement.Location" class="control-label"></label>
-                                    <input asp-for="@Model.Advertisement.Location" class="form-control" />
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.Advertisement.Posted" class="control-label"></label>
+                                <input asp-for="@Model.Advertisement.Posted" class="form-control" />
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <label class="mb-0" asp-for="@Model.Advertisement.ImagePath"></label>
-                                <input type="file" accept=".jpg, .png, .jpeg" class="form-control" id="formFile" asp-for="@Model.Logo">
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="@Model.Advertisement.Wage" class="control-label"></label>
+                                <input asp-for="@Model.Advertisement.Wage" class="form-control" />
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button class="btn btn-outline-success" type="submit" value="Edit">Save Changes</button>
-                                <button class="btn btn-outline-warning" type="reset">Reset form</button>
-                                <a class="btn btn-outline-danger" asp-page="/Advertisements/Advertisements">Cancel</a>
-                            </div>
+                        <div class="col-md-6 form-group">
+                            <label class="mb-0" asp-for="@Model.Advertisement.ImagePath"></label>
+                            <input type="file" accept=".jpg, .png, .jpeg" class="form-control" id="formFile" asp-for="@Model.Logo">
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="control-label" asp-for="@Model.Advertisement.Description"></label>
+                            <textarea class="form-control" asp-for="@Model.Advertisement.Description" rows="6" maxlength="300"></textarea>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-2">
+                            <a class="btn btn-outline-danger" asp-page="/Advertisements/Advertisements">Cancel</a>
+                        </div>
+                        <div class="col-3">
+                            <button class="btn btn-outline-warning" type="reset">Reset form</button>
+                        </div>
+                        <div class="col-2 offset-5">
+                            <button class="btn btn-outline-success" type="submit" value="Edit">Save</button>
                         </div>
                     </div>
                 </form>

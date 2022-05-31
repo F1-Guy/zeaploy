@@ -6,29 +6,30 @@
         public int Id { get; set; }
 
         [Required]
-        [StringLength(100)]
+        [StringLength(30)]
         [Display(Name = "Company Name")]
         public string Company { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(30)]
         public string Position { get; set; }
 
         [Display(Name = "Hourly Wage")]
         public int Wage { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(20)]
         [Display(Name = "Job Type")]
         public string JobType { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [StringLength(30)]
         public string Location { get; set; }
 
         public DateTime Posted { get; set; }
 
         [Required]
+        [StringLength(300)]
         public string Description { get; set; }
 
 #nullable enable
