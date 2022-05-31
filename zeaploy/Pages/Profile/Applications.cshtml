@@ -8,38 +8,31 @@
         <h5><b>My Applications</b></h5>
     </li>
     <li class="list-group-item">
-        <div class="card mt-2">
-            <div class="card-body bg-light">
-                <div class="row">
-                    <div>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Company</th>
-                                    <th scope="col">Position</th>
-                                    <th scope="col">Application Date</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model.Applications)
-                                {
-                                    <tr class="align-middle">
-                                        <td>@item.Id</td>
-                                        <td>@item.AppUser.Name</td>
-                                        <td>@item.AppUser.Email</td>
-                                        <td>@item.Advertisement.Company</td>
-                                        <td>@item.Advertisement.Position</td>
-                                        <td>@item.DateCreated.ToShortDateString()</td>
-                                        <td><a class="btn btn-outline-danger" asp-page="/Applications/Delete" asp-route-applicationId="@item.Id">Remove</a></td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
+        <form class="row d-flex justify-content-start">
+            <div class="col-6">
+                <input class="form-control" asp-for="SearchCriteria" type="search" placeholder="Search by company name or user name/e-mail">
+            </div>
+            <div class="col">
+                <button class="btn btn-success" type="submit">Search</button>
+            </div>
+        </form>
+    </li>
+    <li class="list-group-item">
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @foreach (var aplication in Model.Applications)
+            {
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h6 class="card-title">Company: @aplication.Advertisement.Company</h6>
+                            <h6>Position: @aplication.Advertisement.Position</h6>
+                            <p>Applied: @aplication.DateCreated.ToShortDateString()</p>
+                            <p class="small">Application id: @aplication.Id</p>
+                            <a class="btn btn-outline-danger" asp-page="/Applications/Delete" asp-route-applicationId="@aplication.Id">Remove</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
+    </li>
 </ul>

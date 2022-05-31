@@ -54,11 +54,10 @@
             return await result.ToListAsync();
         }
 #nullable enable
-        public IEnumerable<AppUser> Filter(string? searchString)
+        public async Task<IEnumerable<AppUser>> FilterAsync(string? searchString)
         {
-            IEnumerable<AppUser> users = context.Users.ToList();
+            IEnumerable<AppUser> users = await context.Users.ToListAsync();
 
-            // Not needed in this implementation, but can be used for adding more criteria
             if (!String.IsNullOrEmpty(searchString))
             {
                 users = users.Where(u => u.Name.Contains(searchString, StringComparison.OrdinalIgnoreCase)

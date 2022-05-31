@@ -25,7 +25,7 @@ namespace zeaploy.Pages.Users
             }
             else
             {
-                AppUsers = service.Filter(SearchCriteria);
+                AppUsers = await service.FilterAsync(SearchCriteria);
             }
         }
     }

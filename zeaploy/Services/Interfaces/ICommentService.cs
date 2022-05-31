@@ -2,7 +2,7 @@
 {
     public interface ICommentService
     {
-        public Task CreateComment(Comment comment);
-        public Task<IEnumerable<Comment>> GetAdvComments(int advertisementId);
+        public Task CreateCommentAsync(Comment comment);
+        public Task<IEnumerable<Comment>> GetCommentsAsync(int advertisementId);
     }
 }
