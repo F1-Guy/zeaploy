@@ -11,7 +11,7 @@
         public string Company { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(50)]
         public string Position { get; set; }
 
         [Display(Name = "Hourly Wage")]
@@ -29,7 +29,7 @@
         public DateTime Posted { get; set; }
 
         [Required]
-        [StringLength(300)]
+        [StringLength(1000)]
         public string Description { get; set; }
 
 #nullable enable
