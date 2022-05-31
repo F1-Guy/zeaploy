@@ -63,7 +63,7 @@ namespace zeaploy.Services.Services
 #nullable enable
         public async Task<IEnumerable<Application>> FilterAsync(string? searchString)
         {
-            IEnumerable<Application> apps = await context.Applications.ToListAsync();
+            IEnumerable<Application> apps = await GetAllApplicationsAsync();
 
             if (!String.IsNullOrEmpty(searchString))
             {
