@@ -35,7 +35,7 @@ namespace zeaploy.Pages.Advertisements
                 {
                     try
                     {
-                        await fileService.UploadCompanyLogoAsync(Logo, Advertisement.Id);
+                        await fileService.UploadCompanyLogoAsync(Logo, Advertisement.Company);
                     }
                     catch (InvalidDataException)
                     {

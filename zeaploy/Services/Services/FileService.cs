@@ -11,9 +11,9 @@
             }
         }
 
-        public void DeleteCompanyLogo(int advertisementId)
+        public void DeleteCompanyLogo(string companyName)
         {
-            string relativePath = $@"wwwroot\company-logos\{advertisementId}\";
+            string relativePath = $@"wwwroot\company-logos\{companyName}\";
             if (Directory.Exists(relativePath))
             {
                 Directory.Delete(relativePath, true);
@@ -45,9 +45,9 @@
             }
         }
 
-        public async Task UploadCompanyLogoAsync(IFormFile companyLogo, int advertisementId)
+        public async Task UploadCompanyLogoAsync(IFormFile companyLogo, string companyName)
         {
-            string relativePath = $@"wwwroot\company-logos\{advertisementId}\";
+            string relativePath = $@"wwwroot\company-logos\{companyName}\";
             string file = Path.Combine(relativePath, companyLogo.FileName);
             if (!FileTypes.Images.Contains(Path.GetExtension(file).ToLower()))
             {
