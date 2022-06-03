@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="Migrations\**" />
+    <Compile Remove="wwwroot\company-logos\**" />
     <Content Remove="Migrations\**" />
+    <Content Remove="wwwroot\company-logos\**" />
     <EmbeddedResource Remove="Migrations\**" />
+    <EmbeddedResource Remove="wwwroot\company-logos\**" />
     <None Remove="Migrations\**" />
+    <None Remove="wwwroot\company-logos\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,10 +27,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\company-logos\" />
   </ItemGroup>
 
 </Project>
