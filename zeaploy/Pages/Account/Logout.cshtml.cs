@@ -13,7 +13,7 @@ namespace zeaploy.Pages.Account
         public async Task<IActionResult> OnGetAsync()
         {
             await signInManager.SignOutAsync();
-            notyfService.Information("You have successfully logged out of the website.");
+            notyfService.Information("You have successfully logged out");
             return RedirectToPage("/Index");
         }
     }

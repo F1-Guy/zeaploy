@@ -30,13 +30,9 @@ namespace zeaploy.Pages.Advertisements
             LoggedUser = await uService.GetLoggedUserAsync(User.Identity.Name);
 
             if (!String.IsNullOrEmpty(SearchCriteria) || TypeCriteria != null || LocationCriteria != null)
-            {
                 Advertisements = await adService.FilterAsync(SearchCriteria, TypeCriteria, LocationCriteria);
-            }
             else
-            {
                 Advertisements = await adService.GetAdvertisementsAsync();
-            }
         }
     }
 }

@@ -21,21 +21,11 @@ namespace zeaploy.Pages.Account
             if (ModelState.IsValid)
             {
                 var result = await signInManager.PasswordSignInAsync(LoginViewModel.Email, LoginViewModel.Password, LoginViewModel.RememberMe, lockoutOnFailure: false);
+
                 if (result.Succeeded)
-                {
-                    if (!String.IsNullOrEmpty(returnUrl))
-                    {
-                        return RedirectToPage(returnUrl);
-                    }
-                    else
-                    {
-                        return RedirectToPage("/Index");
-                    }
-                }
-                else
-                {
-                    ModelState.AddModelError(String.Empty, "Invalid input data");
-                }
+                    return !String.IsNullOrEmpty(returnUrl) ? RedirectToPage(returnUrl) : RedirectToPage("/Index");
+
+                ModelState.AddModelError(String.Empty, "Email or password are incorrect.");
             }
 
             return Page();
