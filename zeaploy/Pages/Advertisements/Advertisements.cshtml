@@ -4,14 +4,6 @@
 @{
 }
 
-@if (User.IsInRole("Admin"))
-{
-    <div class="d-flex justify-content-center">
-        <a asp-page="/Advertisements/Create" class="btn btn-primary">Create new Advertisement</a>
-    </div>
-    <hr />
-}
-
 <ul class="list-group col-sm-8 offset-sm-2">
     <li class="list-group-item d-flex justify-content-between">
         <h5><b>Job Advertisements</b></h5>
@@ -50,6 +42,14 @@
             </div>
         </div>
     </li>
+    <li class="list-group-item">
+            @if (User.IsInRole("Admin"))
+            {
+            <div class="d-flex justify-content-center">
+                <a asp-page="/Advertisements/Create" class="btn btn-outline-primary">Create new Advertisement</a>
+            </div>
+            }
+    </li>
     </form>
     <li class="list-group-item">
         @if (Model.Advertisements.Count() != 0)
@@ -83,25 +83,25 @@
                             <div class="job-card__footer">
                                 @if (User.IsInRole("Admin"))
                                 {
-                                     <div class="col-xs">
-                                        <a class="btn btn-outline-danger" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
-                                    </div>
-                                    <div class="col-xs">
-                                        <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
-                                    </div>
-                                    <div class="col-xs">
-                                        <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
-                                    </div>
-                                    <div class="col-xs">
-                                        <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">Applied</a>
-                                    </div>
+                                        <div class="col d-flex justify-content-start">
+                                            <a class="btn btn-outline-danger" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Delete">Delete</a>
+                                        </div>
+                                        <div class="col d-flex justify-content-center">
+                                            <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
+                                        </div>
+                                        <div class="col d-flex justify-content-center">
+                                            <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Edit">Edit</a>
+                                        </div>
+                                        <div class="col d-flex justify-content-end">
+                                            <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Applications/Applications">Applied</a>
+                                        </div>
                                 }
                                 else if (User.IsInRole("Student"))
                                 {
-                                    <div class="col-xs">
+                                    <div class="col d-flex justify-content-start">
                                         <a class="btn btn-outline-primary" asp-route-advertisementId="@item.Id" asp-page="/Advertisements/Details">Details</a>
                                     </div>
-                                    <div class="col-xs">
+                                    <div class="col d-flex justify-content-end">
                                         @if (!await apService.IsUserAppliedAsync(Model.LoggedUser.Id, item.Id))
                                         {
                                             <a class="btn btn-outline-success" asp-route-advertisementId="@item.Id" asp-page="/Applications/Create">Apply</a>

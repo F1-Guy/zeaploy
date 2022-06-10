@@ -10,6 +10,7 @@ namespace zeaploy.Pages.Account
             this.signInManager = signInManager;
             this.notyfService = notyfService;
         }
+
         public async Task<IActionResult> OnGetAsync()
         {
             await signInManager.SignOutAsync();
