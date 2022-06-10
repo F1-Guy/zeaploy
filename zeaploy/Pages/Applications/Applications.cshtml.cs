@@ -24,17 +24,8 @@ namespace zeaploy.Pages.Applications
         public async Task OnGetAsync(int? AdvertisementId)
         {
             if (AdvertisementId == null)
-            {
-                if (!String.IsNullOrEmpty(SearchCriteria))
-                {
-                    Applications = await appService.FilterAsync(SearchCriteria);
-                }
-                else
-                {
-                    Applications = await appService.GetAllApplicationsAsync();
-                }
+                Applications = !String.IsNullOrEmpty(SearchCriteria) ? await appService.FilterAsync(SearchCriteria) : await appService.GetAllApplicationsAsync();
 
-            }
             else
             {
                 Applications = await appService.GetApplicationsByAdvId(AdvertisementId.Value);

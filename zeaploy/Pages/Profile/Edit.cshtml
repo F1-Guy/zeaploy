@@ -12,7 +12,7 @@
                         <div class="d-flex flex-column align-items-center text-center">
                             @if (String.IsNullOrEmpty(Model.LoggedInUser.ImagePath))
                             {
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Default picture" class="w-75 rounded-circle">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" alt="Default picture" class="w-75 rounded-circle">
                             }
                             else
                             {
@@ -145,11 +145,15 @@
                             <hr />
 
                             <!-- Buttons -->
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-outline-success">Save Changes</button>
-                                    <button type="reset" class="btn btn-info">Reset form</button>
-                                    <a class="btn btn-outline-danger" asp-page="/Profile/Profile">Cancel</a>
+                            <div class="row d-flex">
+                                <div class="col d-flex justify-content-start">
+                                     <a class="btn btn-outline-danger" asp-page="/Profile/Profile">Cancel</a>
+                                </div>
+                                <div class="col d-flex justify-content-center">
+                                    <button type="reset" class="btn btn-outline-warning">Reset</button>
+                                </div>
+                                <div class="col d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-outline-success">Save</button>
                                 </div>
                             </div>
                         </div>

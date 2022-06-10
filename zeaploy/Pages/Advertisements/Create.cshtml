@@ -11,77 +11,75 @@
         <div class="card mt-2">
             <div class="card-body bg-light">
                 <form method="post" id="contact-form" role="form" enctype="multipart/form-data">
-                    <div class="controls">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-muted mb-0" asp-for="@Model.Advertisement.Company"></label>
-                                    <input class="form-control" asp-for="@Model.Advertisement.Company" type="text" placeholder="Enter company name">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-muted mb-0" asp-for="@Model.Advertisement.Position"></label>
-                                    <input class="form-control" asp-for="@Model.Advertisement.Position" type="text" placeholder="Enter job position">
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-muted mb-0" asp-for="@Model.Advertisement.Company"></label>
+                                <input class="form-control" asp-for="@Model.Advertisement.Company" type="text" placeholder="Enter company name">
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-muted mb-0" asp-for="@Model.Advertisement.Wage"></label>
-                                    <input class="form-control" asp-for="@Model.Advertisement.Wage" type="number" placeholder="Enter hourly salary in DKK">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-muted mb-0" asp-for="@Model.Advertisement.JobType"></label>
-                                    <select class="form-control" asp-for="@Model.Advertisement.JobType">
-                                        <option value="" selected disabled>Select job type</option>
-                                        @foreach (var jobType in JobTypes.types)
-                                        {
-                                            <option>@jobType</option>
-                                        }
-                                    </select>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-muted mb-0" asp-for="@Model.Advertisement.Position"></label>
+                                <input class="form-control" asp-for="@Model.Advertisement.Position" type="text" placeholder="Enter job position">
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-muted mb-0" asp-for="@Model.Advertisement.Location"></label>
-                                    <select class="form-control" asp-for="@Model.Advertisement.Location">
-                                        <option value="" selected disabled>Select Location</option>
-                                        @foreach (var location in Locations.locations)
-                                        {
-                                            <option>@location</option>
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label class="text-muted mb-0" asp-for="@Model.Advertisement.ImagePath"></label>
-                                    <input type="file" accept=".jpg, .png, .jpeg" class="form-control" id="formFile" asp-for="@Model.Logo">
-                                </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-muted mb-0" asp-for="@Model.Advertisement.Wage"></label>
+                                <input class="form-control" asp-for="@Model.Advertisement.Wage" type="number" placeholder="Enter hourly salary in DKK">
                             </div>
                         </div>
-                        <hr />
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label class="text-muted mb-0" asp-for="@Model.Advertisement.Description"></label>
-                                    <textarea class="form-control" maxlength="1000" asp-for="@Model.Advertisement.Description" placeholder="Write a description for the job position here" rows="6"></textarea>
-                                </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-muted mb-0" asp-for="@Model.Advertisement.JobType"></label>
+                                <select class="form-control" asp-for="@Model.Advertisement.JobType">
+                                    <option value="" selected disabled>Select job type</option>
+                                    @foreach (var jobType in JobTypes.types)
+                                    {
+                                        <option>@jobType</option>
+                                    }
+                                </select>
                             </div>
-                            <hr />
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button type="submit" class="btn btn-outline-success">Create advertisement</button>
-                                </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-muted mb-0" asp-for="@Model.Advertisement.Location"></label>
+                                <select class="form-control" asp-for="@Model.Advertisement.Location">
+                                    <option value="" selected disabled>Select Location</option>
+                                    @foreach (var location in Locations.locations)
+                                    {
+                                        <option>@location</option>
+                                    }
+                                </select>
                             </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="text-muted mb-0" asp-for="@Model.Advertisement.ImagePath"></label>
+                                <input type="file" accept=".jpg, .png, .jpeg" class="form-control" id="formFile" asp-for="@Model.Logo">
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="text-muted mb-0" asp-for="@Model.Advertisement.Description"></label>
+                                <textarea class="form-control" maxlength="1000" asp-for="@Model.Advertisement.Description" placeholder="Write a description for the job position here" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                         <div class="col d-flex justify-content-end">
+                            <button type="submit" class="btn btn-outline-success">Create</button>
                         </div>
                     </div>
                 </form>

@@ -55,7 +55,7 @@
 [![Product Name Screen Shot][product-screenshot]](https://github.com/F1-Guy/zeaploy)
 
 <p>
-  This is an end of the first semester project based on the requirements set by the project document. 
+  This is an end of year project based on the requirements set by the project document. 
   Our aim was to validate and utilize the skills and knowledge we have gained during the two semesters we have been tasked with designing, 
   planning, and implementing a .NET Core system. 
   The goal of this project is to enable each member of our group to fully understand the process and goals of application development in a real-world scenario. 
