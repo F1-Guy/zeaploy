@@ -18,8 +18,8 @@
         </div>
     </li>
     <li class="list-group-item">
-        <div class="row d-flex justify-content-between">
-            <div class="col-4">
+        <div class="row d-flex">
+            <div class="col d-flex justify-content-center">
                 <select class="form-control" asp-for="@Model.TypeCriteria">
                     <option value="">Select job type</option>
                         @foreach (var jobType in JobTypes.types)
@@ -28,7 +28,7 @@
                         }
                 </select>
             </div>
-            <div class="col-4">
+            <div class="col d-flex justify-content-center">
                 <select class="form-control" asp-for="@Model.LocationCriteria">
                     <option value="">Select location</option>
                         @foreach (var location in Locations.locations)
@@ -37,8 +37,8 @@
                         }
                 </select>
             </div>
-            <div class="col-auto">
-                <button class="btn btn-success" type="submit">Search</button>
+            <div class="col-3 d-grid justify-content-center">
+                <button class="btn btn-outline-primary btn-block" type="submit">Search</button>
             </div>
         </div>
     </li>
@@ -54,7 +54,7 @@
     <li class="list-group-item">
         @if (Model.Advertisements.Count() != 0)
         {
-            @foreach (var item in Model.Advertisements)
+            @foreach (var item in Model.Advertisements.Reverse())
             {
                 <div class="row">
                     <div>
