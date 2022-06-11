@@ -3,48 +3,140 @@
 @{
 }
 
-<div class="container">
-    <div class="row text-center">
-        <div class="col-2"> </div>
-        <div class="col-8">
-            <h1 class="ml9">
-                <span class="text-wrapper">
-                    <span class="letters">Welcome to </span>  <img src="~/assets/zeaploy_logo.png" style="width: 20%; padding-bottom: 18px;" />
-                </span>
-            </h1>
+<head>
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @@media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/carousel.css" rel="stylesheet">
+</head>
+<body style="margin-top:-8px">
+    <main>
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" /></svg>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="text-white">Looking for a job?</h1>
+                            <p>This is your one stop shop for all your employment and internship needs.</p>
+                            <p><a class="btn btn-lg btn-outline-primary" asp-page="/Account/Register">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" /></svg>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="text-white">Internship opportunities</h1>
+                            <p>We work closely with our industry partners to kick start your carrier.</p>
+                            <p><a class="btn btn-lg btn-outline-primary" asp-page="/Advertisements/Advertisements">See job postings</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777" /></svg>
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="text-white">Already have an account?</h1>
+                            <p>If you already have an account you can sign up here.</p>
+                            <p><a class="btn btn-lg btn-outline-primary" asp-page="/Account/Login">Login here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <div class="col-2"> </div>
-    </div>
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title></title><rect width="100%" height="100%" fill="#777" /></svg>
 
-    <div class="row pb-3 text-center">
-        <div class="col-2"></div>
-        <div class="col-8"> <h5>Looking for a job?</h5> <h5> Interested in a better job than your current job?</h5><h5> Need to find a company for internship?</h5> </div>
-        <div class="col-2"></div>
-    </div>
+                    <h2>Apply for a job</h2>
+                    <p>You can apply for jobs and internships directly from our website.</p>
 
-    <div class="row text-center">
-        <div class="col-lg-3"> </div>
-        <div class="col-lg-6"> <img src="https://www.studentpages.biz/wp-content/uploads/2016/12/Top10MostCommonCollegeStudentJobs1.jpg" class="img-fluid mb-4" style="border-radius: 80%" /> </div>
-        <div class="col-lg-3"> </div>
-    </div>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
 
-    <div class="row  pt-3">
-        <div class="col-2"></div>
-        <div class="col-2"><img src="https://cdn3.iconfinder.com/data/icons/user-interface-733/32/Search-512.png" class="w-75 min-vw-35" /> </div>
-        <div class="col-2"><img src="https://cdn-icons-png.flaticon.com/512/212/212842.png" class="w-75 min-vw-35" /></div>
-        <div class="col-2"> <img src="https://d338t8kmirgyke.cloudfront.net/icons/icon_pngs/000/000/167/original/money-bag.png" class="w-75 min-vw-35" />  </div>
-        <div class="col-2">  <img src="https://static.thenounproject.com/png/2714905-200.png" class="w-75 min-vw-35" /> </div>
-        <div class="col-2"></div>
-    </div>
+                    <h2>Compare salaries</h2>
+                    <p>All companies must list the starting salary for the position you want to apply for.</p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777" /><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
 
-    <div class="row pt-5">
-        <div class="col-2"></div>
-        <div class="col-2"> <h5> Find a job or internship</h5></div>
-        <div class="col-2"> <h5> Research companies </h5> </div>
-        <div class="col-2"> <h5> Compare salaries</h5></div>
-        <div class="col-2"> <h5>Apply for a job or internship</h5> </div>
-        <div class="col-2"></div>
-    </div>
-</div>
+                    <h2>Research companies</h2>
+                    <p>Not only can you see the job advertisements, but you also see comments from fellow students.</p>
+                </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+            <!-- START THE FEATURETTES -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+                    <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+                    <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+                    <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+                </div>
+                <div class="col-md-5">
+                    <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
