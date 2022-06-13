@@ -25,9 +25,8 @@ namespace zeaploy.Pages.Advertisements
         {
             Advertisement = await adService.GetAdvertisementByIdAsync(advertisementId);
         }
-        public async Task<IActionResult> OnPostAsync(int advertisementId)
+        public async Task<IActionResult> OnPostAsync()
         {
-            Advertisement = await adService.GetAdvertisementByIdAsync(advertisementId);
             if (!ModelState.IsValid)
             {
                 notyfService.Error("The details you entered are not correct. Please review the data and try again.");
