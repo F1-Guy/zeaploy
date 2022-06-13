@@ -6,13 +6,13 @@
 <br />
 <div align="center">
   <a href="https://github.com/F1-Guy/zeaploy">
-    <img src="https://am3pap004files.storage.live.com/y4mNksIegkSmF9PnEdl8dHRO7uRKOJ6rI6f_DauvL6HtrSKr4M1Qqt-tF49k0FL7uSmnA0yaSWn-JD4Bo8_a8vn44WWKbdVyTzlYX5dtDlDdYBwizcno89bEhMSzC5X4AwJlHj1pM5o3ULYZTcGRxpFtObywKbuZpdZ-HqRKxNXN2rnjBoXU04Y2z2Bd0OOOAffIjzmSv2JZ5PU49zmwDpRv8V2c5FOc_va7y3UaHfgRD4?encodeFailures=1&width=1852&height=656" alt="Logo" width="250" height="100">
+    <img src="https://am3pap004files.storage.live.com/y4mqC2fXojnGk5VtivJKPelFDkiYLKBGHBm18XP701uCS9v8b2VpOnbZluIBGSnWcwIE7uWZlhQNwfIcLCMDtFCXyusNHo663aA0vpkPPRve_xbXBWU_s042t0EwuhYhTVSukkNGMtNP0OPS5kgZil7RzjNTb4oMePqgIDdevhjcq214YcChTUiZxvu2iFwNXyWYl8NfF4GioF9uIHQW4kgWeN_wzL6CmuFPnSaSUQFpJA?encodeFailures=1&width=1850&height=650" alt="Logo" width="250" height="100">
   </a>
 
 <h3 align="center">ZeaPloy</h3>
 
   <p align="center">
-    Simple web application built with ASP.NET Core for the first year final project, made by students of Zealand Academy 
+    Simple web application built with ASP.NET Core for the first year final project, made by students of Zealand Academy
     <br />
     <a href="https://github.com/F1-Guy/zeaploy"><strong>Explore the code »</strong></a>
     <br />
@@ -55,13 +55,13 @@
 [![Product Name Screen Shot][product-screenshot]](https://github.com/F1-Guy/zeaploy)
 
 <p>
-  This is an end of year project based on the requirements set by the project document. 
-  Our aim was to validate and utilize the skills and knowledge we have gained during the two semesters we have been tasked with designing, 
-  planning, and implementing a .NET Core system. 
-  The goal of this project is to enable each member of our group to fully understand the process and goals of application development in a real-world scenario. 
-  From the inception stage all the way to planning, development and finally to testing and release. 
-  Our aim is for each member of the group to be fully familiar with the skills needed for each step in this project and be able to apply modern methods and techniques that 
-  are relevant and necessary to deliver a high-quality product. 
+  This is an end of year project based on the requirements set by the project document.
+  Our aim was to validate and utilize the skills and knowledge we have gained during the two semesters we have been tasked with designing,
+  planning, and implementing a .NET Core system.
+  The goal of this project is to enable each member of our group to fully understand the process and goals of application development in a real-world scenario.
+  From the inception stage all the way to planning, development and finally to testing and release.
+  Our aim is for each member of the group to be fully familiar with the skills needed for each step in this project and be able to apply modern methods and techniques that
+  are relevant and necessary to deliver a high-quality product.
 </p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -80,7 +80,7 @@
 ### Prerequisites
 
 <p>
-  Requires .NET 6.0 or higher to run inside the IDE. Visual studio 2022 is highly recommended. 
+  Requires .NET 6.0 or higher to run inside the IDE. Visual studio 2022 is highly recommended.
 </p>
 <p>
   To work on the application you need to also connect to the database. Request a database login from project creators.
@@ -99,7 +99,7 @@
     * []()Microsoft.AspNetCore.Identity.EntityFrameworkCore 6.0.4
     * []()AspNetCoreHero.ToastNotification 1.1.0
     * []()Castle.Windsor 5.1.1
-    
+
 3. Enter your connection string in `secrets.json`
    ```json
     {
